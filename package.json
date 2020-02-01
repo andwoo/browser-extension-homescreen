@@ -1,5 +1,5 @@
 {
-  "name": "react-scss",
+  "name": "browser-extension-homescreen",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,6 +11,10 @@
     "server": "node ./server/Server.js",
     "lint": "yarn eslint . --fix --ext .js,.jsx,.ts,.tsx"
   },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "jest": {
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
