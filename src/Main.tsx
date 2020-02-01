@@ -1,8 +1,27 @@
-import '../scss/main.scss';
-
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { hot } from 'react-hot-loader';
 
-import ReduxRootComponent from './redux/ReduxRootComponent';
+import { Store } from './redux/Store';
 
-ReactDOM.render(<ReduxRootComponent />, document.getElementById('app'));
+import { testString } from '@browser-extension/utility-storage';
+
+class Main extends React.Component<Store> {
+  onClickButton(): void {
+    this.props.TestAction('NEW CONTENT');
+  }
+
+  render(): JSX.Element {
+    return (
+      <div>
+        <p>Howdy Yall!</p>
+        <p>{testString}</p>
+        <p>{this.props.testObject.name}</p>
+        <button className="button" onClick={(): void => this.onClickButton()}>
+          Click this
+        </button>
+      </div>
+    );
+  }
+}
+
+export default hot(module)(Main);

@@ -2,14 +2,17 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 const sourceDirectory = path.resolve(__dirname, './src');
 const buildDirectory = path.resolve(__dirname, './build');
+const assetsDirectory = path.resolve(__dirname, './resources');
 
 module.exports = {
   entry: {
-    main: path.resolve(sourceDirectory, './Main.tsx'),
+    main: path.resolve(sourceDirectory, './MainEntry.tsx'),
+    options: path.resolve(sourceDirectory, './OptionsEntry.tsx'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -54,10 +57,20 @@ module.exports = {
       filename: 'style.css',
     }),
     new HtmlWebpackPlugin({
-      title: 'React-Redux-Scss-Prod',
-      template: path.resolve(sourceDirectory, './index.production.html'),
-      filename: path.resolve(buildDirectory, './index.html'),
+      title: 'Homescreen',
+      chunks: ["main"],
+      template: path.resolve(sourceDirectory, './main.development.html'),
+      filename: path.resolve(buildDirectory, './main.html'),
     }),
+    new HtmlWebpackPlugin({
+      title: 'Homescreen Options',
+      chunks: ["options"],
+      template: path.resolve(sourceDirectory, './options.development.html'),
+      filename: path.resolve(buildDirectory, './options.html'),
+    }),
+    new CopyWebpackPlugin([{
+      from: assetsDirectory, to: './resources'
+  }])
   ],
   optimization: {
     minimizer: [new UglifyJSPlugin({ sourceMap: true })],

@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 const sourceDirectory = path.resolve(__dirname, './src');
@@ -10,7 +11,8 @@ const assetsDirectory = path.resolve(__dirname, './resources');
 
 module.exports = {
   entry: {
-    main: path.resolve(sourceDirectory, './Main.tsx'),
+    main: path.resolve(sourceDirectory, './MainEntry.tsx'),
+    options: path.resolve(sourceDirectory, './OptionsEntry.tsx'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -75,10 +77,20 @@ module.exports = {
       filename: 'style.css',
     }),
     new HtmlWebpackPlugin({
-      title: 'React-Redux-Scss-Dev',
-      template: path.resolve(sourceDirectory, './index.development.html'),
-      filename: path.resolve(buildDirectory, './index.html'),
+      title: 'Homescreen-dev',
+      chunks: ["main"],
+      template: path.resolve(sourceDirectory, './main.development.html'),
+      filename: path.resolve(buildDirectory, './main.html'),
     }),
+    new HtmlWebpackPlugin({
+      title: 'Homescreen-Options-dev',
+      chunks: ["options"],
+      template: path.resolve(sourceDirectory, './options.development.html'),
+      filename: path.resolve(buildDirectory, './options.html'),
+    }),
+    new CopyWebpackPlugin([{
+      from: assetsDirectory, to: './resources'
+  }])
   ],
   externals: {
     react: 'React',
