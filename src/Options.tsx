@@ -37,9 +37,9 @@ class Options extends React.PureComponent<{}, OptionsState> {
     }, 1000);
   };
 
-  setSaveStatus = (saveInProgress: boolean): void => {
+  setSaveStatus = (inProgress: boolean): void => {
     this.setState({
-      saveInProgress: saveInProgress,
+      saveInProgress: inProgress,
     });
   };
 
@@ -63,22 +63,20 @@ class Options extends React.PureComponent<{}, OptionsState> {
       );
     }
     return (
-      <React.Fragment>
-        <div className="section">
-          <SubRedditOptions ref={this._subReddits} />
-          <TwitchOptions ref={this._twitch} />
-          <br />
-          <button
-            className={`button is-success ${this.state.saveInProgress ? 'is-loading' : ''}`}
-            onClick={(): void => {
-              this.handleOnSubmit();
-            }}
-          >
-            Save
-          </button>
-          {saveNotification}
-        </div>
-      </React.Fragment>
+      <div className="section">
+        <SubRedditOptions ref={this._subReddits} />
+        <TwitchOptions ref={this._twitch} />
+        <br />
+        <button
+          className={`button is-success ${this.state.saveInProgress ? 'is-loading' : ''}`}
+          onClick={(): void => {
+            this.handleOnSubmit();
+          }}
+        >
+          Save
+        </button>
+        {saveNotification}
+      </div>
     );
   }
 }
