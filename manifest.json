@@ -12,7 +12,7 @@
     "page": "build/options.html"
   },
   "chrome_url_overrides": {
-    "newtab": "build/main.html"
+    "newtab": "build/options.html"
   },
   "permissions": [
     "*://reddit.com/*",
