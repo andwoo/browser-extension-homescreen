@@ -1,3 +1,13 @@
 @charset "utf-8";
 
 @import "../node_modules/bulma/bulma";
+
+.icons {
+  height: $navbar-height;
+}
+
+.tile {
+  height: calc(100vh - #{$navbar-height} - #{$navbar-padding-vertical});
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}

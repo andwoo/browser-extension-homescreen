@@ -11,28 +11,28 @@ class Main extends React.Component<Store> {
       <div className="columns">
         <div className="column">
           {/* Links Start */}
-          <div className="card">Links</div>
+          <div className="card icons">Links</div>
           {/* Links End */}
 
           <div className="columns">
             {/* Content Tiles Start */}
             <div className="column">
-              <div className="card">twitch</div>
+              <div className="card tile">twitch</div>
             </div>
             <div className="column">
-              <div className="card">csgo</div>
+              <div className="card tile">csgo</div>
             </div>
             <div className="column">
-              <div className="card">overwatch</div>
+              <div className="card tile">overwatch</div>
             </div>
             <div className="column">
-              <div className="card">reddit1</div>
+              <div className="card tile">reddit1</div>
             </div>
             <div className="column">
-              <div className="card">reddit2</div>
+              <div className="card tile">reddit2</div>
             </div>
             <div className="column">
-              <div className="card">reddit3</div>
+              <div className="card tile">reddit3</div>
             </div>
             {/* Content Tiles End */}
           </div>
