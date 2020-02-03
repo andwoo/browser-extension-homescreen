@@ -8,9 +8,35 @@ class Main extends React.Component<Store> {
 
   render(): JSX.Element {
     return (
-      <div>
-        <p>Howdy Yall!</p>
-        <p>{this.props.testObject.name}</p>
+      <div className="columns">
+        <div className="column">
+          {/* Links Start */}
+          <div className="card">Links</div>
+          {/* Links End */}
+
+          <div className="columns">
+            {/* Content Tiles Start */}
+            <div className="column">
+              <div className="card">twitch</div>
+            </div>
+            <div className="column">
+              <div className="card">csgo</div>
+            </div>
+            <div className="column">
+              <div className="card">overwatch</div>
+            </div>
+            <div className="column">
+              <div className="card">reddit1</div>
+            </div>
+            <div className="column">
+              <div className="card">reddit2</div>
+            </div>
+            <div className="column">
+              <div className="card">reddit3</div>
+            </div>
+            {/* Content Tiles End */}
+          </div>
+        </div>
       </div>
     );
   }
