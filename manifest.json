@@ -29,5 +29,5 @@
       "id": "hub@amanley.com"
     }
   },
-  "content_security_policy": "script-src 'self' 'unsafe-eval' https://unpkg.com/; object-src 'self'"
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://unpkg.com/ https://kit.fontawesome.com/; object-src 'self'"
 }

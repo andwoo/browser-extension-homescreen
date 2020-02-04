@@ -2,12 +2,22 @@
 
 @import "../node_modules/bulma/bulma";
 
+$tileContentPadding: 0.5rem;
+
+body, html {
+  background-color: $white-ter;
+}
+
 .icons {
   height: $navbar-height;
 }
 
+.tile--container {
+  padding: $tileContentPadding;
+}
+
 .tile {
-  height: calc(100vh - #{$navbar-height} - #{$navbar-padding-vertical});
+  height: calc(100vh - #{$navbar-height} - #{$navbar-padding-vertical} - #{$tileContentPadding});
   padding-bottom: 0px;
   margin-bottom: 0px;
 }
