@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import testReducerMethod from './TestReducer';
+import TwitchLiveStreamReducer from './TwitchLiveStreamReducer';
 
-const CombinedReducers = combineReducers({ testObject: testReducerMethod });
+const CombinedReducers = combineReducers({ twitch: TwitchLiveStreamReducer });
 
 export default CombinedReducers;

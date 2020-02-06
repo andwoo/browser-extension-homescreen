@@ -4,12 +4,14 @@ import { Store } from './redux/Store';
 import Header from './components/main/Header';
 
 class Main extends React.Component<Store> {
-  componentDidMount(): void {}
-
+  componentDidMount(): void {
+    this.props.RequestLiveStreams('');
+  }
   render(): JSX.Element {
     return (
       <React.Fragment>
         {/* Links Start */}
+        <p>{JSON.stringify(this.props.twitch)}</p>
         <Header />
         {/* Links End */}
 

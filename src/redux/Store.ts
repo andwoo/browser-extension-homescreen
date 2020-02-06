@@ -1,30 +1,24 @@
-import { createStore, compose } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import CombinedReducers from './reducers/index';
-
-export interface TestObject {
-  name: string;
-}
-
-export interface StoreDispatch {
-  TestAction(name: string);
-}
-
-export interface StoreModel {
-  testObject: TestObject;
-}
+import StoreDispatch from './interfaces/StoreDispatch';
+import StoreModel from './interfaces/StoreModel';
 
 //combined interface for easy include in React Components
 export interface Store extends StoreDispatch, StoreModel {}
 
 const defaultModel: StoreModel = {
-  testObject: {
-    name: '',
+  twitch: {
+    isLoading: false,
+    success: false,
+    streams: [],
   },
 };
 
 /* eslint-disable */
-const enhancers = compose(window['devToolsExtension'] ? window['devToolsExtension']() : f => f);
-const store = createStore(CombinedReducers, defaultModel, enhancers);
+const middlewareEnhancer = applyMiddleware(thunk);
+const composedEnhancers = compose(middlewareEnhancer, window['devToolsExtension'] ? window['devToolsExtension']() : f => f);
+const store = createStore(CombinedReducers, defaultModel, composedEnhancers);
 /* eslint-enable */
 
 if (module['hot']) {
