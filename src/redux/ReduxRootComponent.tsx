@@ -7,18 +7,21 @@ import store from './Store';
 import StoreDispatch from './interfaces/StoreDispatch';
 import StoreModel from './interfaces/StoreModel';
 //actions
+import * as OptionActions from './actions/OptionsActions';
 import * as TwitchActions from './actions/TwitchLiveStreamActions';
 
 import Main from '../Main';
 
 function MapStateToProps(state: StoreModel): StoreModel {
   return {
+    options: state.options,
     twitch: state.twitch,
   };
 }
 
 function MapDispatchToProps(dispatch): StoreDispatch {
   const actionCreators = {
+    LoadOptions: OptionActions.LoadOptions,
     RequestLiveStreams: TwitchActions.RequestLiveStreams,
   };
   return bindActionCreators(actionCreators, dispatch);

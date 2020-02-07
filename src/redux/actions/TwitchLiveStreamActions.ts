@@ -6,6 +6,12 @@ export interface TwitchStreamsAction extends BaseAction {
   streams: Array<TwitchStream>;
 }
 
+export const ActionTypes = {
+  REQUESTING_LIVE_STREAMS: 'REQUESTING_LIVE_STREAMS',
+  REQUESTING_LIVE_STREAMS_SUCCESS: 'REQUESTING_LIVE_STREAMS_SUCCESS',
+  REQUESTING_LIVE_STREAMS_FAIL: 'REQUESTING_LIVE_STREAMS_FAIL',
+};
+
 const GetTwitchLiveStreams = async (accessToken: string): Promise<Array<TwitchStream>> => {
   let streams: Array<TwitchStream> = [];
   try {
@@ -33,25 +39,22 @@ const GetTwitchLiveStreams = async (accessToken: string): Promise<Array<TwitchSt
   return streams;
 };
 
-export const REQUESTING_LIVE_STREAMS = 'REQUESTING_LIVE_STREAMS';
 function RequestingLiveStreams(): BaseAction {
   return {
-    type: REQUESTING_LIVE_STREAMS,
+    type: ActionTypes.REQUESTING_LIVE_STREAMS,
   };
 }
 
-export const REQUESTING_LIVE_STREAMS_SUCCESS = 'REQUESTING_LIVE_STREAMS_SUCCESS';
 function RequestedLiveStreamsSuccess(streams: Array<TwitchStream>): TwitchStreamsAction {
   return {
-    type: REQUESTING_LIVE_STREAMS_SUCCESS,
+    type: ActionTypes.REQUESTING_LIVE_STREAMS_SUCCESS,
     streams: streams,
   };
 }
 
-export const REQUESTING_LIVE_STREAMS_FAIL = 'REQUESTING_LIVE_STREAMS_FAIL';
 function RequestedLiveStreamsFail(): BaseAction {
   return {
-    type: REQUESTING_LIVE_STREAMS_FAIL,
+    type: ActionTypes.REQUESTING_LIVE_STREAMS_FAIL,
   };
 }
 

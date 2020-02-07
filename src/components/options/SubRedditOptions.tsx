@@ -1,16 +1,13 @@
 import * as React from 'react';
-import SaveStorageEntry from '../../interfaces/options/OptionsEntry';
+import { RedditOptionsModel } from '../../redux/interfaces/OptionsModel';
+import SaveStorageEntry from '../interfaces/OptionsEntry';
 import * as Constants from '../../constants/StorageValues';
 import * as Storage from '@browser-extension/utility-storage';
 import TextInput from '../common/TextInput';
 
-interface SubRedditOptionsState {
-  subReddits: Array<string>;
-}
-
 const style = { paddingTop: '1.5rem', paddingBottom: '1.5rem' };
 
-export default class SubRedditOptions extends React.Component<{}, SubRedditOptionsState> implements SaveStorageEntry {
+export default class SubRedditOptions extends React.Component<{}, RedditOptionsModel> implements SaveStorageEntry {
   constructor(props) {
     super(props);
     this.state = {

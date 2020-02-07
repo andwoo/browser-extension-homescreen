@@ -8,6 +8,16 @@ import StoreModel from './interfaces/StoreModel';
 export interface Store extends StoreDispatch, StoreModel {}
 
 const defaultModel: StoreModel = {
+  options: {
+    isLoading: false,
+    success: false,
+    twitch: {
+      accessToken: '',
+    },
+    reddit: {
+      subReddits: [],
+    },
+  },
   twitch: {
     isLoading: false,
     success: false,

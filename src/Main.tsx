@@ -5,12 +5,18 @@ import Header from './components/main/Header';
 
 class Main extends React.Component<Store> {
   componentDidMount(): void {
-    this.props.RequestLiveStreams('');
+    this.props.LoadOptions();
+  }
+  componentDidUpdate(previousProps: Store): void {
+    if (previousProps.options.isLoading && !this.props.options.isLoading && this.props.options.twitch.accessToken) {
+      this.props.RequestLiveStreams(this.props.options.twitch.accessToken);
+    }
   }
   render(): JSX.Element {
     return (
       <React.Fragment>
         {/* Links Start */}
+        <p>{JSON.stringify(this.props.options)}</p>
         <p>{JSON.stringify(this.props.twitch)}</p>
         <Header />
         {/* Links End */}
