@@ -38,3 +38,13 @@ body, html {
 .dark {
   color: $dark;
 }
+
+.rounded {
+  -webkit-border-radius: $radius-large;
+  -moz-border-radius: $radius-large;
+  border-radius: $radius-large;
+}
+
+.center--text {
+  align-items: center
+}

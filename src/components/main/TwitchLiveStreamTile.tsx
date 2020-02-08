@@ -59,7 +59,7 @@ export default class TwitchLiveStreamTile extends React.Component<Store, TwitchL
             <article className="media">
               <div className="media-left">
                 <figure className="image is-64x64">
-                  <img src={data.thumbnail} alt="Image" />
+                  <img className="rounded" src={data.thumbnail} alt="Image" />
                 </figure>
               </div>
               <div className="media-content">
