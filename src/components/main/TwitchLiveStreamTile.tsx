@@ -3,6 +3,7 @@ import { Store } from '../../redux/Store';
 import OptionValidatorNotification from '../common/OptionValidatorNofitication';
 import * as StringUtils from '../../utils/StringUtils';
 import { TwitchStream } from '../../redux/interfaces/TwitchModel';
+import MediaTile from '../common/MediaTile';
 
 interface TwitchLiveStreamTileState {
   isLoading: boolean;
@@ -53,40 +54,16 @@ export default class TwitchLiveStreamTile extends React.Component<Store, TwitchL
 
   renderStreamerTile = (data: TwitchStream, index: number): JSX.Element => {
     return (
-      <div className="tile--parent">
-        <div className="box is-marginless tile--content" key={index}>
-          <a className="dark" href={data.href}>
-            <article className="media">
-              <div className="media-left">
-                <figure className="image is-64x64">
-                  <img className="rounded" src={data.thumbnail} alt="Image" />
-                </figure>
-              </div>
-              <div className="media-content">
-                <div className="content">
-                  <p>
-                    <strong>{data.name}</strong> <small>{data.game}</small> <br />
-                    <strong className="live">
-                      <i className="far fa-users-crown"></i>
-                      {` ${data.viewers}`}
-                    </strong>
-                    <br />
-                  </p>
-                </div>
-              </div>
-              <nav className="level is-mobile">
-                <div className="level-left">
-                  <a className="level-item" aria-label="reply">
-                    <span className="icon is-small dark">
-                      <i className="fad fa-external-link" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                </div>
-              </nav>
-            </article>
-          </a>
-        </div>
-      </div>
+      <MediaTile href={data.href} thumbnail={data.thumbnail} key={index}>
+        <p>
+          <strong>{data.name}</strong> <small>{data.game}</small> <br />
+          <strong className="live">
+            <i className="far fa-users-crown"></i>
+            {` ${data.viewers}`}
+          </strong>
+          <br />
+        </p>
+      </MediaTile>
     );
   };
 }
