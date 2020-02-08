@@ -1,8 +1,9 @@
 import * as React from 'react';
 
 export interface MediaTileProps {
-  href: string;
+  thumbnailHref: string;
   thumbnail: string;
+  href: string;
 }
 
 export default class MediaTile extends React.Component<MediaTileProps> {
@@ -10,27 +11,30 @@ export default class MediaTile extends React.Component<MediaTileProps> {
     return (
       <div className="tile--parent">
         <div className="box is-marginless tile--content">
-          <a className="dark" href={this.props.href}>
-            <article className="media">
+          <article className="media">
+            <a className="dark" href={this.props.thumbnailHref}>
               <div className="media-left">
                 <figure className="image is-64x64">
-                  <img className="rounded" src={this.props.thumbnail} alt="Image" />
+                  <img className="rounded" src={this.props.thumbnail || '/resources/anchor.svg'} alt="Image" />
                 </figure>
               </div>
-              <div className="media-content">
+            </a>
+
+            <div className="media-content">
+              <a className="dark" href={this.props.href}>
                 <div className="content">{this.props.children}</div>
+              </a>
+            </div>
+            <nav className="level is-mobile">
+              <div className="level-left">
+                <a className="dark" href={this.props.href}>
+                  <span className="icon is-small dark">
+                    <i className="fad fa-external-link" aria-hidden="true" />
+                  </span>
+                </a>
               </div>
-              <nav className="level is-mobile">
-                <div className="level-left">
-                  <a className="level-item" aria-label="reply">
-                    <span className="icon is-small dark">
-                      <i className="fad fa-external-link" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                </div>
-              </nav>
-            </article>
-          </a>
+            </nav>
+          </article>
         </div>
       </div>
     );

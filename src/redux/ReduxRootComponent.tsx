@@ -9,6 +9,7 @@ import StoreModel from './interfaces/StoreModel';
 //actions
 import * as OptionActions from './actions/OptionsActions';
 import * as TwitchActions from './actions/TwitchLiveStreamActions';
+import * as RedditActions from './actions/RedditActions';
 
 import Main from '../Main';
 
@@ -16,6 +17,7 @@ function MapStateToProps(state: StoreModel): StoreModel {
   return {
     options: state.options,
     twitch: state.twitch,
+    reddit: state.reddit,
   };
 }
 
@@ -23,6 +25,7 @@ function MapDispatchToProps(dispatch): StoreDispatch {
   const actionCreators = {
     LoadOptions: OptionActions.LoadOptions,
     RequestLiveStreams: TwitchActions.RequestLiveStreams,
+    RequestSubReddit: RedditActions.RequestSubReddit,
   };
   return bindActionCreators(actionCreators, dispatch);
 }

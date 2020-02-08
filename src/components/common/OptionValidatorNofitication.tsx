@@ -3,7 +3,7 @@ import * as React from 'react';
 export interface OptionValidatorProps {
   isLoading: boolean;
   validate: boolean;
-  description: string;
+  description: JSX.Element;
 }
 
 interface OptionValidatorState {

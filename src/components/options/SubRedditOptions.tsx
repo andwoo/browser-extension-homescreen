@@ -4,6 +4,7 @@ import SaveStorageEntry from '../interfaces/OptionsEntry';
 import * as Constants from '../../constants/StorageValues';
 import * as Storage from '@browser-extension/utility-storage';
 import TextInput from '../common/TextInput';
+import { mergeArrays } from '../../utils/ArrayUtils';
 
 const style = { paddingTop: '1.5rem', paddingBottom: '1.5rem' };
 
@@ -23,21 +24,13 @@ export default class SubRedditOptions extends React.Component<{}, RedditOptionsM
     const subRedditStorage: Storage.StorageResponse = await Storage.LoadFromStorage(Constants.StorageKeySubReddits);
     if (subRedditStorage.success && subRedditStorage.data.length) {
       this.setState({
-        subReddits: this.mergeArrays(this.state.subReddits, subRedditStorage.data as Array<string>),
+        subReddits: mergeArrays(this.state.subReddits, subRedditStorage.data as Array<string>),
       });
     }
   };
 
   save = async (): Promise<void> => {
     Storage.SaveToStorage(Constants.StorageKeySubReddits, this.state.subReddits);
-  };
-
-  mergeArrays = (source: Array<string>, mergeWith: Array<string>): Array<string> => {
-    const merged: Array<string> = [...source];
-    for (let i = 0; i < merged.length && i < mergeWith.length; ++i) {
-      merged[i] = mergeWith[i];
-    }
-    return merged;
   };
 
   handleOnSubRedditChanged = (index: number, value: string): void => {

@@ -29,7 +29,8 @@ export default class TwitchLiveStreamTile extends React.Component<Store, TwitchL
   }
 
   isLoading = (): boolean => {
-    return this.props.options.isLoading || this.props.twitch.isLoading;
+    const acessToken: string = this.props.options.twitch.accessToken;
+    return !StringUtils.IsNullOrEmpty(acessToken) && (this.props.options.isLoading || this.props.twitch.isLoading);
   };
 
   isValid = (): boolean => {
@@ -45,7 +46,11 @@ export default class TwitchLiveStreamTile extends React.Component<Store, TwitchL
       <OptionValidatorNotification
         isLoading={this.state.isLoading}
         validate={this.state.isValid}
-        description="Could not load live Twitch streamer feed. Please ensure a valid Twitch access token has been set in options."
+        description={
+          <p>
+            Could not load live Twitch streamer feed. Please ensure a valid Twitch access token has been set in options.
+          </p>
+        }
       >
         {this.props.twitch.streams.map(this.renderStreamerTile)}
       </OptionValidatorNotification>
@@ -54,11 +59,11 @@ export default class TwitchLiveStreamTile extends React.Component<Store, TwitchL
 
   renderStreamerTile = (data: TwitchStream, index: number): JSX.Element => {
     return (
-      <MediaTile href={data.href} thumbnail={data.thumbnail} key={index}>
+      <MediaTile thumbnailHref={data.href} thumbnail={data.thumbnail} href={data.href} key={index}>
         <p>
           <strong>{data.name}</strong> <small>{data.game}</small> <br />
           <strong className="live">
-            <i className="far fa-users-crown"></i>
+            <i className="far fa-users-crown" />
             {` ${data.viewers}`}
           </strong>
           <br />

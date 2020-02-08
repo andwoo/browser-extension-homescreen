@@ -4,9 +4,11 @@ import { Store } from './redux/Store';
 import Header from './components/main/Header';
 import ScrollField from './components/common/ScrollField';
 import TwitchLiveStreamTile from './components/main/TwitchLiveStreamTile';
+import RedditTile from './components/main/RedditTile';
 
 class Main extends React.Component<Store> {
   componentDidMount(): void {
+    document.documentElement.className += 'overflow--hidden';
     this.props.LoadOptions();
   }
 
@@ -30,10 +32,12 @@ class Main extends React.Component<Store> {
               <TwitchLiveStreamTile {...this.props} />
             </ScrollField>
           </div>
-          {this.props.options.reddit.subReddits.map((data: string, index: number) => {
+          {this.props.options.reddit.subReddits.map((name: string, index: number) => {
             return (
               <div className="column" key={index}>
-                <ScrollField className="column--content">{data}</ScrollField>
+                <ScrollField className="column--content">
+                  <RedditTile name={name} {...this.props} />
+                </ScrollField>
               </div>
             );
           })}

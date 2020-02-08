@@ -1,6 +1,8 @@
 import { OptionsModel } from '../interfaces/OptionsModel';
 import BaseAction from '../interfaces/BaseAction';
 import { OptionsAction, ActionTypes } from '../actions/OptionsActions';
+import * as Constants from '../../constants/StorageValues';
+import { mergeArrays } from '../../utils/ArrayUtils';
 
 export const REQUESTING_LIVE_STREAMS = 'REQUESTING_LIVE_STREAMS';
 export const REQUESTING_LIVE_STREAMS_SUCCESS = 'REQUESTING_LIVE_STREAMS_SUCCESS';
@@ -25,7 +27,10 @@ function OptionsReducer(
     nextState.isLoading = false;
     nextState.error = false;
     nextState.twitch.accessToken = (action as OptionsAction).options.twitch.accessToken;
-    nextState.reddit.subReddits = (action as OptionsAction).options.reddit.subReddits;
+    nextState.reddit.subReddits = mergeArrays(
+      Array(Constants.MaximumSubreddits).fill(''),
+      (action as OptionsAction).options.reddit.subReddits,
+    );
   }
   return nextState;
 }

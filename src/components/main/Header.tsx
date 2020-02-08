@@ -68,7 +68,7 @@ export default class Header extends React.Component {
         {navbarLinks.map((link: NavbarLink, index: number) => {
           return (
             <a className="navbar-item" href={link.href} key={index}>
-              <i className={link.class}></i>
+              <i className={link.class} />
             </a>
           );
         })}

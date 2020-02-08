@@ -6,6 +6,9 @@ $spacing: 0.5rem;
 
 body, html {
   background-color: $white-ter;
+}
+
+.overflow--hidden {
   overflow:hidden;
 }
 
@@ -33,6 +36,10 @@ body, html {
 
 .live {
   color: $red;
+}
+
+.upvotes {
+  color: $green;
 }
 
 .dark {

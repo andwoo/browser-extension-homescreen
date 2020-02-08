@@ -23,6 +23,9 @@ const defaultModel: StoreModel = {
     error: false,
     streams: [],
   },
+  reddit: {
+    subReddits: [],
+  },
 };
 
 /* eslint-disable */
