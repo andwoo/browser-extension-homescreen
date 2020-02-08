@@ -1,6 +1,6 @@
 export interface TwitchModel {
   isLoading: boolean;
-  success: boolean;
+  error: boolean;
   streams: Array<TwitchStream>;
 }
 

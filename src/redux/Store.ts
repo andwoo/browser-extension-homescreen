@@ -9,8 +9,8 @@ export interface Store extends StoreDispatch, StoreModel {}
 
 const defaultModel: StoreModel = {
   options: {
-    isLoading: false,
-    success: false,
+    isLoading: true,
+    error: false,
     twitch: {
       accessToken: '',
     },
@@ -19,8 +19,8 @@ const defaultModel: StoreModel = {
     },
   },
   twitch: {
-    isLoading: false,
-    success: false,
+    isLoading: true,
+    error: false,
     streams: [],
   },
 };

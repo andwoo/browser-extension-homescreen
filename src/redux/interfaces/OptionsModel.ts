@@ -1,6 +1,6 @@
 export interface OptionsModel {
   isLoading: boolean;
-  success: boolean;
+  error: boolean;
   twitch: TwitchOptionsModel;
   reddit: RedditOptionsModel;
 }

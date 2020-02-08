@@ -12,12 +12,14 @@ body, html {
   height: $navbar-height;
 }
 
-.tile--container {
-  padding: $tileContentPadding;
+.column--content {
+  height: calc(100vh - #{$navbar-height} - #{$navbar-padding-vertical} - #{$tileContentPadding});
 }
 
-.tile {
-  height: calc(100vh - #{$navbar-height} - #{$navbar-padding-vertical} - #{$tileContentPadding});
-  padding-bottom: 0px;
-  margin-bottom: 0px;
+.tile--parent {
+  margin:$tileContentPadding;
+}
+
+.tile--content {
+  padding: $tileContentPadding;
 }

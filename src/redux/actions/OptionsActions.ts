@@ -16,7 +16,7 @@ export const ActionTypes = {
 const LoadOptionsFromStorage = async (): Promise<OptionsModel> => {
   const options: OptionsModel = {
     isLoading: false,
-    success: false,
+    error: false,
     twitch: {
       accessToken: '',
     },
