@@ -1,4 +1,4 @@
-import TwitchModel from '../interfaces/TwitchModel';
+import { TwitchModel } from '../interfaces/TwitchModel';
 import BaseAction from '../interfaces/BaseAction';
 import { TwitchStreamsAction, ActionTypes } from '../actions/TwitchLiveStreamActions';
 

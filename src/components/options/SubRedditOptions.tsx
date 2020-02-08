@@ -61,8 +61,8 @@ export default class SubRedditOptions extends React.Component<{}, RedditOptionsM
     });
 
     return (
-      <div className="panel is-success">
-        <p className="panel-heading">SubReddits</p>
+      <div className="panel">
+        <p className="panel-heading">Reddit</p>
         <div className="section" style={style}>
           {inputs}
         </div>

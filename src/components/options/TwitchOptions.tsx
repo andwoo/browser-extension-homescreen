@@ -43,10 +43,13 @@ export default class TwitchOptions extends React.Component<{}, TwitchOptionsMode
 
   render(): JSX.Element {
     return (
-      <div className="panel is-success">
-        <p className="panel-heading">Twitch Token</p>
+      <div className="panel">
+        <p className="panel-heading">Twitch</p>
         <div className="section" style={style}>
           <TextInput label={'Token'} value={this.state.accessToken} onChange={this.handleOnTokenChanged} />
+          <div className="notification is-warning is-light">
+            Create a token with the scope permission <strong>user_read</strong>.
+          </div>
           <button className="button is-success is-light" onClick={this.handleOnGenerateToken}>
             Generate Token
           </button>
@@ -55,3 +58,4 @@ export default class TwitchOptions extends React.Component<{}, TwitchOptionsMode
     );
   }
 }
+//is-family-monospace

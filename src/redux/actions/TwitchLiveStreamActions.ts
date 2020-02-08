@@ -1,6 +1,6 @@
 import axios from 'axios';
 import BaseAction from '../interfaces/BaseAction';
-import TwitchStream from '../interfaces/TwitchStream';
+import { TwitchStream } from '../interfaces/TwitchModel';
 
 export interface TwitchStreamsAction extends BaseAction {
   streams: Array<TwitchStream>;
