@@ -55,30 +55,36 @@ export default class TwitchLiveStreamTile extends React.Component<Store, TwitchL
     return (
       <div className="tile--parent">
         <div className="box is-marginless tile--content" key={index}>
-          <article className="media">
-            <div className="media-left">
-              <figure className="image is-64x64">
-                <img src={data.thumbnail} alt="Image" />
-              </figure>
-            </div>
-            <div className="media-content">
-              <div className="content">
-                <p>
-                  <strong>{data.name}</strong> <small>{data.game}</small> <small>{data.viewers}</small>
-                  <br />
-                </p>
+          <a className="dark" href={data.href}>
+            <article className="media">
+              <div className="media-left">
+                <figure className="image is-64x64">
+                  <img src={data.thumbnail} alt="Image" />
+                </figure>
+              </div>
+              <div className="media-content">
+                <div className="content">
+                  <p>
+                    <strong>{data.name}</strong> <small>{data.game}</small> <br />
+                    <strong className="live">
+                      <i className="far fa-users-crown"></i>
+                      {` ${data.viewers}`}
+                    </strong>
+                    <br />
+                  </p>
+                </div>
               </div>
               <nav className="level is-mobile">
                 <div className="level-left">
-                  <a className="level-item" aria-label="reply" href={data.href}>
-                    <span className="icon is-small">
+                  <a className="level-item" aria-label="reply">
+                    <span className="icon is-small dark">
                       <i className="fad fa-external-link" aria-hidden="true"></i>
                     </span>
                   </a>
                 </div>
               </nav>
-            </div>
-          </article>
+            </article>
+          </a>
         </div>
       </div>
     );

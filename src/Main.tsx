@@ -23,7 +23,7 @@ class Main extends React.Component<Store> {
         <Header />
         {/* Links End */}
 
-        <div className="columns is-variable is-0">
+        <div className="columns is-variable is-0 column--parent">
           {/* Content Tiles Start */}
           <div className="column">
             <ScrollField className="column--content column--content--first">
