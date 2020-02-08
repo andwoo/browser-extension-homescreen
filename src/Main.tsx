@@ -26,14 +26,14 @@ class Main extends React.Component<Store> {
         <div className="columns is-variable is-0">
           {/* Content Tiles Start */}
           <div className="column">
-            <ScrollField className="column--content">
+            <ScrollField className="column--content column--content--first">
               <TwitchLiveStreamTile {...this.props} />
             </ScrollField>
           </div>
           {this.props.options.reddit.subReddits.map((data: string, index: number) => {
             return (
               <div className="column" key={index}>
-                <ScrollField className="card column--content">{data}</ScrollField>
+                <ScrollField className="column--content">{data}</ScrollField>
               </div>
             );
           })}

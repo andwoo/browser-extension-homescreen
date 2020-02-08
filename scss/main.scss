@@ -6,6 +6,7 @@ $tileContentPadding: 0.5rem;
 
 body, html {
   background-color: $white-ter;
+  overflow:hidden;
 }
 
 .icons {
@@ -14,10 +15,15 @@ body, html {
 
 .column--content {
   height: calc(100vh - #{$navbar-height} - #{$navbar-padding-vertical} - #{$tileContentPadding});
+  padding-top: $tileContentPadding;
+  padding-right: $tileContentPadding;
 }
 
+.column--content--first {
+  padding-left: $tileContentPadding;
+}
 .tile--parent {
-  margin:$tileContentPadding;
+  margin-bottom:$tileContentPadding;
 }
 
 .tile--content {
