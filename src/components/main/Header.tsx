@@ -62,7 +62,7 @@ export default class Header extends React.Component {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <div className="navbar-item">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
+            <img src="/resources/hub-logo.svg" width="112" height="28" />
           </div>
         </div>
         {navbarLinks.map((link: NavbarLink, index: number) => {

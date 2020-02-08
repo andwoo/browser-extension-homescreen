@@ -2,16 +2,19 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader';
 import { Store } from './redux/Store';
 import Header from './components/main/Header';
+import ScrollField from './components/common/ScrollField';
 
 class Main extends React.Component<Store> {
   componentDidMount(): void {
     this.props.LoadOptions();
   }
+
   componentDidUpdate(previousProps: Store): void {
     if (previousProps.options.isLoading && !this.props.options.isLoading && this.props.options.twitch.accessToken) {
       this.props.RequestLiveStreams(this.props.options.twitch.accessToken);
     }
-  }
+  } //className="card tile"
+
   render(): JSX.Element {
     return (
       <React.Fragment>
@@ -24,23 +27,15 @@ class Main extends React.Component<Store> {
         <div className="columns is-variable is-1 tile--container">
           {/* Content Tiles Start */}
           <div className="column">
-            <div className="card tile">twitch</div>
+            <ScrollField className="card tile">twitch</ScrollField>
           </div>
-          <div className="column">
-            <div className="card tile">csgo</div>
-          </div>
-          <div className="column">
-            <div className="card tile">overwatch</div>
-          </div>
-          <div className="column">
-            <div className="card tile">reddit1</div>
-          </div>
-          <div className="column">
-            <div className="card tile">reddit2</div>
-          </div>
-          <div className="column">
-            <div className="card tile">reddit3</div>
-          </div>
+          {this.props.options.reddit.subReddits.map((data: string, index: number) => {
+            return (
+              <div className="column" key={index}>
+                <ScrollField className="card tile">{data}</ScrollField>
+              </div>
+            );
+          })}
           {/* Content Tiles End */}
         </div>
       </React.Fragment>
