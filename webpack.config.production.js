@@ -73,7 +73,7 @@ module.exports = {
   }])
   ],
   optimization: {
-    minimizer: [new UglifyJSPlugin({ sourceMap: true })],
+    // minimizer: [new UglifyJSPlugin({ sourceMap: true })],
   },
   externals: {
     react: 'React',

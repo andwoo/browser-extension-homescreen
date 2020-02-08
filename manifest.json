@@ -4,9 +4,9 @@
   "version": "1.0.6",
   "description": "New tab homescreen containing usefull links and content.",
   "icons": {
-    "16": "resources/icons/icon16.png",
-    "48": "resources/icons/icon48.png",
-    "128": "resources/icons/icon128.png"
+    "16": "build/resources/icons/icon16.png",
+    "48": "build/resources/icons/icon48.png",
+    "128": "build/resources/icons/icon128.png"
   },
   "options_ui": {
     "page": "build/options.html"
