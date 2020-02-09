@@ -7,7 +7,7 @@ interface NavbarLink {
 
 const navbarLinks: Array<NavbarLink> = [
   {
-    class: 'fad fa-envelope',
+    class: 'fas fa-envelope',
     href: 'https://mail.google.com/',
   },
   {
@@ -15,7 +15,7 @@ const navbarLinks: Array<NavbarLink> = [
     href: 'https://drive.google.com/',
   },
   {
-    class: 'fad fa-calendar',
+    class: 'fas fa-calendar-minus',
     href: 'https://calendar.google.com/',
   },
   {
@@ -27,11 +27,11 @@ const navbarLinks: Array<NavbarLink> = [
     href: 'https://www.twitch.tv/',
   },
   {
-    class: 'fad fa-film',
+    class: 'fas fa-ticket-alt',
     href: 'https://www.netflix.com/browse',
   },
   {
-    class: 'fad fa-toilet-paper-alt',
+    class: 'fas fa-toilet-paper',
     href: 'https://www.crunchyroll.com/',
   },
   {
@@ -39,7 +39,7 @@ const navbarLinks: Array<NavbarLink> = [
     href: 'https://soundcloud.com/discover',
   },
   {
-    class: 'fab fa-reddit',
+    class: 'fab fa-reddit-alien',
     href: 'https://www.reddit.com/',
   },
   {
@@ -47,7 +47,7 @@ const navbarLinks: Array<NavbarLink> = [
     href: 'https://twitter.com/home',
   },
   {
-    class: 'fad fa-code-branch',
+    class: 'fab fa-github-alt',
     href: 'https://github.com/',
   },
   {

@@ -21,26 +21,14 @@ moment.updateLocale('en', {
   },
 });
 
-export default class MatchTile extends React.Component<MatchModel> {
-  render(): JSX.Element {
-    let informationIcon: JSX.Element;
-    if (this.props.isLive) {
-      informationIcon = (
-        <div className="icon--container has-text-right">
-          <span className="icon is-small live">
-            <i className="far fa-users-crown" aria-hidden="true" />
-          </span>
-        </div>
-      );
-    } else {
-      informationIcon = (
-        <div className="icon--container has-text-right" style={{ fontSize: '1em' }}>
-          <strong>{moment.utc(parseInt(this.props.unixTime)).fromNow()}</strong>{' '}
-          <i className="far fa-clock" aria-hidden="true" />
-        </div>
-      );
-    }
+export interface MatchTileProps extends MatchModel {
+  defaultTopIcon: string;
+  activeTopIcon: string;
+  isActive: boolean;
+}
 
+export default class MatchTile extends React.Component<MatchTileProps> {
+  render(): JSX.Element {
     return (
       <div className="tile--parent">
         <div className="box is-marginless tile--content">
@@ -59,9 +47,10 @@ export default class MatchTile extends React.Component<MatchModel> {
             <div className="media-content desktop--only">
               <a className="dark" href={this.props.href}>
                 <div className="content">
-                  <p>
-                    <div className="is-divider-vertical" data-content="VS"></div>
-                  </p>
+                  <div
+                    className="is-divider-vertical "
+                    data-content={this.props.isActive ? 'VS' : moment.utc(parseInt(this.props.unixTime)).fromNow()}
+                  ></div>
                 </div>
               </a>
             </div>
@@ -76,14 +65,15 @@ export default class MatchTile extends React.Component<MatchModel> {
                 </figure>
               </div>
             </a>
-            <nav className="level has-text-right icon--container">
+            <nav className="level is-mobile">
               <div className="level-left">
-                <a className="dark icon--container" href={this.props.href}>
-                  <span className="icon is-small dark">
-                    <i className="fad fa-external-link" aria-hidden="true" />
+                <a href={this.props.href}>
+                  <span className={`icon is-small ${this.props.isActive ? 'activeIcon' : 'dark'}`}>
+                    <i
+                      className={this.props.isActive ? this.props.activeTopIcon : this.props.defaultTopIcon}
+                      aria-hidden="true"
+                    />
                   </span>
-                  <br />
-                  {informationIcon}
                 </a>
               </div>
             </nav>

@@ -7,6 +7,15 @@ import TwitchLiveStreamTile from './components/main/TwitchLiveStreamTile';
 import RedditTile from './components/main/RedditTile';
 import MatchTicker from './components/main/MatchTicker';
 
+const topIcons = {
+  twitchDefault: 'fas fa-moon-stars',
+  twitchActive: 'fas fa-stars',
+  csgoDefault: 'fas fa-moon-stars',
+  csgoActive: 'fas fa-stars',
+  redditDefault: 'fab fa-reddit-alien',
+  redditActive: 'fab fa-reddit-alien',
+};
+
 class Main extends React.Component<Store> {
   componentDidMount(): void {
     document.documentElement.className += 'overflow--hidden';
@@ -30,19 +39,28 @@ class Main extends React.Component<Store> {
           {/* Content Tiles Start */}
           <div className="column">
             <ScrollField className="column--content column--content--first">
-              <TwitchLiveStreamTile {...this.props} />
+              <TwitchLiveStreamTile
+                {...this.props}
+                defaultTopIcon={topIcons.twitchDefault}
+                activeTopIcon={topIcons.twitchActive}
+              />
             </ScrollField>
           </div>
           <div className="column">
             <ScrollField className="column--content">
-              <MatchTicker {...this.props} />
+              <MatchTicker {...this.props} defaultTopIcon={topIcons.csgoDefault} activeTopIcon={topIcons.csgoActive} />
             </ScrollField>
           </div>
           {this.props.options.reddit.subReddits.map((name: string, index: number) => {
             return (
               <div className="column" key={index}>
                 <ScrollField className="column--content">
-                  <RedditTile name={name} {...this.props} />
+                  <RedditTile
+                    name={name}
+                    {...this.props}
+                    defaultTopIcon={topIcons.redditDefault}
+                    activeTopIcon={topIcons.redditActive}
+                  />
                 </ScrollField>
               </div>
             );

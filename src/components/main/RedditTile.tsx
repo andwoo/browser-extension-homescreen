@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Store } from '../../redux/Store';
+import TileProps from '../interfaces/TileProps';
 import OptionValidatorNotification from '../common/OptionValidatorNofitication';
 import * as StringUtils from '../../utils/StringUtils';
 import { SubRedditModel, SubRedditPostModel } from '../../redux/interfaces/RedditModel';
 import MediaTile from '../common/MediaTile';
 
-interface RedditTileProps extends Store {
+interface RedditTileProps extends TileProps {
   name: string;
 }
 
@@ -81,11 +81,19 @@ export default class RedditTile extends React.Component<RedditTileProps, RedditT
 
   renderPostTile = (data: SubRedditPostModel, index: number): JSX.Element => {
     return (
-      <MediaTile thumbnailHref={data.postHref} thumbnail={data.thumbnail} href={data.commentsHref} key={index}>
+      <MediaTile
+        thumbnailHref={data.postHref}
+        thumbnail={data.thumbnail}
+        href={data.commentsHref}
+        defaultTopIcon={this.props.defaultTopIcon}
+        activeTopIcon={this.props.activeTopIcon}
+        key={index}
+        isActive={false}
+      >
         <p>
           <small>{data.title}</small> <br />
           <strong className="upvotes">
-            <i className="fas fa-arrow-up" />
+            <i className="fas fa-angle-up" />
             {` ${data.upVotes}`}
           </strong>
         </p>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Store } from '../../redux/Store';
+import TileProps from '../interfaces/TileProps';
 import OptionValidatorNotification from '../common/OptionValidatorNofitication';
 import { MatchModel } from '../../redux/interfaces/MatchModel';
 import MatchTile from '../common/MatchTile';
@@ -9,7 +9,7 @@ interface MatchTickerState {
   isValid: boolean;
 }
 
-export default class MatchTicker extends React.Component<Store, MatchTickerState> {
+export default class MatchTicker extends React.Component<TileProps, MatchTickerState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,6 +55,14 @@ export default class MatchTicker extends React.Component<Store, MatchTickerState
   }
 
   renderMatchTile = (data: MatchModel, index: number): JSX.Element => {
-    return <MatchTile {...data} key={index} />;
+    return (
+      <MatchTile
+        {...data}
+        defaultTopIcon={this.props.defaultTopIcon}
+        activeTopIcon={this.props.activeTopIcon}
+        isActive={data.isLive}
+        key={index}
+      />
+    );
   };
 }

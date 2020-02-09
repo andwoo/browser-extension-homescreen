@@ -4,6 +4,9 @@ export interface MediaTileProps {
   thumbnailHref: string;
   thumbnail: string;
   href: string;
+  defaultTopIcon: string;
+  activeTopIcon: string;
+  isActive: boolean;
 }
 
 export default class MediaTile extends React.Component<MediaTileProps> {
@@ -28,8 +31,11 @@ export default class MediaTile extends React.Component<MediaTileProps> {
             <nav className="level is-mobile">
               <div className="level-left">
                 <a className="dark" href={this.props.href}>
-                  <span className="icon is-small dark">
-                    <i className="fad fa-external-link" aria-hidden="true" />
+                  <span className={`icon is-small ${this.props.isActive ? 'activeIcon' : 'dark'}`}>
+                    <i
+                      className={this.props.isActive ? this.props.activeTopIcon : this.props.defaultTopIcon}
+                      aria-hidden="true"
+                    />
                   </span>
                 </a>
               </div>

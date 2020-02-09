@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Store } from '../../redux/Store';
+import TileProps from '../interfaces/TileProps';
 import OptionValidatorNotification from '../common/OptionValidatorNofitication';
 import * as StringUtils from '../../utils/StringUtils';
 import { TwitchStream } from '../../redux/interfaces/TwitchModel';
@@ -10,7 +10,7 @@ interface TwitchLiveStreamTileState {
   isValid: boolean;
 }
 
-export default class TwitchLiveStreamTile extends React.Component<Store, TwitchLiveStreamTileState> {
+export default class TwitchLiveStreamTile extends React.Component<TileProps, TwitchLiveStreamTileState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,7 +59,15 @@ export default class TwitchLiveStreamTile extends React.Component<Store, TwitchL
 
   renderStreamerTile = (data: TwitchStream, index: number): JSX.Element => {
     return (
-      <MediaTile thumbnailHref={data.href} thumbnail={data.thumbnail} href={data.href} key={index}>
+      <MediaTile
+        thumbnailHref={data.href}
+        thumbnail={data.thumbnail}
+        href={data.href}
+        defaultTopIcon={this.props.defaultTopIcon}
+        activeTopIcon={this.props.activeTopIcon}
+        key={index}
+        isActive={true}
+      >
         <p>
           <strong>{data.name}</strong> <small>{data.game}</small> <br />
           <strong className="live">

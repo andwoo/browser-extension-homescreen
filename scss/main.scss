@@ -36,7 +36,11 @@ body, html {
 }
 
 .live {
-  color: $red;
+  color: $orange;
+}
+
+.activeIcon {
+  color: $orange;
 }
 
 .upvotes {
