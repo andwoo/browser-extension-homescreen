@@ -26,6 +26,11 @@ const defaultModel: StoreModel = {
   reddit: {
     subReddits: [],
   },
+  csgo: {
+    isLoading: true,
+    error: false,
+    matches: [],
+  },
 };
 
 /* eslint-disable */

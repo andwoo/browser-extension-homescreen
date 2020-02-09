@@ -9,7 +9,7 @@ const getSubredditModel = (name: string, subReddits: Array<SubRedditModel>): Sub
   }
   const subReddit: SubRedditModel = {
     name: name || '',
-    isLoading: false,
+    isLoading: true,
     error: false,
     posts: [],
   };

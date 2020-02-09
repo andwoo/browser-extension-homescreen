@@ -14,8 +14,8 @@ export default class MediaTile extends React.Component<MediaTileProps> {
           <article className="media">
             <a className="dark" href={this.props.thumbnailHref}>
               <div className="media-left">
-                <figure className="image is-64x64">
-                  <img className="rounded" src={this.props.thumbnail || '/resources/anchor.svg'} alt="Image" />
+                <figure className="image is-64x64 is-square">
+                  <img className="thumbnail" src={this.props.thumbnail || '/resources/anchor.svg'} alt="Image" />
                 </figure>
               </div>
             </a>

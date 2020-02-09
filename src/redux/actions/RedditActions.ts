@@ -1,6 +1,7 @@
 import axios from 'axios';
 import BaseAction from '../interfaces/BaseAction';
 import { SubRedditModel, SubRedditPostModel } from '../interfaces/RedditModel';
+import { decodeString } from '../../utils/StringUtils';
 
 export interface RedditLoadingAction extends BaseAction {
   name: string;
@@ -21,9 +22,13 @@ const GetSubReddit = async (name: string): Promise<Array<SubRedditPostModel>> =>
   try {
     const response = await axios.get(`https://reddit.com/r/${name}.json`);
     posts = response.data.data.children.map(post => {
+      let thumbnail: string = post.data.thumbnail;
+      if (!thumbnail || thumbnail === 'self') {
+        thumbnail = null;
+      }
       return {
-        title: post.data.title,
-        thumbnail: post.data.thumbnail,
+        title: decodeString(post.data.title),
+        thumbnail: thumbnail,
         postHref: post.data.url,
         commentsHref: `https://reddit.com${post.data.permalink}`,
         upVotes: post.data.score,

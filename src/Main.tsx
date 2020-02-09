@@ -5,6 +5,7 @@ import Header from './components/main/Header';
 import ScrollField from './components/common/ScrollField';
 import TwitchLiveStreamTile from './components/main/TwitchLiveStreamTile';
 import RedditTile from './components/main/RedditTile';
+import MatchTicker from './components/main/MatchTicker';
 
 class Main extends React.Component<Store> {
   componentDidMount(): void {
@@ -30,6 +31,11 @@ class Main extends React.Component<Store> {
           <div className="column">
             <ScrollField className="column--content column--content--first">
               <TwitchLiveStreamTile {...this.props} />
+            </ScrollField>
+          </div>
+          <div className="column">
+            <ScrollField className="column--content">
+              <MatchTicker {...this.props} />
             </ScrollField>
           </div>
           {this.props.options.reddit.subReddits.map((name: string, index: number) => {

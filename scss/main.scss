@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 @import "../node_modules/bulma/bulma";
+@import "../node_modules/bulma-extensions/src/sass/index";
 
 $spacing: 0.5rem;
 
@@ -46,7 +47,7 @@ body, html {
   color: $dark;
 }
 
-.rounded {
+.thumbnail {
   -webkit-border-radius: $radius-large;
   -moz-border-radius: $radius-large;
   border-radius: $radius-large;
@@ -54,4 +55,33 @@ body, html {
 
 .center--text {
   align-items: center
+}
+
+.icon--container {
+
+  @include mobile {
+    width: 1.5rem;
+  }
+
+  @include tablet {
+    width: 1.5rem;
+  }
+
+  @include widescreen {
+    width: 3.5rem;
+  }
+}
+
+.desktop--only {
+  @include mobile {
+    display: none;
+  }
+
+  @include tablet {
+    display: none;
+  }
+
+  @include widescreen {
+    display: block;
+  }
 }
