@@ -39,7 +39,8 @@ export default class MatchTile extends React.Component<MatchTileProps> {
                   <img
                     className="thumbnail"
                     src={this.props.teamOne.thumbnail || '/resources/anchor.svg'}
-                    alt={this.props.teamTwo.name}
+                    alt={this.props.teamOne.name}
+                    title={this.props.teamOne.name}
                   />
                 </figure>
               </div>
@@ -61,6 +62,7 @@ export default class MatchTile extends React.Component<MatchTileProps> {
                     className="thumbnail"
                     src={this.props.teamTwo.thumbnail || '/resources/anchor.svg'}
                     alt={this.props.teamTwo.name}
+                    title={this.props.teamTwo.name}
                   />
                 </figure>
               </div>

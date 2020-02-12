@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Hub",
-  "version": "1.0.8",
-  "description": "New tab homescreen containing a list of subreddits and Twitch streams.",
+  "version": "1.0.9",
+  "description": "New tab hub containing a list of your favourite subreddits, Twitch live streamers and upcoming CSGO matches from HLTV.",
   "icons": {
     "16": "build/resources/icons/icon16.png",
     "48": "build/resources/icons/icon48.png",
@@ -15,19 +15,10 @@
     "newtab": "build/main.html"
   },
   "permissions": [
-    "*://reddit.com/*",
-    "*://www.reddit.com/*",
-    "*://fonts.googleapis.com/*",
-    "*://api.twitch.tv/*",
-    "*://www.hltv.org/*",
-    "*://api.overwatchleague.com/*",
-    "webRequest",
+    "https://reddit.com/",
+    "https://api.twitch.tv/",
+    "https://www.hltv.org/",
     "storage"
   ],
-  "applications": {
-    "gecko": {
-      "id": "hub@amanley.com"
-    }
-  },
   "content_security_policy": "script-src 'self' 'unsafe-eval' https://unpkg.com/ https://kit.fontawesome.com/; object-src 'self'"
 }
