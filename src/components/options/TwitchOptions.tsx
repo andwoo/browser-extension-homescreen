@@ -20,7 +20,7 @@ export default class TwitchOptions extends React.Component<{}, TwitchOptionsMode
   };
 
   load = async (): Promise<void> => {
-    const twitTokenStorage: Storage.StorageResponse = await Storage.LoadFromStorage(Constants.TwitchToken);
+    const twitTokenStorage: Storage.StorageResponse = await Storage.loadFromStorage(Constants.TwitchToken);
     if (twitTokenStorage.success) {
       this.setState({
         accessToken: twitTokenStorage.data as string,
@@ -29,7 +29,7 @@ export default class TwitchOptions extends React.Component<{}, TwitchOptionsMode
   };
 
   save = async (): Promise<void> => {
-    Storage.SaveToStorage(Constants.TwitchToken, this.state.accessToken);
+    Storage.saveToStorage(Constants.TwitchToken, this.state.accessToken);
   };
 
   handleOnTokenChanged = (value: string): void => {

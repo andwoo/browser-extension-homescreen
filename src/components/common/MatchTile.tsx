@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as moment from 'moment';
 import { MatchModel } from '../../redux/interfaces/MatchModel';
+import { getImageOrDefault } from '../../utils/ImageUtils';
 
 moment.updateLocale('en', {
   relativeTime: {
@@ -38,7 +39,7 @@ export default class MatchTile extends React.Component<MatchTileProps> {
                 <figure className="image is-64x64 is-square">
                   <img
                     className="thumbnail"
-                    src={this.props.teamOne.thumbnail || '/resources/anchor.svg'}
+                    src={getImageOrDefault(this.props.teamOne.thumbnail)}
                     alt={this.props.teamOne.name}
                     title={this.props.teamOne.name}
                   />
@@ -60,7 +61,7 @@ export default class MatchTile extends React.Component<MatchTileProps> {
                 <figure className="image is-64x64 is-square">
                   <img
                     className="thumbnail"
-                    src={this.props.teamTwo.thumbnail || '/resources/anchor.svg'}
+                    src={getImageOrDefault(this.props.teamTwo.thumbnail)}
                     alt={this.props.teamTwo.name}
                     title={this.props.teamTwo.name}
                   />

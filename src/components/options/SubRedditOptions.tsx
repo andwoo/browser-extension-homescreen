@@ -21,7 +21,7 @@ export default class SubRedditOptions extends React.Component<{}, RedditOptionsM
   };
 
   load = async (): Promise<void> => {
-    const subRedditStorage: Storage.StorageResponse = await Storage.LoadFromStorage(Constants.StorageKeySubReddits);
+    const subRedditStorage: Storage.StorageResponse = await Storage.loadFromStorage(Constants.StorageKeySubReddits);
     if (subRedditStorage.success && subRedditStorage.data.length) {
       this.setState({
         subReddits: mergeArrays(this.state.subReddits, subRedditStorage.data as Array<string>),
@@ -30,7 +30,7 @@ export default class SubRedditOptions extends React.Component<{}, RedditOptionsM
   };
 
   save = async (): Promise<void> => {
-    Storage.SaveToStorage(Constants.StorageKeySubReddits, this.state.subReddits);
+    Storage.saveToStorage(Constants.StorageKeySubReddits, this.state.subReddits);
   };
 
   handleOnSubRedditChanged = (index: number, value: string): void => {

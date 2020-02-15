@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { toAbsoluteUrl } from '@browser-extension/utility-url';
 
 interface NavbarLink {
   class: string;
@@ -62,7 +63,7 @@ export default class Header extends React.Component {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <div className="navbar-item">
-            <img src="/resources/hub-logo.svg" width="112" height="28" />
+            <img src={toAbsoluteUrl('/build/resources/hub-logo.svg')} width="112" height="28" />
           </div>
         </div>
         {navbarLinks.map((link: NavbarLink, index: number) => {

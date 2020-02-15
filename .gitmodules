@@ -1,3 +1,6 @@
 [submodule "packages/browser-extension-utility-storage"]
 	path = packages/browser-extension-utility-storage
 	url = ../browser-extension-utility-storage.git
+[submodule "packages/browser-extension-utility-url"]
+	path = packages/browser-extension-utility-url
+	url = ../browser-extension-utility-url.git

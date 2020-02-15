@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getImageOrDefault } from '../../utils/ImageUtils';
 
 export interface MediaTileProps {
   thumbnailHref: string;
@@ -18,7 +19,7 @@ export default class MediaTile extends React.Component<MediaTileProps> {
             <a className="dark" href={this.props.thumbnailHref}>
               <div className="media-left">
                 <figure className="image is-64x64 is-square">
-                  <img className="thumbnail" src={this.props.thumbnail || '/resources/anchor.svg'} alt="Image" />
+                  <img className="thumbnail" src={getImageOrDefault(this.props.thumbnail)} alt="Image" />
                 </figure>
               </div>
             </a>

@@ -1,5 +1,5 @@
 import BaseAction from '../interfaces/BaseAction';
-import { OptionsModel, TwitchOptionsModel, RedditOptionsModel } from '../interfaces/OptionsModel';
+import { OptionsModel } from '../interfaces/OptionsModel';
 import * as Storage from '@browser-extension/utility-storage';
 import * as Constants from '../../constants/StorageValues';
 
@@ -25,12 +25,12 @@ const LoadOptionsFromStorage = async (): Promise<OptionsModel> => {
     },
   };
 
-  const twitTokenStorage: Storage.StorageResponse = await Storage.LoadFromStorage(Constants.TwitchToken);
+  const twitTokenStorage: Storage.StorageResponse = await Storage.loadFromStorage(Constants.TwitchToken);
   if (twitTokenStorage.success) {
     options.twitch.accessToken = twitTokenStorage.data as string;
   }
 
-  const subRedditStorage: Storage.StorageResponse = await Storage.LoadFromStorage(Constants.StorageKeySubReddits);
+  const subRedditStorage: Storage.StorageResponse = await Storage.loadFromStorage(Constants.StorageKeySubReddits);
   if (subRedditStorage.success && subRedditStorage.data.length) {
     options.reddit.subReddits = subRedditStorage.data as Array<string>;
   }
