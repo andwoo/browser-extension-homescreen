@@ -41,6 +41,7 @@
     "autoprefixer": "9.7.6",
     "awesome-typescript-loader": "5.2.1",
     "axios": "0.19.2",
+    "axios-jsonp": "^1.0.4",
     "babel-loader": "8.1.0",
     "bulma": "0.8.2",
     "bulma-extensions": "6.2.7",

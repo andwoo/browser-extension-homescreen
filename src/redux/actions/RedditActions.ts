@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jsonpAdapter from 'axios-jsonp';
 import BaseAction from '../interfaces/BaseAction';
 import { SubRedditModel, SubRedditPostModel } from '../interfaces/RedditModel';
 import { decodeString } from '../../utils/StringUtils';
@@ -20,8 +21,8 @@ export const ActionTypes = {
 const GetSubReddit = async (name: string): Promise<Array<SubRedditPostModel>> => {
   let posts: Array<SubRedditPostModel> = [];
   try {
-    const response = await axios.get(`https://reddit.com/r/${name}.json`);
-    posts = response.data.data.children.map(post => {
+    const response = await axios.get(`https://reddit.com/r/${name}.json`, { adapter: jsonpAdapter });
+    posts = response.data.data.children.map((post) => {
       let thumbnail: string = post.data.thumbnail;
       if (!thumbnail || thumbnail === 'self') {
         thumbnail = null;
@@ -66,7 +67,7 @@ export function RequestSubReddit(name: string) {
   return (dispatch): Promise<SubRedditModel> => {
     dispatch(RequestingSubReddit(name));
     return GetSubReddit(name).then(
-      posts => dispatch(RequestedSubRedditSuccess(name, posts)),
+      (posts) => dispatch(RequestedSubRedditSuccess(name, posts)),
       () => dispatch(RequestedSubRedditFail(name)),
     );
   };
