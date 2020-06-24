@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Hub",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "New tab hub containing a list of your favourite subreddits, Twitch live streamers and upcoming CSGO matches from HLTV.",
   "icons": {
     "16": "build/resources/icons/icon16.png",
