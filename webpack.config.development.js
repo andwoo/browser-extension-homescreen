@@ -90,10 +90,6 @@ module.exports = {
     }),
     new CopyWebpackPlugin([{
       from: assetsDirectory, to: './resources'
-  }])
-  ],
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
+    }])
+  ]
 };

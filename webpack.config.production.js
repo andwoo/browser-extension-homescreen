@@ -70,13 +70,9 @@ module.exports = {
     }),
     new CopyWebpackPlugin([{
       from: assetsDirectory, to: './resources'
-  }])
+    }])
   ],
   optimization: {
     // minimizer: [new UglifyJSPlugin({ sourceMap: true })],
-  },
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
+  }
 };
