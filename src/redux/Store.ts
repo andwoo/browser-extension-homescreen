@@ -3,9 +3,10 @@ import thunk from 'redux-thunk';
 import CombinedReducers from './reducers/index';
 import StoreDispatch from './interfaces/StoreDispatch';
 import StoreModel from './interfaces/StoreModel';
+import { defaultModel as esportDefaultModel } from './interfaces/EsportEventModel'
 
 //combined interface for easy include in React Components
-export interface Store extends StoreDispatch, StoreModel {}
+export interface Store extends StoreDispatch, StoreModel { }
 
 const defaultModel: StoreModel = {
   options: {
@@ -31,6 +32,7 @@ const defaultModel: StoreModel = {
     error: false,
     matches: [],
   },
+  esportEvents: esportDefaultModel
 };
 
 /* eslint-disable */

@@ -20,6 +20,7 @@ export default class MatchTicker extends React.Component<TileProps, MatchTickerS
 
   componentDidMount(): void {
     this.props.RequestCSGOMatches();
+    this.props.getEsportEvents('https://juked.gg/calendar?games&sort=FEATURED&tab=WEEK');
   }
 
   componentDidUpdate(): void {

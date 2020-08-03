@@ -3,4 +3,5 @@ export default interface StoreDispatch {
   RequestLiveStreams: (accessToken: string) => void;
   RequestSubReddit: (name: string) => void;
   RequestCSGOMatches: () => void;
+  getEsportEvents: (url: string) => void;
 }

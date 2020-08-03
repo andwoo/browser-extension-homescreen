@@ -11,6 +11,7 @@ import * as OptionActions from './actions/OptionsActions';
 import * as TwitchActions from './actions/TwitchLiveStreamActions';
 import * as RedditActions from './actions/RedditActions';
 import * as CSGOActions from './actions/CSGOActions';
+import * as EsportEventActions from './actions/EsportEventActions';
 
 import Main from '../Main';
 
@@ -20,6 +21,7 @@ function MapStateToProps(state: StoreModel): StoreModel {
     twitch: state.twitch,
     reddit: state.reddit,
     csgo: state.csgo,
+    esportEvents: state.esportEvents
   };
 }
 
@@ -29,6 +31,7 @@ function MapDispatchToProps(dispatch): StoreDispatch {
     RequestLiveStreams: TwitchActions.RequestLiveStreams,
     RequestSubReddit: RedditActions.RequestSubReddit,
     RequestCSGOMatches: CSGOActions.RequestCSGOMatches,
+    getEsportEvents: EsportEventActions.getEsportEvents
   };
   return bindActionCreators(actionCreators, dispatch);
 }
