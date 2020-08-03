@@ -1,7 +1,7 @@
 import * as React from 'react';
 import TileProps from '../interfaces/TileProps';
 import OptionValidatorNotification from '../common/OptionValidatorNofitication';
-import { MatchModel } from '../../redux/interfaces/MatchModel';
+import { MatchModel } from '../../redux/interfaces/EsportEventModel';
 import MatchTile from '../common/MatchTile';
 
 interface MatchTickerState {
@@ -19,8 +19,7 @@ export default class MatchTicker extends React.Component<TileProps, MatchTickerS
   }
 
   componentDidMount(): void {
-    this.props.RequestCSGOMatches();
-    this.props.getEsportEvents('https://juked.gg/calendar?games&sort=FEATURED&tab=WEEK');
+    this.props.getEsportEvents('https://www.vlr.gg', 'matches');
   }
 
   componentDidUpdate(): void {
@@ -33,11 +32,15 @@ export default class MatchTicker extends React.Component<TileProps, MatchTickerS
   }
 
   isLoading = (): boolean => {
-    return this.props.csgo.isLoading;
+    return this.props.esportEvents.isLoading;
   };
 
   isValid = (): boolean => {
-    if (this.props.csgo.error || !this.props.csgo.matches || this.props.csgo.matches.length === 0) {
+    if (
+      this.props.esportEvents.error ||
+      !this.props.esportEvents.events ||
+      this.props.esportEvents.events.length === 0
+    ) {
       return false;
     }
     return true;
@@ -48,9 +51,9 @@ export default class MatchTicker extends React.Component<TileProps, MatchTickerS
       <OptionValidatorNotification
         isLoading={this.state.isLoading}
         validate={this.state.isValid}
-        description={<p>{this.props.csgo.error ? `Failed to retrieve matches from HLTV.org` : `No Matches`}</p>}
+        description={<p>{this.props.esportEvents.error ? `Failed to retrieve matches from VLR.gg` : `No Matches`}</p>}
       >
-        {this.props.csgo.matches && this.props.csgo.matches.map(this.renderMatchTile)}
+        {this.props.esportEvents.events && this.props.esportEvents.events.map(this.renderMatchTile)}
       </OptionValidatorNotification>
     );
   }

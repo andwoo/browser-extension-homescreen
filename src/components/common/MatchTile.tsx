@@ -1,26 +1,6 @@
 import * as React from 'react';
-import * as moment from 'moment';
-import { MatchModel } from '../../redux/interfaces/MatchModel';
+import { MatchModel } from '../../redux/interfaces/EsportEventModel';
 import { getImageOrDefault } from '../../utils/ImageUtils';
-
-moment.updateLocale('en', {
-  relativeTime: {
-    future: '%s',
-    past: '%s',
-    s: '%s',
-    ss: '%ds',
-    m: '%dm',
-    mm: '%dm',
-    h: '%dh',
-    hh: '%dh',
-    d: '%dd',
-    dd: '%dd',
-    M: '%dm',
-    MM: '%dm',
-    y: '%dy',
-    yy: '%dy',
-  },
-});
 
 export interface MatchTileProps extends MatchModel {
   defaultTopIcon: string;
@@ -51,7 +31,7 @@ export default class MatchTile extends React.Component<MatchTileProps> {
                 <div className="content">
                   <div
                     className="is-divider-vertical "
-                    data-content={this.props.isActive ? 'VS' : moment.utc(parseInt(this.props.unixTime)).fromNow()}
+                    data-content={this.props.isActive ? 'VS' : this.props.time}
                   ></div>
                 </div>
               </a>

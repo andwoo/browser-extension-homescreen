@@ -10,7 +10,6 @@ import StoreModel from './interfaces/StoreModel';
 import * as OptionActions from './actions/OptionsActions';
 import * as TwitchActions from './actions/TwitchLiveStreamActions';
 import * as RedditActions from './actions/RedditActions';
-import * as CSGOActions from './actions/CSGOActions';
 import * as EsportEventActions from './actions/EsportEventActions';
 
 import Main from '../Main';
@@ -20,8 +19,7 @@ function MapStateToProps(state: StoreModel): StoreModel {
     options: state.options,
     twitch: state.twitch,
     reddit: state.reddit,
-    csgo: state.csgo,
-    esportEvents: state.esportEvents
+    esportEvents: state.esportEvents,
   };
 }
 
@@ -30,8 +28,7 @@ function MapDispatchToProps(dispatch): StoreDispatch {
     LoadOptions: OptionActions.LoadOptions,
     RequestLiveStreams: TwitchActions.RequestLiveStreams,
     RequestSubReddit: RedditActions.RequestSubReddit,
-    RequestCSGOMatches: CSGOActions.RequestCSGOMatches,
-    getEsportEvents: EsportEventActions.getEsportEvents
+    getEsportEvents: EsportEventActions.getEsportEvents,
   };
   return bindActionCreators(actionCreators, dispatch);
 }

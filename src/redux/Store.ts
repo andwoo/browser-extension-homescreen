@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import CombinedReducers from './reducers/index';
 import StoreDispatch from './interfaces/StoreDispatch';
 import StoreModel from './interfaces/StoreModel';
-import { defaultModel as esportDefaultModel } from './interfaces/EsportEventModel'
+import { defaultModel as esportDefaultModel } from './interfaces/EsportEventModel';
 
 //combined interface for easy include in React Components
 export interface Store extends StoreDispatch, StoreModel { }
@@ -27,12 +27,7 @@ const defaultModel: StoreModel = {
   reddit: {
     subReddits: [],
   },
-  csgo: {
-    isLoading: true,
-    error: false,
-    matches: [],
-  },
-  esportEvents: esportDefaultModel
+  esportEvents: esportDefaultModel,
 };
 
 /* eslint-disable */

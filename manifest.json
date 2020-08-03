@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Hub",
   "version": "1.0.15",
-  "description": "New tab hub containing a list of your favourite subreddits, Twitch live streamers and upcoming CSGO matches from HLTV.",
+  "description": "New tab hub containing a list of your favourite subreddits, Twitch live streamers and upcoming Valorant matches from VLR.gg.",
   "icons": {
     "16": "build/resources/icons/icon16.png",
     "48": "build/resources/icons/icon48.png",
@@ -17,8 +17,7 @@
   "permissions": [
     "https://reddit.com/",
     "https://api.twitch.tv/",
-    "https://www.hltv.org/",
-    "https://juked.gg/",
+    "https://www.vlr.gg/",
     "storage"
   ],
   "applications": {
