@@ -8,10 +8,10 @@ import RedditTile from './components/main/RedditTile';
 import MatchTicker from './components/main/MatchTicker';
 
 const topIcons = {
-  twitchDefault: 'fas fa-moon-stars',
-  twitchActive: 'fas fa-stars',
-  csgoDefault: 'fas fa-moon-stars',
-  csgoActive: 'fas fa-stars',
+  twitchDefault: 'fas fa-gamepad',
+  twitchActive: 'fas fa-gamepad',
+  esportDefault: 'fas fa-futbol',
+  esportActive: 'fas fa-futbol',
   redditDefault: 'fab fa-reddit-alien',
   redditActive: 'fab fa-reddit-alien',
 };
@@ -48,7 +48,7 @@ class Main extends React.Component<Store> {
           </div>
           <div className="column">
             <ScrollField className="column--content">
-              <MatchTicker {...this.props} defaultTopIcon={topIcons.csgoDefault} activeTopIcon={topIcons.csgoActive} />
+              <MatchTicker {...this.props} defaultTopIcon={topIcons.esportDefault} activeTopIcon={topIcons.esportActive} />
             </ScrollField>
           </div>
           {this.props.options.reddit.subReddits.map((name: string, index: number) => {

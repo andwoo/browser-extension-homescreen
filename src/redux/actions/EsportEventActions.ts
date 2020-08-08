@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import axios from 'axios';
 import jsonpAdapter from 'axios-jsonp';
 import * as $ from 'jquery';
@@ -55,19 +54,21 @@ async function stringToHtml(value: string): Promise<JQuery<HTMLElement>> {
 function parseHtmlToEvents(baseUrl: string, html: JQuery<HTMLElement>): Array<MatchModel> {
 
   return Array.from(html[0].getElementsByClassName("match-item")).map((element: Element, index: number) => {
-    const teamIcon = element.getElementsByClassName("match-item-icon")[0].getElementsByTagName("img")[0].getAttribute("src");
+    const thumbnail = element.getElementsByClassName("match-item-icon")[0].getElementsByTagName("img")[0].getAttribute("src");
     const time = element.getElementsByClassName("ml-eta")?.[0]?.textContent?.trim();
-    const teams = Array.from(element.getElementsByClassName("match-item-vs")[0].getElementsByClassName("match-item-vs-team")).map((element: Element, index: number) => {
+    const isLive = element.getElementsByClassName("ml-status")?.[0]?.textContent?.trim()?.toLowerCase?.() === 'live';
+    const teams = Array.from(element.getElementsByClassName("match-item-vs")[0].getElementsByClassName("match-item-vs-team")).map((element: Element) => {
       return {
-        name: element.getElementsByClassName("text-of")[0].textContent.trim(),
-        thumbnail: teamIcon.includes('//') ? `https:${teamIcon}` : `${baseUrl}${teamIcon}`
+        name: element.getElementsByClassName("text-of")[0].textContent.trim()
       }
     });
+
 
     return {
       teamOne: teams[0],
       teamTwo: teams[1],
-      isLive: false,
+      thumbnail: thumbnail.includes('//') ? `https:${thumbnail}` : `${baseUrl}${thumbnail}`,
+      isLive: isLive,
       time: time ?? "TBD",
       href: `${baseUrl}${element.getAttribute('href')}`,
     };

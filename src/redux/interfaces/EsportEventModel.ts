@@ -7,6 +7,7 @@ export interface EsportEventModel {
 export interface MatchModel {
   teamOne: MatchTeam;
   teamTwo: MatchTeam;
+  thumbnail: string;
   time: string;
   isLive: boolean;
   href: string;
@@ -14,7 +15,6 @@ export interface MatchModel {
 
 export interface MatchTeam {
   name: string;
-  thumbnail: string;
 }
 
 export const defaultModel = {

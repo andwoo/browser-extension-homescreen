@@ -35,6 +35,16 @@ body, html {
   padding: $spacing;
 }
 
+.tile--content--active {
+  border-style: solid;
+  border-color: rgba($orange, 0.4);
+  border-width: 1px;
+}
+
+.notlive {
+  color: $info;
+}
+
 .live {
   color: $orange;
 }

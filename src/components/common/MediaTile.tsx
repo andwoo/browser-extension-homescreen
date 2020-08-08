@@ -14,7 +14,7 @@ export default class MediaTile extends React.Component<MediaTileProps> {
   render(): JSX.Element {
     return (
       <div className="tile--parent">
-        <div className="box is-marginless tile--content">
+        <div className={`box is-marginless tile--content ${this.props.isActive ? 'tile--content--active' : ''}`}>
           <article className="media">
             <a className="dark" href={this.props.thumbnailHref}>
               <div className="media-left">

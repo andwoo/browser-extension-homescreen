@@ -2,7 +2,7 @@ import * as React from 'react';
 import TileProps from '../interfaces/TileProps';
 import OptionValidatorNotification from '../common/OptionValidatorNofitication';
 import { MatchModel } from '../../redux/interfaces/EsportEventModel';
-import MatchTile from '../common/MatchTile';
+import MediaTile from '../common/MediaTile';
 
 interface MatchTickerState {
   isLoading: boolean;
@@ -59,14 +59,37 @@ export default class MatchTicker extends React.Component<TileProps, MatchTickerS
   }
 
   renderMatchTile = (data: MatchModel, index: number): JSX.Element => {
+
     return (
-      <MatchTile
-        {...data}
+      <MediaTile
+        thumbnailHref={data.href}
+        thumbnail={data.thumbnail}
+        href={data.href}
         defaultTopIcon={this.props.defaultTopIcon}
         activeTopIcon={this.props.activeTopIcon}
-        isActive={data.isLive}
         key={index}
-      />
+        isActive={data.isLive}
+      >
+        <p>
+          <strong>{data.teamOne.name}</strong>
+          <small>{" vs "}</small>
+          <strong>{data.teamTwo.name}</strong>
+          <br />
+          {
+            data.isLive ? (
+              <strong className="live">
+                <i className="far fa-users-crown" />
+                {` LIVE`}
+              </strong>
+            ) : (
+                <strong className="notlive">
+                  <i className="far fa-clock" />
+                  {` ${data.time}`}
+                </strong>
+              )
+          }
+        </p>
+      </MediaTile>
     );
   };
 }

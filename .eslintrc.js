@@ -10,7 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended', // A configuration by @typescript-eslint which disables a few of the recommended rules from the previous set that we know are already covered by TypeScript's typechecker.
     'plugin:@typescript-eslint/recommended', // is @typescript-eslint's "recommended" config - it's just like eslint:recommended, except it only turns on rules from our TypeScript-specific plugin.
     'prettier/@typescript-eslint',  // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
-    'plugin:prettier/recommended',  // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    // 'plugin:prettier/recommended',  // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
   parserOptions: {
     ecmaVersion: 2018,  // Allows for the parsing of modern ECMAScript features
