@@ -1,8 +1,8 @@
-import '../scss/main.scss';
+import '../scss/options.scss';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import Options from './Options';
+import ReduxOptionsProvider from './redux/ReduxOptionsProvider';
 
-ReactDOM.render(<Options />, document.getElementById('app'));
+ReactDOM.render(<ReduxOptionsProvider />, document.getElementById('app'));

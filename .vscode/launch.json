@@ -10,7 +10,9 @@
       "name": "Launch via Yarn",
       "runtimeExecutable": "yarn",
       "cwd": "${workspaceFolder}",
-      "runtimeArgs": ["builddev"]
+      "runtimeArgs": [
+        "buildprod"
+      ]
     }
   ]
 }

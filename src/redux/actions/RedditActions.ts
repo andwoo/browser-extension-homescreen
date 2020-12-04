@@ -1,5 +1,5 @@
 import axios from 'axios';
-import jsonpAdapter from 'axios-jsonp';
+// import jsonpAdapter from 'axios-jsonp';
 import BaseAction from '../interfaces/BaseAction';
 import { SubRedditModel, SubRedditPostModel } from '../interfaces/RedditModel';
 import { decodeString } from '../../utils/StringUtils';
@@ -21,7 +21,7 @@ export const ActionTypes = {
 const GetSubReddit = async (name: string): Promise<Array<SubRedditPostModel>> => {
   let posts: Array<SubRedditPostModel> = [];
   try {
-    const response = await axios.get(`https://reddit.com/r/${name}.json`, { adapter: jsonpAdapter });
+    const response = await axios.get(`https://reddit.com/r/${name}.json`/*, { adapter: jsonpAdapter }*/);
     posts = response.data.data.children.map((post) => {
       let thumbnail: string = post.data.thumbnail;
       if (!thumbnail || thumbnail === 'self') {

@@ -1,84 +1,41 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { hot } from 'react-hot-loader';
-import SubRedditOptions from './components/options/SubRedditOptions';
-import TwitchOptions from './components/options/TwitchOptions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Layout, LayoutItem } from '@andwoo/scss-grid';
+//store
+import StoreDispatch from './redux/interfaces/StoreDispatch';
+import StoreModel from './redux/interfaces/StoreModel';
+import { RedditModel } from './redux/interfaces/RedditModel';
+//actions
+import * as RedditActions from './redux/actions/RedditActions';
+'./redux'
 
-interface OptionsState {
-  saveInProgress: boolean;
-  showSaveNotification: boolean;
+function MapStateToProps(state: StoreModel) {
+  return {
+    reddit: state.reddit,
+  };
 }
 
-class Options extends React.PureComponent<{}, OptionsState> {
-  private _subReddits: React.RefObject<SubRedditOptions>;
-  private _twitch: React.RefObject<TwitchOptions>;
-
-  constructor(props) {
-    super(props);
-    this._subReddits = React.createRef();
-    this._twitch = React.createRef();
-    this.state = {
-      saveInProgress: false,
-      showSaveNotification: false,
-    };
-  }
-
-  handleOnSubmit = async (): Promise<void> => {
-    if (this.state.saveInProgress) {
-      return;
-    }
-
-    this.setSaveStatus(true);
-    this.showSaveNoficiation(false);
-    await this._subReddits.current.save();
-    await this._twitch.current.save();
-    setTimeout((): void => {
-      this.setSaveStatus(false);
-      this.showSaveNoficiation(true);
-    }, 1000);
+function MapDispatchToProps(dispatch): StoreDispatch {
+  const actionCreators = {
+    RequestSubReddit: RedditActions.RequestSubReddit,
   };
-
-  setSaveStatus = (inProgress: boolean): void => {
-    this.setState({
-      saveInProgress: inProgress,
-    });
-  };
-
-  showSaveNoficiation = (show: boolean): void => {
-    this.setState({
-      showSaveNotification: show,
-    });
-  };
-
-  render(): JSX.Element {
-    let saveNotification: JSX.Element;
-    if (this.state.showSaveNotification) {
-      saveNotification = (
-        <div>
-          <br />
-          <div className="notification">
-            <button className="delete" onClick={(): void => this.showSaveNoficiation(false)} />
-            Changes have been saved.
-          </div>
-        </div>
-      );
-    }
-    return (
-      <div className="section">
-        <SubRedditOptions ref={this._subReddits} />
-        <TwitchOptions ref={this._twitch} />
-        <br />
-        <button
-          className={`button is-success ${this.state.saveInProgress ? 'is-loading' : ''}`}
-          onClick={(): void => {
-            this.handleOnSubmit();
-          }}
-        >
-          Save
-        </button>
-        {saveNotification}
-      </div>
-    );
-  }
+  return bindActionCreators(actionCreators, dispatch);
 }
 
-export default hot(module)(Options);
+const Options = ({reddit, RequestSubReddit}: {reddit: RedditModel, RequestSubReddit: (name:string) => void}): JSX.Element => {
+  useEffect(() => {
+    RequestSubReddit('videos');
+  }, [])
+
+  return (
+    <Layout direction="column">
+      <LayoutItem size="full">{JSON.stringify(reddit.subReddits ?? {})}</LayoutItem>
+      <LayoutItem size="full"><h1>WIP</h1></LayoutItem>
+    </Layout>
+  );
+}
+
+const ReduxPropsBinder = connect(MapStateToProps, MapDispatchToProps)(Options);
+export default hot(module)(ReduxPropsBinder);

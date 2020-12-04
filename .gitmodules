@@ -4,3 +4,6 @@
 [submodule "packages/browser-extension-utility-url"]
 	path = packages/browser-extension-utility-url
 	url = ../browser-extension-utility-url.git
+[submodule "packages/scss-grid"]
+	path = packages/scss-grid
+	url = ../scss-grid.git

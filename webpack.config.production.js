@@ -54,7 +54,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: '[name].style.css',
     }),
     new HtmlWebpackPlugin({
       title: 'Homescreen',

@@ -9,5 +9,6 @@
     "allowJs": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
+    "esModuleInterop": true
   }
 }
