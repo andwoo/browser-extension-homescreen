@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import RedditReducer from './RedditReducer';
+import BlocksReducer from './BlocksReducer';
 
 const CombinedReducers = combineReducers({
-  reddit: RedditReducer,
+  blocks: BlocksReducer,
 });
 
 export default CombinedReducers;

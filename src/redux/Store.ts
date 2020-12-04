@@ -1,16 +1,13 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import CombinedReducers from './reducers/index';
-import StoreDispatch from './interfaces/StoreDispatch';
 import StoreModel from './interfaces/StoreModel';
 
 //combined interface for easy include in React Components
-export interface Store extends StoreDispatch, StoreModel { }
+export type Store = StoreModel
 
 const defaultModel: StoreModel = {
-  reddit: {
-    subReddits: [],
-  },
+  blocks: []
 };
 
 /* eslint-disable */
