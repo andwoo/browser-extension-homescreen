@@ -10,15 +10,20 @@ interface RedditOptionState {
   subreddit: string
 }
 
+export function dataToString(): string {
+  return JSON.stringify({subreddit: this?.state?.subreddit ?? ''});
+}
+
 export default class RedditOption extends React.Component<RedditOptionProps, RedditOptionState> {
   constructor(props) {
     super(props);
+    this.dataToString = dataToString.bind(this);
     this.state = {
       subreddit: ''
     }
   }
   dataToString = (): string => {
-    return JSON.stringify({subreddit: this.state.subreddit});
+    return dataToString.call(this);
   };
   onChange = (value: string): void => {
     this.setState({subreddit: value})

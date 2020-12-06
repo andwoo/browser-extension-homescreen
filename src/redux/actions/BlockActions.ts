@@ -33,10 +33,11 @@ export function addBlocks(blocks: Array<Block>): BlocksAction {
   }
 }
 
-export function addBlock(block: Block): BlockAction {
+export function addBlock(block: Block, dataToString: () => string): BlockUpdateAction {
   return {
     type: ActionTypes.ADD_BLOCK,
-    block
+    block,
+    dataToString
   }
 }
 

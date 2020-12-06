@@ -7,10 +7,12 @@ function BlockReducer(blocks: Array<Block> = [], action: BlockAction | BlocksAct
     case ActionTypes.REPLACE_BLOCKS:
       nextBlocks = [...(action as BlocksAction).blocks];
       break;
-    case ActionTypes.ADD_BLOCK:
-      action.block.data = JSON.stringify({});
-      nextBlocks.push(action.block);
+    case ActionTypes.ADD_BLOCK: {
+      const cast = (action as BlockUpdateAction);
+      cast.block.data = cast.dataToString?.();
+      nextBlocks.push(cast.block);
       break;
+    }
     case ActionTypes.UPDATE_BLOCK: {
       const cast = (action as BlockUpdateAction);
       const blockId = cast.block.id;

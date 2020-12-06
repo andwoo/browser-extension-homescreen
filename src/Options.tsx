@@ -7,9 +7,8 @@ import StoreModel, { Block } from './redux/interfaces/StoreModel';
 import * as BlockActions from './redux/actions/BlockActions';
 import { useLoadStateFromStorage } from './redux/hooks';
 import BlockContainer from './components/options/BlockContainer';
-import DebugPanel from './components/options/DebugPanel'
-import BlockTypes from './constants/BlockTypes';
-import OptionButton from './components/options/OptionButton';
+import DebugPanel from './components/options/DebugPanel';
+import AddBlock from './components/options/AddBlock';
 
 function MapStateToProps(state: StoreModel) {
   return {
@@ -19,17 +18,12 @@ function MapStateToProps(state: StoreModel) {
 
 function MapDispatchToProps(dispatch) {
   const actionCreators = {
-    addBlocks: BlockActions.addBlocks,
-    addBlock: BlockActions.addBlock
+    addBlocks: BlockActions.addBlocks
   };
   return bindActionCreators(actionCreators, dispatch);
 }
 
-const addButtonStyle: React.CSSProperties = {
-  padding: 10
-}
-
-const Options = ({blocks, addBlocks, addBlock}: {blocks: Array<Block>, addBlocks: (blocks: Array<Block>) => BlockActions.BlocksAction, addBlock: (block: Block) => BlockActions.BlockAction}): JSX.Element => {
+const Options = ({blocks, addBlocks}: {blocks: Array<Block>, addBlocks: (blocks: Array<Block>) => BlockActions.BlocksAction}): JSX.Element => {
   useLoadStateFromStorage(addBlocks);
   return (
     <Layout direction="column">
@@ -38,9 +32,7 @@ const Options = ({blocks, addBlocks, addBlock}: {blocks: Array<Block>, addBlocks
       </LayoutItem>
       <LayoutItem size="four-fifths" style={{padding: '1rem', paddingLeft: '0rem'}}>
         {blocks.map((block, index) => <BlockContainer key={index} index={index} block={block}/>)}
-        <OptionButton variant="success" onClick={():void => {addBlock({id: Date.now().toString(),type: BlockTypes.REDDIT});}} style={addButtonStyle} >
-          <i className="fas fa-plus"></i>
-        </OptionButton>
+        <AddBlock/>
       </LayoutItem>
     </Layout>
   );
