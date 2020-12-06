@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Block } from '../../redux/interfaces/StoreModel';
+import OptionInput from './OptionInput';
 
 interface RedditOptionProps {
   block: Block;
@@ -23,32 +24,14 @@ export default class RedditOption extends React.Component<RedditOptionProps, Red
     this.setState({subreddit: value})
   }
   render(): JSX.Element {
+    const initialValue = (JSON.parse(this.props.block.data) as RedditOptionState)?.subreddit ?? ''
     return (
       <div>
         <h1>Reddit</h1>
-        <RedditOptionHook block={this.props.block} onChange={this.onChange}/>
+        <form>
+          <OptionInput initialValue={initialValue} placeholder="videos" label="Subreddit" onChange={this.onChange} />
+        </form>
       </div>
     )
   }
-}
-
-const RedditOptionHook = ({block, onChange}: {block: Block, onChange: (value: string) => void }): JSX.Element => {
-  const parseData = (): string => {
-    return (JSON.parse(block.data) as RedditOptionState)?.subreddit ?? '';
-  };
-  const [subreddit, setSubreddit] = useState(parseData());
-  useEffect(() => {
-    onChange(subreddit);
-  }, [subreddit]);
-
-  return (
-    <form>
-      <label>
-        Subreddit:
-        <input type="text" value={subreddit} placeholder="videos" onChange={(event): void => {
-          setSubreddit(event.target.value);
-        }} />
-      </label>
-    </form>
-  )
 }

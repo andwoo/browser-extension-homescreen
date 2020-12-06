@@ -9,6 +9,7 @@ import { useLoadStateFromStorage } from './redux/hooks';
 import BlockContainer from './components/options/BlockContainer';
 import DebugPanel from './components/options/DebugPanel'
 import BlockTypes from './constants/BlockTypes';
+import OptionButton from './components/options/OptionButton';
 
 function MapStateToProps(state: StoreModel) {
   return {
@@ -24,6 +25,10 @@ function MapDispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch);
 }
 
+const addButtonStyle: React.CSSProperties = {
+  padding: 10
+}
+
 const Options = ({blocks, addBlocks, addBlock}: {blocks: Array<Block>, addBlocks: (blocks: Array<Block>) => BlockActions.BlocksAction, addBlock: (block: Block) => BlockActions.BlockAction}): JSX.Element => {
   useLoadStateFromStorage(addBlocks);
   return (
@@ -33,12 +38,9 @@ const Options = ({blocks, addBlocks, addBlock}: {blocks: Array<Block>, addBlocks
       </LayoutItem>
       <LayoutItem size="four-fifths" style={{padding: '1rem', paddingLeft: '0rem'}}>
         {blocks.map((block, index) => <BlockContainer key={index} index={index} block={block}/>)}
-        <div style={{width: 200, height: 100, backgroundColor: 'cyab'}} onClick={():void => {
-          addBlock({
-            id: Date.now().toString(),
-            type: BlockTypes.REDDIT
-          });
-        }}>Add</div>
+        <OptionButton variant="success" onClick={():void => {addBlock({id: Date.now().toString(),type: BlockTypes.REDDIT});}} style={addButtonStyle} >
+          <i className="fas fa-plus"></i>
+        </OptionButton>
       </LayoutItem>
     </Layout>
   );
