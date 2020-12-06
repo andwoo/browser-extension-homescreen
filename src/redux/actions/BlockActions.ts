@@ -8,12 +8,18 @@ export const ActionTypes = {
   REPLACE_BLOCKS: 'REPLACE_BLOCKS',
   ADD_BLOCK: 'ADD_BLOCK',
   UPDATE_BLOCK: 'UPDATE_BLOCK',
-  MOVE_BLOCK: 'MOVE_BLOCK',
+  MOVE_BLOCK_UP: 'MOVE_BLOCK_UP',
+  MOVE_BLOCK_DOWN: 'MOVE_BLOCK_DOWN',
   REMOVE_BLOCK: 'REMOVE_BLOCK',
 };
 
 export interface BlockAction extends AnyAction {
   block: Block;
+}
+
+export interface BlockUpdateAction extends AnyAction {
+  block: Block;
+  dataToString: () => string;
 }
 
 export interface BlocksAction extends AnyAction {
@@ -23,35 +29,42 @@ export interface BlocksAction extends AnyAction {
 export function addBlocks(blocks: Array<Block>): BlocksAction {
   return {
     type: ActionTypes.REPLACE_BLOCKS,
-    blocks: blocks
+    blocks
   }
 }
 
 export function addBlock(block: Block): BlockAction {
   return {
     type: ActionTypes.ADD_BLOCK,
-    block: block
+    block
   }
 }
 
-export function updateBlock(block: Block): BlockAction {
+export function updateBlock(block: Block, dataToString: () => string): BlockUpdateAction {
   return {
     type: ActionTypes.UPDATE_BLOCK,
-    block: block
+    block,
+    dataToString
   }
 }
 
-export function moveBlock(toIndex: number, block: Block): BlockAction {
+export function moveBlockUp(block: Block): BlockAction {
   return {
-    type: ActionTypes.MOVE_BLOCK,
-    block: block
+    type: ActionTypes.MOVE_BLOCK_UP,
+    block
+  }
+}
+export function moveBlockDown(block: Block): BlockAction {
+  return {
+    type: ActionTypes.MOVE_BLOCK_DOWN,
+    block
   }
 }
 
 export function removeBlock(block: Block): BlockAction {
   return {
     type: ActionTypes.REMOVE_BLOCK,
-    block: block
+    block
   }
 }
 

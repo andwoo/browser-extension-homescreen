@@ -21,12 +21,10 @@ const initListener = (): void => {
 const useStateSubscribe = (listener: () => void): void => {
   initListener();
   useEffect(() => {
-    console.log(`added subscribe`);
     listernCtx.listeners.push(listener);
     return (): void => {
       const index = listernCtx.listeners.indexOf(listener);
       if (index > -1) {
-        console.log(`removed subscribe`);
         listernCtx.listeners.splice(index, 1);
       }
     };
@@ -39,10 +37,8 @@ const useSaveStateToStorage = () => {
   useStateSubscribe(() => {
     const state = store.getState();
     (async():Promise<void> => {
-      console.log(`useSaveStateToStorage() saving to storage`);
       setProgress(true);
       await saveToStorage('options', JSON.stringify(state.blocks))
-      console.log(`useSaveStateToStorage() saving to storage complete`);
       setProgress(false);
       setSuccess(true);
     })();
@@ -55,15 +51,12 @@ const useLoadStateFromStorage = (addBlocks: (blocks: Array<Block>) => BlocksActi
   const [success, setSuccess] = useState(true);
   useEffect(() => {
     (async():Promise<void> => {
-      console.log(`useLoadStateFromStorage() loading from storage`);
       setProgress(true);
       const response = await loadFromStorage('options');
       if(response.success) {
         const data: Array<Block> = JSON.parse(response.data as string) as Array<Block>;
-        console.log(`useLoadStateFromStorage() loading from storage data[${JSON.stringify(data)}]`);
         addBlocks(data);
       }
-      console.log(`useLoadStateFromStorage() loading from storage complete`);
       setProgress(false);
       setSuccess(response.success);
     })();

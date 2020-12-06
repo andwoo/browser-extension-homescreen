@@ -6,6 +6,9 @@ import { Layout, LayoutItem } from '@andwoo/scss-grid';
 import StoreModel, { Block } from './redux/interfaces/StoreModel';
 import * as BlockActions from './redux/actions/BlockActions';
 import { useLoadStateFromStorage } from './redux/hooks';
+import BlockContainer from './components/options/BlockContainer';
+import DebugPanel from './components/options/DebugPanel'
+import BlockTypes from './constants/BlockTypes';
 
 function MapStateToProps(state: StoreModel) {
   return {
@@ -16,10 +19,7 @@ function MapStateToProps(state: StoreModel) {
 function MapDispatchToProps(dispatch) {
   const actionCreators = {
     addBlocks: BlockActions.addBlocks,
-    addBlock: BlockActions.addBlock,
-    // updateBlock: BlockActions.updateBlock,
-    // moveBlock: BlockActions.moveBlock,
-    // removeBlock: BlockActions.removeBlock,
+    addBlock: BlockActions.addBlock
   };
   return bindActionCreators(actionCreators, dispatch);
 }
@@ -28,13 +28,15 @@ const Options = ({blocks, addBlocks, addBlock}: {blocks: Array<Block>, addBlocks
   useLoadStateFromStorage(addBlocks);
   return (
     <Layout direction="column">
-      <LayoutItem size="full">{JSON.stringify(blocks)}</LayoutItem>
-      <LayoutItem size="full">
-        <h1>WIP Options</h1>
+      <LayoutItem size="one-fifth" style={{padding: '1rem'}}>
+        <DebugPanel/>
+      </LayoutItem>
+      <LayoutItem size="four-fifths" style={{padding: '1rem', paddingLeft: '0rem'}}>
+        {blocks.map((block, index) => <BlockContainer key={index} index={index} block={block}/>)}
         <div style={{width: 200, height: 100, backgroundColor: 'cyab'}} onClick={():void => {
           addBlock({
             id: Date.now().toString(),
-            type: "banana"
+            type: BlockTypes.REDDIT
           });
         }}>Add</div>
       </LayoutItem>
