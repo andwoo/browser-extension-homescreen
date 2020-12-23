@@ -7,9 +7,11 @@ import * as BlockActions from '../../redux/actions/BlockActions';
 import BlockTypes from '../../constants/BlockTypes';
 import OptionButton from './OptionButton';
 import { dataToString as redditDataToString } from './RedditOptions';
+import { dataToString as twitchDataToString } from './TwitchOptions';
 
 const types = new Map();
 types.set(BlockTypes.REDDIT, redditDataToString);
+types.set(BlockTypes.TWITCH, twitchDataToString);
 
 const addButtonStyle: React.CSSProperties = {
   padding: 10
