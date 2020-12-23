@@ -16,6 +16,7 @@ const InfoMessage = styled.p`
 `;
 
 interface TwitchOptionProps {
+  save: () => void;
   block: Block;
 }
 

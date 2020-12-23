@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import StoreModel, { Block } from '../../redux/interfaces/StoreModel';
 
 function MapStateToProps(state: StoreModel) {
@@ -8,33 +9,38 @@ function MapStateToProps(state: StoreModel) {
   };
 }
 
-const style: React.CSSProperties = {
-  backgroundColor: 'white',
-  borderRadius: 10,
-  padding: 10,
-  boxShadow: '0px 0px 12px 3px rgba(0, 0, 0, 0.05)',
-  border: '1px solid rgba(0, 0, 0, 0.06)'
-};
+const Container = styled.div`
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  max-width: 50vw;
+  overflow: auto;
+`;
+const InnerContainer = styled.div`
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+`;
 
-const innerStyle: React.CSSProperties = {
-  backgroundColor: '#f7f7f7',
-  borderRadius: 5,
-  margin: 10,
-  padding: 10,
-  border: '1px solid rgba(0, 0, 0, 0.1)'
-};
+const Code = styled.code`
+  font-weight: bold;
+`;
 
 const DebugPanel = ({blocks}: {blocks: Array<Block>}): JSX.Element => {
   return (
-    <div style={style}>
-      <div style={innerStyle}>
-        <code style={{fontWeight: 'bold'}}>
+    <Container>
+      <InnerContainer>
+        <Code>
           <pre>
             {JSON.stringify(blocks, null, 2)}
           </pre>
-        </code>
-      </div>
-    </div>
+        </Code>
+      </InnerContainer>
+    </Container>
   );
 }
 

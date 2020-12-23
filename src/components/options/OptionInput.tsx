@@ -17,7 +17,13 @@ const Input = styled.input`
   padding: 0.5rem;
 `;
 
-const OptionInput = ({initialValue, placeholder, label, onChange}: {initialValue: string, placeholder: string, label: string, onChange: (value: string) => void }): JSX.Element => {
+interface InputProps {
+  initialValue: string;
+  placeholder: string;
+  label?: string;
+  onChange: (value: string) => void;
+}
+const OptionInput = ({initialValue, placeholder, label, onChange}: InputProps): JSX.Element => {
   const [value, setValue] = useState(initialValue);
   useEffect(() => {
     onChange(value);
@@ -26,14 +32,32 @@ const OptionInput = ({initialValue, placeholder, label, onChange}: {initialValue
     <label>
       <Layout>
         <LayoutItem size='one-fifth' style={{alignSelf: 'center'}}>
-          <Text>{label}</Text>
+          <Text>{label ?? ''}</Text>
         </LayoutItem>
         <LayoutItem size='four-fifths'>
           <Input type="text" value={value} placeholder={placeholder} onChange={(event): void => setValue(event.target.value)} />
         </LayoutItem>
       </Layout>
     </label>
-
   )
 }
 export default OptionInput
+
+export const IconOptionInput = ({initialValue, placeholder, label, onChange}: InputProps): JSX.Element => {
+  const [value, setValue] = useState(initialValue);
+  useEffect(() => {
+    onChange(value);
+  }, [value]);
+  return (
+    <label>
+      <Layout>
+        <LayoutItem size='one-fifth' style={{alignSelf: 'center'}}>
+          <i className={value ?? 'fas fa-question'}></i>
+        </LayoutItem>
+        <LayoutItem size='four-fifths'>
+          <Input type="text" value={value} placeholder={placeholder} onChange={(event): void => setValue(event.target.value)} />
+        </LayoutItem>
+      </Layout>
+    </label>
+  )
+}

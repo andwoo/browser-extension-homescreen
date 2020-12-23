@@ -3,6 +3,7 @@ import { Block } from '../../redux/interfaces/StoreModel';
 import OptionInput from './OptionInput';
 
 interface RedditOptionProps {
+  save: () => void;
   block: Block;
 }
 

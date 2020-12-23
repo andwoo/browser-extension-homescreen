@@ -1,6 +1,7 @@
 enum BlockTypes {
   REDDIT = 'reddit',
-  TWITCH = 'twitch'
+  TWITCH = 'twitch',
+  LAUNCHER = 'launcher'
 }
 
 export default BlockTypes;

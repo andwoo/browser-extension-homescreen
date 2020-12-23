@@ -8,10 +8,12 @@ import BlockTypes from '../../constants/BlockTypes';
 import OptionButton from './OptionButton';
 import { dataToString as redditDataToString } from './RedditOptions';
 import { dataToString as twitchDataToString } from './TwitchOptions';
+import { dataToString as launcherDataToString } from './LauncherOptions';
 
 const types = new Map();
 types.set(BlockTypes.REDDIT, redditDataToString);
 types.set(BlockTypes.TWITCH, twitchDataToString);
+types.set(BlockTypes.LAUNCHER, launcherDataToString);
 
 const addButtonStyle: React.CSSProperties = {
   padding: 10
@@ -28,7 +30,7 @@ function MapDispatchToProps(dispatch) {
 const AddBlock = ({addBlock}: {addBlock: (block: Block, dataToString: () => string) => BlockActions.BlockUpdateAction}): JSX.Element => {
   const keys = Array.from(types.keys());
   const [selected, setSelection] = useState(keys[0]);
-  const testAdd = (): void => {
+  const handleOnAddBlock = (): void => {
     addBlock({
       id: Date.now().toString(),
       type: selected
@@ -49,7 +51,7 @@ const AddBlock = ({addBlock}: {addBlock: (block: Block, dataToString: () => stri
         </select>
       </LayoutItem>
       <LayoutItem size="full">
-        <OptionButton variant="success" onClick={testAdd} style={addButtonStyle} >
+        <OptionButton variant="success" onClick={handleOnAddBlock} style={addButtonStyle} >
           <i className="fas fa-plus"></i>
         </OptionButton>
       </LayoutItem>

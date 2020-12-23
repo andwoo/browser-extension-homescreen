@@ -8,6 +8,7 @@ import BlockTypes from '../../constants/BlockTypes';
 import SortContainer from './SortContainer';
 import RedditOptions from './RedditOptions';
 import TwitchOptions from './TwitchOptions';
+import LauncherOption from './LauncherOptions';
 import OptionButton from './OptionButton';
 
 const Container = styled.div`
@@ -46,13 +47,16 @@ interface BlockOption {
   dataToString: () => string;
 }
 
-function getBlockOptionComponent(ref, block: Block):JSX.Element {
+function getBlockOptionComponent(ref, block: Block, save: () => void):JSX.Element {
   switch(block.type) {
     case BlockTypes.REDDIT: {
-      return <RedditOptions key={block.id} ref={ref} block={block}/>;
+      return <RedditOptions key={block.id} ref={ref} block={block} save={save}/>;
     }
     case BlockTypes.TWITCH: {
-      return <TwitchOptions key={block.id} ref={ref} block={block}/>;
+      return <TwitchOptions key={block.id} ref={ref} block={block} save={save}/>;
+    }
+    case BlockTypes.LAUNCHER: {
+      return <LauncherOption key={block.id} ref={ref} block={block} save={save}/>;
     }
   }
   return null;
@@ -60,7 +64,7 @@ function getBlockOptionComponent(ref, block: Block):JSX.Element {
 
 const BlockContainer = (props: BlockContainerProps): JSX.Element => {
   const option = useRef();
-  const block = props.block;
+  const { block } = props;
   const saveChanges = (): void => {
     const optionB: BlockOption = (option.current as BlockOption);
     props.updateBlock(block, optionB?.dataToString);
@@ -72,7 +76,7 @@ const BlockContainer = (props: BlockContainerProps): JSX.Element => {
         moveBlockUp={(): void => props.moveBlockUp(block)}
         moveBlockDown={(): void => props.moveBlockDown(block)}
       >
-        {getBlockOptionComponent(option, block)}
+        {getBlockOptionComponent(option, block, saveChanges)}
         <OptionButton variant="default" onClick={saveChanges} style={{marginTop: '0.5rem', padding: 10}}>Save</OptionButton>
       </SortContainer>
     </Container>
