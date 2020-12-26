@@ -63,14 +63,14 @@ const BlockContainer = (props: BlockContainerProps): JSX.Element => {
     props.updateBlock(block, optionB?.dataToString);
   }
   return (
-    <Box radius="medium" border padding="small" color="white" style={{marginBottom: StyleConstants.Paddings.small}}>
+    <Box radius="extraSmall" border borderColor="darkGrey" padding="small" style={{marginBottom: StyleConstants.Paddings.small}}>
       <SortContainer
         removeBlock={(): void => props.removeBlock(block)}
         moveBlockUp={(): void => props.moveBlockUp(block)}
         moveBlockDown={(): void => props.moveBlockDown(block)}
       >
         {getBlockOptionComponent(option, block, saveChanges)}
-        <Button color="grey" padding="small" radius="extraSmall" style={{marginTop: StyleConstants.Paddings.small}} onClick={saveChanges}>Save</Button>
+        <Button color="black" border borderColor="darkGrey" padding="small" radius="extraSmall" style={{marginTop: StyleConstants.Paddings.small}} onClick={saveChanges}>Save</Button>
       </SortContainer>
     </Box>
   );

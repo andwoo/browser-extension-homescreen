@@ -29,7 +29,9 @@ const selectStyle: React.CSSProperties = {
   width: '100%',
   height: '100%',
   borderRadius: StyleConstants.Radii.extraSmall,
-  border: '1px solid rgba(0, 0, 0, 0.1)'
+  border: `1px solid ${StyleConstants.Colors.darkGrey}`,
+  backgroundColor: StyleConstants.Colors.black,
+  color: StyleConstants.Colors.lightGrey
 }
 
 const AddBlock = ({addBlock}: {addBlock: (block: Block, dataToString: () => string) => BlockActions.BlockUpdateAction}): JSX.Element => {
@@ -44,7 +46,7 @@ const AddBlock = ({addBlock}: {addBlock: (block: Block, dataToString: () => stri
   }
 
   return (
-    <Box radius="medium" border padding="small" color="white">
+    <Box radius="extraSmall" border borderColor="darkGrey" padding="small">
       <Layout>
         <LayoutItem size="full" stretch>
           <select
@@ -58,7 +60,7 @@ const AddBlock = ({addBlock}: {addBlock: (block: Block, dataToString: () => stri
         </LayoutItem>
         <LayoutItem size="full" style={{marginLeft: StyleConstants.Paddings.small}}>
           <Button color="green" padding="small" radius="extraSmall" onClick={handleOnAddBlock}>
-            <i className="fas fa-plus"></i>
+            <i className="fas fa-plus" style={{color: StyleConstants.darkenedTextColor}}></i>
           </Button>
         </LayoutItem>
       </Layout>

@@ -4,22 +4,23 @@ import { Layout, LayoutItem } from '@andwoo/scss-grid';
 import * as StyleConstants from '../styled/StyleConstants';
 
 const Text = styled.p`
-  margin-right: 2rem;
   display: inline-block;
 `;
 const Input = styled.input`
   width: 100%;
   padding: ${StyleConstants.Paddings.small};
   border-radius: ${StyleConstants.Radii.extraSmall};
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: ${StyleConstants.Colors.grey};
-  &:hover {
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    filter: brightness(95%);
+  border: 1px solid ${StyleConstants.Colors.darkGrey};
+  background-color: ${StyleConstants.Colors.black};
+
+  &[type=text] {
+    color: ${StyleConstants.Colors.lightGrey}
   }
-  &:active {
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-    filter: brightness(85%);
+  &[type=text]:focus {
+    filter: brightness(80%);
+  }
+  &:hover {
+    filter: brightness(90%);
   }
 `;
 
@@ -37,10 +38,10 @@ const OptionInput = ({initialValue, placeholder, label, onChange}: InputProps): 
   return (
     <label>
       <Layout>
-        <LayoutItem size='one-fifth' style={{alignSelf: 'center'}}>
+        <LayoutItem style={{alignSelf: 'center', marginRight: StyleConstants.Paddings.small}}>
           <Text>{label ?? ''}</Text>
         </LayoutItem>
-        <LayoutItem size='four-fifths'>
+        <LayoutItem size='full'>
           <Input type="text" value={value} placeholder={placeholder} onChange={(event): void => setValue(event.target.value)} />
         </LayoutItem>
       </Layout>
@@ -57,10 +58,10 @@ export const IconOptionInput = ({initialValue, placeholder, label, onChange}: In
   return (
     <label>
       <Layout>
-        <LayoutItem size='one-fifth' style={{alignSelf: 'center'}}>
+        <LayoutItem style={{alignSelf: 'center', marginRight: StyleConstants.Paddings.small}}>
           <i className={value ?? 'fas fa-question'}></i>
         </LayoutItem>
-        <LayoutItem size='four-fifths'>
+        <LayoutItem size='full'>
           <Input type="text" value={value} placeholder={placeholder} onChange={(event): void => setValue(event.target.value)} />
         </LayoutItem>
       </Layout>

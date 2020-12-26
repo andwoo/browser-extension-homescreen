@@ -11,8 +11,8 @@ function MapStateToProps(state: StoreModel) {
 
 const DebugPanel = ({blocks}: {blocks: Array<Block>}): JSX.Element => {
   return (
-    <Box radius="medium" color="white" border padding="small">
-      <Box radius="small" color="grey" border style={{maxWidth: '50vw', overflow: 'auto'}}>
+    <Box radius="extraSmall" border borderColor="darkGrey" padding="small">
+      <Box radius="extraSmall" color="black" border borderColor="darkGrey" style={{maxWidth: '50vw', overflow: 'auto'}}>
         <code style={{fontWeight: 'bold'}}>
           <pre>
             {JSON.stringify(blocks, null, 2)}

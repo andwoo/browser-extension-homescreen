@@ -48,7 +48,7 @@ const SortContainer = (props: SortContainerProps): JSX.Element => {
           <LayoutItem>
             <Button color="red" radius="extraSmall" onClick={props.removeBlock} style={removeStyle}>
               <ButtonText>
-                <i className="fas fa-times"></i>
+                <i className="fas fa-times" style={{color: StyleConstants.darkenedTextColor}}></i>
               </ButtonText>
             </Button>
           </LayoutItem>
@@ -56,14 +56,14 @@ const SortContainer = (props: SortContainerProps): JSX.Element => {
             <div style={{width: StyleConstants.Paddings.small, height: StyleConstants.Paddings.small}}/>
           </LayoutItem>
           <LayoutItem>
-            <Button color="grey" onClick={props.moveBlockUp} style={arrowUpStyle}>
+            <Button color="black" border borderColor="darkGrey" onClick={props.moveBlockUp} style={arrowUpStyle}>
               <ButtonText>
                 <i className="fas fa-angle-up"></i>
               </ButtonText>
             </Button>
           </LayoutItem>
           <LayoutItem>
-            <Button color="grey" onClick={props.moveBlockDown} style={arrowDownStyle}>
+            <Button color="black" border borderColor="darkGrey" onClick={props.moveBlockDown} style={arrowDownStyle}>
               <ButtonText>
                 <i className="fas fa-angle-down"></i>
               </ButtonText>

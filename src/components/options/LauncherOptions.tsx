@@ -93,7 +93,7 @@ export default class LauncherOption extends React.Component<LauncherOptionsProps
   render(): JSX.Element {
     return (
       <div>
-        <h1>Launcher</h1>
+        <h1><i className="fas fa-rocket-launch"/></h1>
           {this.state.icons.map((value, index) =>
             <LauncherIcon
               listUpdated={this.state.listUpdated}
@@ -106,7 +106,7 @@ export default class LauncherOption extends React.Component<LauncherOptionsProps
               moveBlockDown={this.moveBlockDown} />
           )}
         <Button color="green" padding="small" radius="extraSmall" onClick={this.addBlock}>
-          <i className="fas fa-plus"></i>
+          <i className="fas fa-plus" style={{color: StyleConstants.darkenedTextColor}}></i>
         </Button>
       </div>
     )
@@ -130,7 +130,7 @@ const marginTopStyle: React.CSSProperties = {
 const LauncherIcon = (props: LauncherIconProps): JSX.Element => {
   const index = props.index;
   return (
-    <Box color="grey" radius="extraSmall" padding="small" key={props.listUpdated} style={marginTopStyle}>
+    <Box color="lightBlack" radius="extraSmall" border borderColor="darkGrey" padding="small" key={props.listUpdated} style={marginTopStyle}>
       <SortContainer
         removeBlock={(): void => props.removeBlock(index)}
         moveBlockUp={(): void => props.moveBlockUp(index)}
