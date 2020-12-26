@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import * as BlockActions from '../../redux/actions/BlockActions';
 import { Block } from '../../redux/interfaces/StoreModel';
 import BlockTypes from '../../constants/BlockTypes';
@@ -9,15 +8,9 @@ import SortContainer from './SortContainer';
 import RedditOptions from './RedditOptions';
 import TwitchOptions from './TwitchOptions';
 import LauncherOption from './LauncherOptions';
-import OptionButton from './OptionButton';
-
-const Container = styled.div`
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-`;
+import Button from '../styled/Button';
+import Box from '../styled/Box';
+import * as StyleConstants from '../styled/StyleConstants';
 
 function MapStateToProps() {
   return {
@@ -70,16 +63,16 @@ const BlockContainer = (props: BlockContainerProps): JSX.Element => {
     props.updateBlock(block, optionB?.dataToString);
   }
   return (
-    <Container>
+    <Box radius="medium" border padding="small" color="white" style={{marginBottom: StyleConstants.Paddings.small}}>
       <SortContainer
         removeBlock={(): void => props.removeBlock(block)}
         moveBlockUp={(): void => props.moveBlockUp(block)}
         moveBlockDown={(): void => props.moveBlockDown(block)}
       >
         {getBlockOptionComponent(option, block, saveChanges)}
-        <OptionButton variant="default" onClick={saveChanges} style={{marginTop: '0.5rem', padding: 10}}>Save</OptionButton>
+        <Button color="grey" padding="small" radius="extraSmall" style={{marginTop: StyleConstants.Paddings.small}} onClick={saveChanges}>Save</Button>
       </SortContainer>
-    </Container>
+    </Box>
   );
 }
 

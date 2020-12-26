@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Layout, LayoutItem } from '@andwoo/scss-grid';
-import OptionButton from './OptionButton';
+import Button from '../styled/Button';
+import * as StyleConstants from '../styled/StyleConstants';
 
 interface SortContainerProps {
   children?: React.ReactNode,
@@ -10,12 +11,25 @@ interface SortContainerProps {
   moveBlockDown: () => void;
 }
 
-const buttonStyle: React.CSSProperties = {
-  margin: 4,
-  marginBottom: 0,
+const removeStyle: React.CSSProperties = {
   width: '1.4em',
   height: '1.4em',
 };
+
+const arrowUpStyle: React.CSSProperties = {
+  width: '1.4em',
+  height: '1.4em',
+  borderTopLeftRadius: StyleConstants.Radii.extraSmall,
+  borderTopRightRadius: StyleConstants.Radii.extraSmall,
+};
+
+const arrowDownStyle: React.CSSProperties = {
+  width: '1.4em',
+  height: '1.4em',
+  borderBottomLeftRadius: StyleConstants.Radii.extraSmall,
+  borderBottomRightRadius: StyleConstants.Radii.extraSmall,
+};
+
 const ButtonText = styled.div`
   position: 'relative',
   top: '50%',
@@ -26,34 +40,34 @@ const ButtonText = styled.div`
 const SortContainer = (props: SortContainerProps): JSX.Element => {
   return (
     <Layout>
-      <LayoutItem size='full' style={{padding: 10, paddingRight: 5}}>
+      <LayoutItem size='full' style={{paddingRight: StyleConstants.Paddings.small}}>
         {props.children}
       </LayoutItem>
       <LayoutItem>
         <Layout direction="row" style={{fontSize: '1rem'}}>
           <LayoutItem>
-            <OptionButton variant="error" onClick={props.removeBlock} style={buttonStyle}>
+            <Button color="red" radius="extraSmall" onClick={props.removeBlock} style={removeStyle}>
               <ButtonText>
                 <i className="fas fa-times"></i>
               </ButtonText>
-            </OptionButton>
+            </Button>
           </LayoutItem>
           <LayoutItem size="full">
-            <div style={{width: '0.75em', height: '0.75em'}}/>
+            <div style={{width: StyleConstants.Paddings.small, height: StyleConstants.Paddings.small}}/>
           </LayoutItem>
           <LayoutItem>
-            <OptionButton variant="default" onClick={props.moveBlockUp} style={buttonStyle}>
+            <Button color="grey" onClick={props.moveBlockUp} style={arrowUpStyle}>
               <ButtonText>
                 <i className="fas fa-angle-up"></i>
               </ButtonText>
-            </OptionButton>
+            </Button>
           </LayoutItem>
           <LayoutItem>
-            <OptionButton variant="default" onClick={props.moveBlockDown} style={buttonStyle}>
+            <Button color="grey" onClick={props.moveBlockDown} style={arrowDownStyle}>
               <ButtonText>
                 <i className="fas fa-angle-down"></i>
               </ButtonText>
-            </OptionButton>
+            </Button>
           </LayoutItem>
         </Layout>
       </LayoutItem>

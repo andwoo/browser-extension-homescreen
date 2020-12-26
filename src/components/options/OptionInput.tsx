@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Layout, LayoutItem } from '@andwoo/scss-grid';
-
+import * as StyleConstants from '../styled/StyleConstants';
 
 const Text = styled.p`
   margin-right: 2rem;
@@ -9,12 +9,18 @@ const Text = styled.p`
 `;
 const Input = styled.input`
   width: 100%;
-  border-style: none;
-  background-color: #f7f7f7;
-  border-radius: 5px;
-  padding: 0.5rem;
+  padding: ${StyleConstants.Paddings.small};
+  border-radius: ${StyleConstants.Radii.extraSmall};
   border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 0.5rem;
+  background-color: ${StyleConstants.Colors.grey};
+  &:hover {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    filter: brightness(95%);
+  }
+  &:active {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    filter: brightness(85%);
+  }
 `;
 
 interface InputProps {

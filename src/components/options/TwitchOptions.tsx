@@ -2,18 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { Block } from '../../redux/interfaces/StoreModel';
 import OptionInput from './OptionInput';
-import OptionButton from './OptionButton';
+import Box from '../styled/Box';
+import Button from '../styled/Button';
+import * as StyleConstants from '../styled/StyleConstants';
 
-const InfoContainer = styled.div`
-  background-color: #ffdd57;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  margin-top: 0.5rem;
-  padding: 10px;
-`;
 const InfoMessage = styled.p`
   color: rgba(0,0,0,0.7);
 `;
+
+const IconStyle: React.CSSProperties = {
+  marginLeft: StyleConstants.Paddings.small,
+  marginRight: StyleConstants.Paddings.small
+}
+const topMarginStyle: React.CSSProperties = {
+  marginTop: StyleConstants.Paddings.small
+}
 
 interface TwitchOptionProps {
   save: () => void;
@@ -42,7 +45,7 @@ export default class TwitchOption extends React.Component<TwitchOptionProps, Twi
   onChange = (value: string): void => {
     this.setState({token: value})
   }
-  handleOnGenerate = () => {
+  handleOnGenerate = (): void => {
     window.open('https://twitchtokengenerator.com/', '_blank');
   }
   render(): JSX.Element {
@@ -52,13 +55,13 @@ export default class TwitchOption extends React.Component<TwitchOptionProps, Twi
         <h1>Twitch</h1>
         <form>
           <OptionInput initialValue={initialValue} placeholder="token" label="Access Token" onChange={this.onChange} />
-          <InfoContainer>
-            <InfoMessage>Create a token with the scope permission <strong>user_read</strong></InfoMessage>
-          </InfoContainer>
-          <OptionButton variant="default" onClick={this.handleOnGenerate} style={{marginTop: '0.5rem', padding: 10}}>
+          <Box color="yellow" radius="small" padding="small" style={topMarginStyle}>
+            <InfoMessage><i className="fas fa-exclamation" style={IconStyle}/> Create a token with the scope permission <strong>user_read</strong></InfoMessage>
+          </Box>
+          <Button color="grey" padding="small" radius="extraSmall" onClick={this.handleOnGenerate} style={topMarginStyle}>
             <i className="fab fa-twitch"></i>
             <span> Generate</span>
-          </OptionButton>
+          </Button>
         </form>
       </div>
     )

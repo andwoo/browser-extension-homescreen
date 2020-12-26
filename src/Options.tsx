@@ -9,6 +9,7 @@ import { useLoadStateFromStorage } from './redux/hooks';
 import BlockContainer from './components/options/BlockContainer';
 import DebugPanel from './components/options/DebugPanel';
 import AddBlock from './components/options/AddBlock';
+import * as StyleConstants from './components/styled/StyleConstants';
 
 function MapStateToProps(state: StoreModel) {
   return {
@@ -27,10 +28,10 @@ const Options = ({blocks, addBlocks}: {blocks: Array<Block>, addBlocks: (blocks:
   useLoadStateFromStorage(addBlocks);
   return (
     <Layout direction="column">
-      <LayoutItem size="one-fifth" style={{padding: '1rem'}}>
+      <LayoutItem size="one-fifth" style={{padding: StyleConstants.Paddings.small}}>
         <DebugPanel/>
       </LayoutItem>
-      <LayoutItem size="four-fifths" style={{padding: '1rem', paddingLeft: '0rem'}}>
+      <LayoutItem size="four-fifths" style={{padding: StyleConstants.Paddings.small, paddingLeft: '0rem'}}>
         {blocks.map((block, index) => <BlockContainer key={index} index={index} block={block}/>)}
         <AddBlock/>
       </LayoutItem>

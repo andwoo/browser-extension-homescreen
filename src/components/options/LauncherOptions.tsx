@@ -1,9 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Block } from '../../redux/interfaces/StoreModel';
 import SortContainer from './SortContainer';
 import OptionInput, { IconOptionInput } from './OptionInput';
-import OptionButton from './OptionButton';
+import Box from '../styled/Box';
+import Button from '../styled/Button';
+import * as StyleConstants from '../styled/StyleConstants';
 
 interface LauncherOptionsProps {
   save: () => void;
@@ -20,9 +21,6 @@ interface LauncherOptionItem {
   href: string;
 }
 
-const addButtonStyle: React.CSSProperties = {
-  padding: 10
-}
 const defaultIcon = 'fas fa-question';
 
 export function dataToString(): string {
@@ -46,7 +44,7 @@ export default class LauncherOption extends React.Component<LauncherOptionsProps
   dataToString = (): string => {
     return dataToString.call(this);
   };
-  addBlock = () => {
+  addBlock = (): void => {
     this.setState({
       icons: [...this.state.icons, ...[{icon: defaultIcon, href: ''}]],
       listUpdated: Date.now()
@@ -107,9 +105,9 @@ export default class LauncherOption extends React.Component<LauncherOptionsProps
               moveBlockUp={this.moveBlockUp}
               moveBlockDown={this.moveBlockDown} />
           )}
-        <OptionButton variant="success" onClick={this.addBlock} style={addButtonStyle} >
+        <Button color="green" padding="small" radius="extraSmall" onClick={this.addBlock}>
           <i className="fas fa-plus"></i>
-        </OptionButton>
+        </Button>
       </div>
     )
   }
@@ -125,26 +123,23 @@ interface LauncherIconProps {
   moveBlockDown: (index: number) => void;
 }
 
-const IconContainer = styled.div`
-  background-color: #f7f7f7;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-  padding-bottom: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-`;
+const marginTopStyle: React.CSSProperties = {
+  marginBottom: StyleConstants.Paddings.small
+}
 
 const LauncherIcon = (props: LauncherIconProps): JSX.Element => {
   const index = props.index;
   return (
-    <IconContainer key={props.listUpdated}>
+    <Box color="grey" radius="extraSmall" padding="small" key={props.listUpdated} style={marginTopStyle}>
       <SortContainer
         removeBlock={(): void => props.removeBlock(index)}
         moveBlockUp={(): void => props.moveBlockUp(index)}
         moveBlockDown={(): void => props.moveBlockDown(index)}
       >
         <IconOptionInput initialValue={props.data.icon} placeholder={defaultIcon} onChange={(value):void => props.onUpdateBlock(index, value, props.data.href)}/>
+        <div style={marginTopStyle}/>
         <OptionInput initialValue={props.data.href} placeholder="https://example.com" label="Url" onChange={(value):void => props.onUpdateBlock(index, props.data.icon, value)}/>
       </SortContainer>
-    </IconContainer>
+    </Box>
   );
 }
