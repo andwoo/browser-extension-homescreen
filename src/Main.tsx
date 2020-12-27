@@ -8,8 +8,8 @@ import * as BlockActions from './redux/actions/BlockActions';
 import { useLoadStateFromStorage } from './redux/hooks';
 import Loading from './components/main/Loading';
 import * as StyleConstants from './components/styled/StyleConstants';
-import * as Boxes from './components/styled/Box';
 import WarningDialog from './components/main/WarningDialog';
+import BlockColumn from './components/main/BlockColumn';
 
 function MapStateToProps(state: StoreModel) {
   return {
@@ -46,9 +46,7 @@ const Main = ({blocks, addBlocks}: {blocks: Array<Block>, addBlocks: (blocks: Ar
           {blocks.map((block, index) => {
             return (
               <LayoutItem stretch size="full" key={index} style={{paddingLeft: index === 0 ? '0px' : StyleConstants.Paddings.small}}>
-                <Boxes.TransparentBox style={{height: '100%', overflow: 'auto'}}>
-                  {JSON.stringify(block)}
-                </Boxes.TransparentBox>
+                <BlockColumn block={block}/>
               </LayoutItem>
             );
           })}

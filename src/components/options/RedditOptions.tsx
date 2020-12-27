@@ -7,7 +7,7 @@ interface RedditOptionProps {
   block: Block;
 }
 
-interface RedditOptionState {
+export interface RedditOptionState {
   subreddit: string
 }
 
