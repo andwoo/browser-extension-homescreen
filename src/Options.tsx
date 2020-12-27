@@ -28,10 +28,10 @@ const Options = ({blocks, addBlocks}: {blocks: Array<Block>, addBlocks: (blocks:
   useLoadStateFromStorage(addBlocks);
   return (
     <Layout direction="column">
-      <LayoutItem size="one-fifth" style={{padding: StyleConstants.Paddings.small}}>
+      {/* <LayoutItem size="one-fifth" style={{padding: StyleConstants.Paddings.small}}>
         <DebugPanel/>
-      </LayoutItem>
-      <LayoutItem size="four-fifths" style={{padding: StyleConstants.Paddings.small, paddingLeft: '0rem'}}>
+      </LayoutItem> */}
+      <LayoutItem size="full" style={{padding: StyleConstants.Paddings.small}}>
         <AddBlock/>
         {blocks.map((block, index) => <BlockContainer key={index} index={index} block={block}/>)}
       </LayoutItem>
