@@ -32,8 +32,8 @@ const Options = ({blocks, addBlocks}: {blocks: Array<Block>, addBlocks: (blocks:
         <DebugPanel/>
       </LayoutItem>
       <LayoutItem size="four-fifths" style={{padding: StyleConstants.Paddings.small, paddingLeft: '0rem'}}>
-        {blocks.map((block, index) => <BlockContainer key={index} index={index} block={block}/>)}
         <AddBlock/>
+        {blocks.map((block, index) => <BlockContainer key={index} index={index} block={block}/>)}
       </LayoutItem>
     </Layout>
   );

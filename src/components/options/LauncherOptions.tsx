@@ -2,8 +2,8 @@ import React from 'react';
 import { Block } from '../../redux/interfaces/StoreModel';
 import SortContainer from './SortContainer';
 import OptionInput, { IconOptionInput } from './OptionInput';
-import Box from '../styled/Box';
-import Button from '../styled/Button';
+import { TransparentBox } from '../styled/Box';
+import { SuccessButton, PinkButton } from '../styled/Button';
 import * as StyleConstants from '../styled/StyleConstants';
 
 interface LauncherOptionsProps {
@@ -90,24 +90,25 @@ export default class LauncherOption extends React.Component<LauncherOptionsProps
       }, () => this.props.save());
     }
   };
+  handleOnGetIcon = (): void => {
+    window.open('https://fontawesome.com/icons?d=gallery', '_blank');
+  }
   render(): JSX.Element {
     return (
       <div>
-        <h1><i className="fas fa-rocket-launch"/></h1>
-          {this.state.icons.map((value, index) =>
-            <LauncherIcon
-              listUpdated={this.state.listUpdated}
-              key={index}
-              data={value}
-              index={index}
-              onUpdateBlock={this.onUpdateBlock}
-              removeBlock={this.removeBlock}
-              moveBlockUp={this.moveBlockUp}
-              moveBlockDown={this.moveBlockDown} />
-          )}
-        <Button color="green" padding="small" radius="extraSmall" onClick={this.addBlock}>
-          <i className="fas fa-plus" style={{color: StyleConstants.darkenedTextColor}}></i>
-        </Button>
+        {this.state.icons.map((value, index) =>
+          <LauncherIcon
+            listUpdated={this.state.listUpdated}
+            key={index}
+            data={value}
+            index={index}
+            onUpdateBlock={this.onUpdateBlock}
+            removeBlock={this.removeBlock}
+            moveBlockUp={this.moveBlockUp}
+            moveBlockDown={this.moveBlockDown} />
+        )}
+        <SuccessButton icon="fas fa-plus" label="Add" onClick={this.addBlock} style={{marginBottom: StyleConstants.Paddings.small}}/>
+        <PinkButton icon="fas fa-flag" label="Get Icon" onClick={this.handleOnGetIcon}/>
       </div>
     )
   }
@@ -130,7 +131,7 @@ const marginTopStyle: React.CSSProperties = {
 const LauncherIcon = (props: LauncherIconProps): JSX.Element => {
   const index = props.index;
   return (
-    <Box color="lightBlack" radius="extraSmall" border borderColor="darkGrey" padding="small" key={props.listUpdated} style={marginTopStyle}>
+    <TransparentBox key={props.listUpdated} style={marginTopStyle}>
       <SortContainer
         removeBlock={(): void => props.removeBlock(index)}
         moveBlockUp={(): void => props.moveBlockUp(index)}
@@ -140,6 +141,6 @@ const LauncherIcon = (props: LauncherIconProps): JSX.Element => {
         <div style={marginTopStyle}/>
         <OptionInput initialValue={props.data.href} placeholder="https://example.com" label="Url" onChange={(value):void => props.onUpdateBlock(index, props.data.icon, value)}/>
       </SortContainer>
-    </Box>
+    </TransparentBox>
   );
 }

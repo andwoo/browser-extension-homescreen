@@ -8,8 +8,8 @@ import SortContainer from './SortContainer';
 import RedditOptions from './RedditOptions';
 import TwitchOptions from './TwitchOptions';
 import LauncherOption from './LauncherOptions';
-import Button from '../styled/Button';
-import Box from '../styled/Box';
+import { InfoButton } from '../styled/Button';
+import { TransparentBox } from '../styled/Box';
 import * as StyleConstants from '../styled/StyleConstants';
 
 function MapStateToProps() {
@@ -40,6 +40,21 @@ interface BlockOption {
   dataToString: () => string;
 }
 
+function getBlockIcon(block: Block):string {
+  switch(block.type) {
+    case BlockTypes.REDDIT: {
+      return 'fab fa-reddit-alien';
+    }
+    case BlockTypes.TWITCH: {
+      return 'fab fa-twitch';
+    }
+    case BlockTypes.LAUNCHER: {
+      return 'fas fa-rocket';
+    }
+  }
+  return '';
+}
+
 function getBlockOptionComponent(ref, block: Block, save: () => void):JSX.Element {
   switch(block.type) {
     case BlockTypes.REDDIT: {
@@ -63,16 +78,17 @@ const BlockContainer = (props: BlockContainerProps): JSX.Element => {
     props.updateBlock(block, optionB?.dataToString);
   }
   return (
-    <Box radius="extraSmall" border borderColor="darkGrey" padding="small" style={{marginBottom: StyleConstants.Paddings.small}}>
+    <TransparentBox style={{marginTop: StyleConstants.Paddings.small}}>
       <SortContainer
+        icon={getBlockIcon(block)}
         removeBlock={(): void => props.removeBlock(block)}
         moveBlockUp={(): void => props.moveBlockUp(block)}
         moveBlockDown={(): void => props.moveBlockDown(block)}
       >
         {getBlockOptionComponent(option, block, saveChanges)}
-        <Button color="black" border borderColor="darkGrey" padding="small" radius="extraSmall" style={{marginTop: StyleConstants.Paddings.small}} onClick={saveChanges}>Save</Button>
+        <InfoButton icon="fas fa-save" label="Save" style={{marginTop: StyleConstants.Paddings.small}} onClick={saveChanges}/>
       </SortContainer>
-    </Box>
+    </TransparentBox>
   );
 }
 

@@ -7,14 +7,35 @@ export const Radii = {
 export type RadiiKeys = keyof typeof Radii;
 
 export const Colors = {
-  yellow: '#e3b341',
-  red: '#f85149',
-  green: '#56d364',
-  blue: '#79c0ff',
-//greyscale
-  white: '#f0f6fc',
-  lightGrey: '#c9d1d9',
-  grey: '#6e7681',
+  greyText: '#8b949e',
+  grey: '#161b22',
+  lightGrey: '#8b949e',
+
+  yellowText: '#bb8009',
+  yellow: '#4b2900',
+  lightYellow: '#bb8009',
+
+  redText: '#f85149',
+  red: '#67060c',
+  lightRed: '#f85149',
+
+  greenText: '#2ea043', //4
+  green: '#033a16', //8
+  lightGreen: '#2ea043', //4
+
+  blueText: '#388bfd',
+  blue: '#0c2d6b',
+  lightBlue: '#388bfd',
+
+  purpleText: '#a371f7',
+  purple: '#3c1e70',
+  lightPurple: '#a371f7',
+
+  pinkText: '#db61a2',
+  pink: '#5e103e',
+  lightPink: '#db61a2',
+//misc
+  white: '#ffffff',
   darkGrey: '#484f58',
   lightBlack: '#30363d',
   black: '#21262d',

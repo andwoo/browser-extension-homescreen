@@ -6,7 +6,7 @@ import { Block } from '../../redux/interfaces/StoreModel';
 import * as BlockActions from '../../redux/actions/BlockActions';
 import BlockTypes from '../../constants/BlockTypes';
 import Box from '../styled/Box';
-import Button from '../styled/Button';
+import { SuccessButton } from '../styled/Button';
 import * as StyleConstants from '../styled/StyleConstants'
 import { dataToString as redditDataToString } from './RedditOptions';
 import { dataToString as twitchDataToString } from './TwitchOptions';
@@ -59,9 +59,7 @@ const AddBlock = ({addBlock}: {addBlock: (block: Block, dataToString: () => stri
           </select>
         </LayoutItem>
         <LayoutItem size="full" style={{marginLeft: StyleConstants.Paddings.small}}>
-          <Button color="green" padding="small" radius="extraSmall" onClick={handleOnAddBlock}>
-            <i className="fas fa-plus" style={{color: StyleConstants.darkenedTextColor}}></i>
-          </Button>
+          <SuccessButton icon="fas fa-plus" label="Add" onClick={handleOnAddBlock} style={{color: StyleConstants.darkenedTextColor}}/>
         </LayoutItem>
       </Layout>
     </Box>

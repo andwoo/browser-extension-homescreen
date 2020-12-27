@@ -32,12 +32,9 @@ export default class RedditOption extends React.Component<RedditOptionProps, Red
   render(): JSX.Element {
     const initialValue = (JSON.parse(this.props.block.data) as RedditOptionState)?.subreddit ?? ''
     return (
-      <div>
-        <h1><i className="fab fa-reddit-alien"/></h1>
-        <form>
-          <OptionInput initialValue={initialValue} placeholder="videos" label="r/" onChange={this.onChange} />
-        </form>
-      </div>
+      <form>
+        <OptionInput initialValue={initialValue} placeholder="videos" label="r/" onChange={this.onChange} />
+      </form>
     )
   }
 }

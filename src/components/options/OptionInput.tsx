@@ -17,10 +17,10 @@ const Input = styled.input`
     color: ${StyleConstants.Colors.lightGrey}
   }
   &[type=text]:focus {
-    filter: brightness(80%);
+    filter: brightness(120%);
   }
   &:hover {
-    filter: brightness(90%);
+    filter: brightness(160%);
   }
 `;
 

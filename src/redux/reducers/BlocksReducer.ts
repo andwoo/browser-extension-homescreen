@@ -10,7 +10,7 @@ function BlockReducer(blocks: Array<Block> = [], action: BlockAction | BlocksAct
     case ActionTypes.ADD_BLOCK: {
       const cast = (action as BlockUpdateAction);
       cast.block.data = cast.dataToString?.();
-      nextBlocks.push(cast.block);
+      nextBlocks.unshift(cast.block);
       break;
     }
     case ActionTypes.UPDATE_BLOCK: {

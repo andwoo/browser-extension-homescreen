@@ -26,4 +26,36 @@ const Box = ({radius, color, border, borderColor, padding, children, style}: Box
   );
 }
 
+
+interface ExtendedBoxProps {
+  children?: React.ReactNode;
+  border?: boolean;
+  style?: React.CSSProperties;
+}
+
+export const TransparentBox = (props: ExtendedBoxProps): JSX.Element => {
+  return (
+    <Box
+      radius="extraSmall"
+      border
+      borderColor="darkGrey"
+      padding="small"
+      {...props}
+    />
+  );
+}
+
+export const GreyBox = (props: ExtendedBoxProps): JSX.Element => {
+  return (
+    <Box
+      radius="extraSmall"
+      border
+      borderColor="darkGrey"
+      padding="small"
+      color="black"
+      {...props}
+    />
+  );
+}
+
 export default Box;
