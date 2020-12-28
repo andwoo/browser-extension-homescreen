@@ -10,6 +10,12 @@ import Loading from './components/main/Loading';
 import * as StyleConstants from './components/styled/StyleConstants';
 import WarningDialog from './components/main/WarningDialog';
 import BlockColumn from './components/main/BlockColumn';
+import BlockTypes from './constants/BlockTypes';
+
+const sizes = new Map();
+sizes.set(BlockTypes.REDDIT, 'full');
+sizes.set(BlockTypes.TWITCH, 'full');
+sizes.set(BlockTypes.LAUNCHER, '');
 
 function MapStateToProps(state: StoreModel) {
   return {
@@ -45,7 +51,8 @@ const Main = ({blocks, addBlocks}: {blocks: Array<Block>, addBlocks: (blocks: Ar
         <>
           {blocks.map((block, index) => {
             return (
-              <LayoutItem stretch size="full" key={index} style={{paddingLeft: index === 0 ? '0px' : StyleConstants.Paddings.small}}>
+              //@ts-ignore
+              <LayoutItem key={index} stretch size={sizes.get(block.type)} style={{paddingLeft: index === 0 ? '0px' : StyleConstants.Paddings.small}}>
                 <BlockColumn block={block}/>
               </LayoutItem>
             );

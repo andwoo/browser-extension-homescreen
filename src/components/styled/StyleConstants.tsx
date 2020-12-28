@@ -7,9 +7,9 @@ export const Radii = {
 export type RadiiKeys = keyof typeof Radii;
 
 export const Colors = {
-  greyText: '#8b949e',
+  greyText: '#c9d1d9',
   grey: '#161b22',
-  lightGrey: '#8b949e',
+  lightGrey: '#c9d1d9',
 
   yellowText: '#bb8009',
   yellow: '#4b2900',

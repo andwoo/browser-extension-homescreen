@@ -56,7 +56,7 @@ const RedditColumn = ({ block, isLoading, setLoading, isSuccess, setSuccess }: B
 
   return (
     <Box padding="none" border={false} style={{height: '100%', overflow: 'auto'}}>
-      <h3 style={{maxWidth: '16vw', textOverflow: 'ellipsis', overflow: 'hidden'}}>r/{subReddit?.toUpperCase()}</h3>
+      <h3 style={{maxWidth: '16vw', textOverflow: 'ellipsis', overflow: 'hidden', color: StyleConstants.Colors.greyText}}>r/{subReddit?.toUpperCase()}</h3>
       {posts.map((post: RedditPost, index: number) => {
         return <PostItem key={index} {...post}/>
       })}
@@ -77,6 +77,7 @@ const PostItem = ({title, thumbnail, postHref, commentsHref, upVotes}: RedditPos
       borderColor="darkGrey"
       radius="small"
       padding="small"
+      style={{color: StyleConstants.Colors.greyText}}
     >
       <p>{title}</p>
       <Box padding="none" border={false} style={{color: StyleConstants.Colors.greenText}}>

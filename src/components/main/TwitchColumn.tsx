@@ -80,11 +80,12 @@ const StreamerItem = ({name, viewers, game, href, thumbnail}: TwitchStreamer): J
       borderColor="lightPurple"
       radius="small"
       padding="small"
+      style={{color: StyleConstants.Colors.purpleText}}
     >
       <strong>{name}</strong>
       <p>{game}</p>
       <Box padding="none" border={false} style={{color: StyleConstants.Colors.redText}}>
-        <i className="fas fa-crown" style={{marginRight: StyleConstants.Paddings.small}}/>
+        <i className="fas fa-user-crown" style={{marginRight: StyleConstants.Paddings.small}}/>
         <strong>{'' + viewers}</strong>
       </Box>
     </MediaTile>
