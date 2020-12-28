@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { Block } from '../../redux/interfaces/StoreModel';
-import RedditColumn from './RedditColumn';
 import BlockTypes from '../../constants/BlockTypes';
 import Loading from './Loading'
 import WarningDialog from './WarningDialog';
+import RedditColumn from './RedditColumn';
+import TwitchColumn from './TwitchColumn';
 
 export interface BlockColumnProps {
   block: Block;
@@ -27,6 +28,14 @@ const BlockColumn = ({block}: {block: Block}): JSX.Element => {
     switch(block.type) {
       case BlockTypes.REDDIT:
         return <RedditColumn
+          block={block}
+          isLoading={isLoading}
+          setLoading={setL}
+          isSuccess={isSuccess}
+          setSuccess={setS}
+        />
+      case BlockTypes.TWITCH:
+        return <TwitchColumn
           block={block}
           isLoading={isLoading}
           setLoading={setL}

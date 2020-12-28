@@ -26,7 +26,7 @@ const RedditColumn = ({ block, isLoading, setLoading, isSuccess, setSuccess }: B
       console.dir(response);
       setPosts(response.data.data.children.map((post) => {
         let thumbnail: string = post.data.thumbnail;
-        if (!thumbnail || thumbnail === 'self') {
+        if (!thumbnail || thumbnail === 'self' || thumbnail === 'spoiler') {
           thumbnail = null;
         }
         return {
@@ -70,7 +70,7 @@ const PostItem = ({title, thumbnail, postHref, commentsHref, upVotes}: RedditPos
   return (
     <MediaTile
       thumbnail={thumbnail}
-      thumbnailFallbackIcon="fas fa-moon-stars"
+      thumbnailFallbackIcon="fab fa-reddit-alien"
       thumbnailHref={postHref}
       href={commentsHref}
       border

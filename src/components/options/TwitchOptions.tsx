@@ -20,7 +20,7 @@ interface TwitchOptionProps {
   block: Block;
 }
 
-interface TwitchOptionState {
+export interface TwitchOptionState {
   token: string;
 }
 
