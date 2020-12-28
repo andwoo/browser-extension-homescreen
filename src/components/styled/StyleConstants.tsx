@@ -44,6 +44,7 @@ export const Colors = {
 export type ColorKeys = keyof typeof Colors;
 
 export const Paddings = {
+  none: '0px',
   small: '0.5rem',
   medium: '1rem',
   large: '1.5rem'

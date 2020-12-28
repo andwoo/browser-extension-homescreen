@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import { Layout, LayoutItem } from '@andwoo/scss-grid';
 import { BlockColumnProps } from './BlockColumn';
 import { RedditOptionState } from '../options/RedditOptions';
 import { decodeString } from '../../utils/StringUtils';
@@ -16,6 +18,7 @@ interface RedditPost {
 
 const RedditColumn = ({ block, isLoading, setLoading, isSuccess, setSuccess }: BlockColumnProps): JSX.Element => {
   const [posts, setPosts] = useState([]);
+  const subReddit = (JSON.parse(block.data) as RedditOptionState).subreddit;
   const fetchData = useCallback(async (subreddit: string): Promise<void> => {
     setSuccess(false);
     setLoading(true);
@@ -45,22 +48,63 @@ const RedditColumn = ({ block, isLoading, setLoading, isSuccess, setSuccess }: B
   }, [setLoading, setSuccess]);
 
   useEffect(() => {
-    fetchData((JSON.parse(block.data) as RedditOptionState).subreddit);
-  }, []);
+    fetchData(subReddit);
+  }, [subReddit]);
 
   if(isLoading || !isSuccess) {
     return null;
   }
 
   return (
-    <Boxes.TransparentBox style={{height: '100%', overflow: 'auto'}}>
+    <Boxes.TransparentBox padding="none" border={false} style={{height: '100%', overflow: 'auto'}}>
+      <h3 style={{maxWidth: '16vw', textOverflow: 'ellipsis', overflow: 'hidden'}}>r/{subReddit?.toUpperCase()}</h3>
       {posts.map((post: RedditPost, index: number) => {
-        return (<Boxes.PinkBox key={index} color="darkBlack" style={{marginBottom: StyleConstants.Paddings.small}}>
-          <p>{post.title}</p>
-        </Boxes.PinkBox>);
+        return <PostItem key={index} {...post}/>
       })}
     </Boxes.TransparentBox>
   );
 }
 
 export default RedditColumn;
+
+const PostItem = ({title, thumbnail, postHref, commentsHref, upVotes}: RedditPost): JSX.Element => {
+  const Image = styled.div`
+    background: url(${thumbnail});
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 3rem;
+    height: 3rem;
+  `;
+
+  const Href = styled.a`
+    text-decoration: none;
+    color: inherit;
+  `;
+
+  return (
+    <Boxes.TransparentBox style={{marginBottom: StyleConstants.Paddings.small}}>
+      <Layout>
+        <LayoutItem>
+          <Href href={postHref}>
+            <Boxes.TransparentBox padding="none" color="darkBlack" style={{display: 'flex', width: '3rem', height: '3rem', justifyContent: 'center', alignItems: 'center'}}>
+              {thumbnail && <Image/>}
+              {!thumbnail && <i className="fas fa-moon-stars" style={{fontSize: '2rem'}}/>}
+            </Boxes.TransparentBox>
+          </Href>
+        </LayoutItem>
+        <LayoutItem size="full">
+          <Href href={commentsHref}>
+            <div style={{marginLeft: StyleConstants.Paddings.small}}>
+              <p>{title}</p>
+              <Boxes.SuccessBox color="darkBlack" padding="none" border={false}>
+                <i className="fas fa-angle-up" style={{marginRight: StyleConstants.Paddings.small}}/>
+                <span>{'' + upVotes}</span>
+              </Boxes.SuccessBox>
+            </div>
+          </Href>
+        </LayoutItem>
+      </Layout>
+    </Boxes.TransparentBox>
+  )
+}

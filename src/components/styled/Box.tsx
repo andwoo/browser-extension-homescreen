@@ -31,6 +31,7 @@ interface ExtendedBoxProps {
   color?: StyleConstants.ColorKeys;
   border?: boolean;
   borderColor?: StyleConstants.ColorKeys;
+  padding?: StyleConstants.PaddingsKeys;
   children?: React.ReactNode;
   style?: React.CSSProperties;
 }
