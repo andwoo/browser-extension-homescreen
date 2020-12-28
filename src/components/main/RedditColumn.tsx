@@ -23,7 +23,6 @@ const RedditColumn = ({ block, isLoading, setLoading, isSuccess, setSuccess }: B
     setLoading(true);
     try {
       const response = await axios.get(`https://reddit.com/r/${subreddit}.json`);
-      console.dir(response);
       setPosts(response.data.data.children.map((post) => {
         let thumbnail: string = post.data.thumbnail;
         if (!thumbnail || thumbnail === 'self' || thumbnail === 'spoiler') {

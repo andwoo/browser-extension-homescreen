@@ -5,6 +5,7 @@ import Loading from './Loading'
 import WarningDialog from './WarningDialog';
 import RedditColumn from './RedditColumn';
 import TwitchColumn from './TwitchColumn';
+import LauncherColumn from './LauncherColumn'
 
 export interface BlockColumnProps {
   block: Block;
@@ -36,6 +37,14 @@ const BlockColumn = ({block}: {block: Block}): JSX.Element => {
         />
       case BlockTypes.TWITCH:
         return <TwitchColumn
+          block={block}
+          isLoading={isLoading}
+          setLoading={setL}
+          isSuccess={isSuccess}
+          setSuccess={setS}
+        />
+      case BlockTypes.LAUNCHER:
+        return <LauncherColumn
           block={block}
           isLoading={isLoading}
           setLoading={setL}

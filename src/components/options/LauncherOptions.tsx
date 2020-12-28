@@ -11,12 +11,12 @@ interface LauncherOptionsProps {
   block: Block;
 }
 
-interface LauncherOptionsState {
+export interface LauncherOptionsState {
   icons: LauncherOptionItem[];
   listUpdated: number;
 }
 
-interface LauncherOptionItem {
+export interface LauncherOptionItem {
   icon: string;
   href: string;
 }

@@ -16,6 +16,7 @@ interface ButtonProps {
 const ButtonHover = styled.div`
   cursor: pointer;
   text-align: center;
+  transition: filter 0.15s;
   &:hover {
     filter: brightness(160%);
   }
