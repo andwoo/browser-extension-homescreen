@@ -34,7 +34,7 @@ const Href = styled.a`
   color: inherit;
   cursor: pointer;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   transition: filter 0.15s;
   &:hover {
     filter: brightness(160%);

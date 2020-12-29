@@ -11,11 +11,13 @@ import * as StyleConstants from '../styled/StyleConstants'
 import { dataToString as redditDataToString } from './RedditOptions';
 import { dataToString as twitchDataToString } from './TwitchOptions';
 import { dataToString as launcherDataToString } from './LauncherOptions';
+import { dataToString as valorantDataToString } from './ValorantOptions';
 
 const types = new Map();
 types.set(BlockTypes.REDDIT, redditDataToString);
 types.set(BlockTypes.TWITCH, twitchDataToString);
 types.set(BlockTypes.LAUNCHER, launcherDataToString);
+types.set(BlockTypes.VALORANT, valorantDataToString);
 
 function MapStateToProps() { return { }; }
 function MapDispatchToProps(dispatch) {

@@ -22,6 +22,14 @@ interface MediaTileProps {
 const Href = styled.a`
   text-decoration: none;
   color: inherit;
+
+  transition: filter 0.15s;
+  &:hover {
+    filter: brightness(160%);
+  }
+  &:active {
+    filter: brightness(160%);
+  }
 `;
 
 const MediaTile = (props: MediaTileProps): JSX.Element => {

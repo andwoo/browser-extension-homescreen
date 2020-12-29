@@ -8,6 +8,7 @@ import SortContainer from './SortContainer';
 import RedditOptions from './RedditOptions';
 import TwitchOptions from './TwitchOptions';
 import LauncherOption from './LauncherOptions';
+import ValorantOptions from './ValorantOptions';
 import { InfoButton } from '../styled/Button';
 import { TransparentBox } from '../styled/Box';
 import * as StyleConstants from '../styled/StyleConstants';
@@ -51,6 +52,9 @@ function getBlockIcon(block: Block):string {
     case BlockTypes.LAUNCHER: {
       return 'fas fa-rocket';
     }
+    case BlockTypes.VALORANT: {
+      return 'fas fa-headset';
+    }
   }
   return '';
 }
@@ -65,6 +69,9 @@ function getBlockOptionComponent(ref, block: Block, save: () => void):JSX.Elemen
     }
     case BlockTypes.LAUNCHER: {
       return <LauncherOption key={block.id} ref={ref} block={block} save={save}/>;
+    }
+    case BlockTypes.VALORANT: {
+      return <ValorantOptions key={block.id} ref={ref} block={block}/>;
     }
   }
   return null;

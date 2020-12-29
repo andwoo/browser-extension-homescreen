@@ -5,7 +5,8 @@ import Loading from './Loading'
 import WarningDialog from './WarningDialog';
 import RedditColumn from './RedditColumn';
 import TwitchColumn from './TwitchColumn';
-import LauncherColumn from './LauncherColumn'
+import LauncherColumn from './LauncherColumn';
+import ValorantColumn from './ValorantColumn';
 
 export interface BlockColumnProps {
   block: Block;
@@ -45,6 +46,14 @@ const BlockColumn = ({block}: {block: Block}): JSX.Element => {
         />
       case BlockTypes.LAUNCHER:
         return <LauncherColumn
+          block={block}
+          isLoading={isLoading}
+          setLoading={setL}
+          isSuccess={isSuccess}
+          setSuccess={setS}
+        />
+      case BlockTypes.VALORANT:
+        return <ValorantColumn
           block={block}
           isLoading={isLoading}
           setLoading={setL}
