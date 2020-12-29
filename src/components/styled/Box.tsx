@@ -41,7 +41,7 @@ export const TransparentBox = (props: ExtendedBoxProps): JSX.Element => {
     <Box
       radius="extraSmall"
       border
-      borderColor="darkGrey"
+      borderColor="lightGrey"
       padding="small"
       {...props}
     />
@@ -53,9 +53,9 @@ export const GreyBox = (props: ExtendedBoxProps): JSX.Element => {
     <Box
       radius="extraSmall"
       border
-      borderColor="darkGrey"
+      borderColor="lightGrey"
       padding="small"
-      color="black"
+      color="grey"
       {...props}
     />
   );

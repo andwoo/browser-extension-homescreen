@@ -14,7 +14,7 @@ function handleOnOpenOptions(): void {
 
 const WarningDialog = ({title, message}: WarningDialog): JSX.Element => {
   return (
-    <WarningBox color="darkBlack">
+    <WarningBox>
       <span style={{fontSize: '1.5em'}}>
         <i className="fas fa-exclamation" style={{marginRight: StyleConstants.Paddings.small}}/>
         {title}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, LayoutItem } from '@andwoo/scss-grid';
-import { ErrorButton, RegularButton } from '../styled/Button';
+import { ErrorButton, TransparentButton } from '../styled/Button';
 import * as StyleConstants from '../styled/StyleConstants';
 
 interface SortContainerProps {
@@ -15,23 +15,19 @@ const buttonSize = '1em';
 const removeStyle: React.CSSProperties = {
   width: buttonSize,
   height: buttonSize,
-  padding: 0
+  padding: 0,
 };
 
 const arrowUpStyle: React.CSSProperties = {
   width: buttonSize,
   height: buttonSize,
-  padding: 0,
-  borderTopLeftRadius: StyleConstants.Radii.extraSmall,
-  borderTopRightRadius: StyleConstants.Radii.extraSmall,
+  padding: 0
 };
 
 const arrowDownStyle: React.CSSProperties = {
   width: buttonSize,
   height: buttonSize,
-  padding: 0,
-  borderBottomLeftRadius: StyleConstants.Radii.extraSmall,
-  borderBottomRightRadius: StyleConstants.Radii.extraSmall,
+  padding: 0
 };
 
 const ButtonContainer = (props: SortContainerProps): JSX.Element => {
@@ -48,16 +44,16 @@ const ButtonContainer = (props: SortContainerProps): JSX.Element => {
       )
       }
       <LayoutItem>
-        <RegularButton border={false} color={"darkBlack"} icon="fas fa-angle-up" onClick={props.moveBlockUp} style={arrowUpStyle}/>
+        <TransparentButton padding="none" border={false} icon="fas fa-angle-up" onClick={props.moveBlockUp} style={arrowUpStyle}/>
       </LayoutItem>
       <LayoutItem>
-        <RegularButton border={false} color={"darkBlack"} icon="fas fa-angle-down" onClick={props.moveBlockDown} style={arrowDownStyle}/>
+        <TransparentButton padding="none" border={false} icon="fas fa-angle-down" onClick={props.moveBlockDown} style={arrowDownStyle}/>
       </LayoutItem>
       <LayoutItem>
         <div style={{width: StyleConstants.Paddings.small, height: StyleConstants.Paddings.small}}/>
       </LayoutItem>
       <LayoutItem>
-        <ErrorButton border={false} color={"darkBlack"} icon="fas fa-times" onClick={props.removeBlock} style={removeStyle}/>
+        <ErrorButton color="none" padding="none" border={false} icon="fas fa-times" onClick={props.removeBlock} style={removeStyle}/>
       </LayoutItem>
 
 

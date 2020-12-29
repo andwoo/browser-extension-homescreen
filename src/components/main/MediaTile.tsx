@@ -51,7 +51,7 @@ const MediaTile = (props: MediaTileProps): JSX.Element => {
       <Layout>
         <LayoutItem>
           <Href href={props.thumbnailHref}>
-            <Box radius="small" border borderColor={props.borderColor} padding="none" color="darkBlack" style={{display: 'flex', width: '3rem', height: '3rem', justifyContent: 'center', alignItems: 'center'}}>
+            <Box radius="small" border borderColor={props.borderColor} padding="none" color="grey" style={{display: 'flex', width: '3rem', height: '3rem', justifyContent: 'center', alignItems: 'center'}}>
               {props.thumbnail && <Image/>}
               {!props.thumbnail && <i className={props.thumbnailFallbackIcon} style={{fontSize: '2rem'}}/>}
             </Box>

@@ -47,12 +47,26 @@ interface ExtendedButtonProps {
   label?: string;
   icon?: string;
   color?: StyleConstants.ColorKeys;
+  padding?: StyleConstants.PaddingsKeys;
   border?: boolean;
   style?: React.CSSProperties;
   onClick: () => void;
 }
 
-export const RegularButton = (props: ExtendedButtonProps): JSX.Element => {
+export const TransparentButton = (props: ExtendedButtonProps): JSX.Element => {
+  return <Button
+    border
+    borderColor="lightGrey"
+    padding="small"
+    {...props}
+    radius="extraSmall">
+      {props.icon && <i className={props.icon} style={{color: StyleConstants.Colors.greyText}}/>}
+      {props.icon && props.label && <div style={{display: 'inline-block', width: StyleConstants.Paddings.small}}/>}
+      {props.label && <strong style={{color: StyleConstants.Colors.greyText}}>{props.label}</strong>}
+    </Button>;
+}
+
+export const GreyButton = (props: ExtendedButtonProps): JSX.Element => {
   return <Button
     color="grey"
     border

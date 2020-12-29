@@ -7,6 +7,8 @@ export const Radii = {
 export type RadiiKeys = keyof typeof Radii;
 
 export const Colors = {
+  none: 'transparent',
+
   greyText: '#c9d1d9',
   grey: '#161b22',
   lightGrey: '#c9d1d9',
@@ -19,9 +21,9 @@ export const Colors = {
   red: '#67060c',
   lightRed: '#f85149',
 
-  greenText: '#2ea043', //4
-  green: '#033a16', //8
-  lightGreen: '#2ea043', //4
+  greenText: '#2ea043',
+  green: '#033a16',
+  lightGreen: '#2ea043',
 
   blueText: '#388bfd',
   blue: '#0c2d6b',
@@ -33,13 +35,7 @@ export const Colors = {
 
   pinkText: '#db61a2',
   pink: '#5e103e',
-  lightPink: '#db61a2',
-//misc
-  white: '#ffffff',
-  darkGrey: '#484f58',
-  lightBlack: '#30363d',
-  black: '#21262d',
-  darkBlack: '#0d1117'
+  lightPink: '#db61a2'
 }
 export type ColorKeys = keyof typeof Colors;
 

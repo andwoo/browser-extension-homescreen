@@ -10,11 +10,11 @@ const Input = styled.input`
   width: 100%;
   padding: ${StyleConstants.Paddings.small};
   border-radius: ${StyleConstants.Radii.extraSmall};
-  border: 1px solid ${StyleConstants.Colors.darkGrey};
-  background-color: ${StyleConstants.Colors.black};
+  border: 1px solid ${StyleConstants.Colors.lightGrey};
+  background-color: ${StyleConstants.Colors.grey};
 
   &[type=text] {
-    color: ${StyleConstants.Colors.lightGrey}
+    color: inherit;
   }
   &[type=text]:focus {
     filter: brightness(120%);

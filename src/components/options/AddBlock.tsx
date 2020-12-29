@@ -31,9 +31,9 @@ const selectStyle: React.CSSProperties = {
   width: '100%',
   height: '100%',
   borderRadius: StyleConstants.Radii.extraSmall,
-  border: `1px solid ${StyleConstants.Colors.darkGrey}`,
-  backgroundColor: StyleConstants.Colors.black,
-  color: StyleConstants.Colors.lightGrey
+  border: `1px solid ${StyleConstants.Colors.lightGrey}`,
+  backgroundColor: StyleConstants.Colors.grey,
+  color: StyleConstants.Colors.greyText
 }
 
 const AddBlock = ({addBlock}: {addBlock: (block: Block, dataToString: () => string) => BlockActions.BlockUpdateAction}): JSX.Element => {
@@ -48,7 +48,7 @@ const AddBlock = ({addBlock}: {addBlock: (block: Block, dataToString: () => stri
   }
 
   return (
-    <Box radius="extraSmall" border borderColor="darkGrey" padding="small">
+    <Box radius="extraSmall" border borderColor="lightGrey" padding="small">
       <Layout>
         <LayoutItem size="full" stretch>
           <select
