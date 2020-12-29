@@ -79,6 +79,7 @@
     "webpack-dev-server": "3.10.3"
   },
   "dependencies": {
+    "simplebar-react": "2.3.0",
     "styled-components": "5.2.1"
   }
 }

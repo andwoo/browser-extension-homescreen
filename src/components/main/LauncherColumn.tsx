@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import SimpleBar from 'simplebar-react';
 import { BlockColumnProps } from './BlockColumn';
 import { LauncherOptionsState, LauncherOptionItem } from '../options/LauncherOptions';
 import Box from '../styled/Box';
-import * as StyleConstants from '../styled/StyleConstants';
 import { Layout } from '@andwoo/scss-grid';
 
 const LauncherColumn = ({ block, setLoading, setSuccess }: BlockColumnProps): JSX.Element => {
@@ -15,7 +15,7 @@ const LauncherColumn = ({ block, setLoading, setSuccess }: BlockColumnProps): JS
   const icons: LauncherOptionItem[] = (JSON.parse(block.data) as LauncherOptionsState).icons;
 
   return (
-    <Box padding="none" border={false} style={{height: '100%', overflow: 'auto'}}>
+    <SimpleBar autoHide={true} style={{width: '3rem', height: '100%'}}>
       <Layout direction="row" style={{alignItems: 'center'}}>
         {icons.map((icon: LauncherOptionItem, index: number) => {
           return (
@@ -23,7 +23,7 @@ const LauncherColumn = ({ block, setLoading, setSuccess }: BlockColumnProps): JS
           )})
       }
       </Layout>
-    </Box>
+    </SimpleBar>
   );
 }
 

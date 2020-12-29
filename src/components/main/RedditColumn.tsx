@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import SimpleBar from 'simplebar-react';
 import { BlockColumnProps } from './BlockColumn';
 import { RedditOptionState } from '../options/RedditOptions';
 import { decodeString } from '../../utils/StringUtils';
@@ -54,12 +55,12 @@ const RedditColumn = ({ block, isLoading, setLoading, isSuccess, setSuccess }: B
   }
 
   return (
-    <Box padding="none" border={false} style={{height: '100%', overflow: 'auto'}}>
+    <SimpleBar autoHide={true} style={{height: '100%'}}>
       <h3 style={{maxWidth: '16vw', textOverflow: 'ellipsis', overflow: 'hidden', color: StyleConstants.Colors.greyText}}>r/{subReddit?.toUpperCase()}</h3>
       {posts.map((post: RedditPost, index: number) => {
         return <PostItem key={index} {...post}/>
       })}
-    </Box>
+    </SimpleBar>
   );
 }
 
@@ -73,10 +74,10 @@ const PostItem = ({title, thumbnail, postHref, commentsHref, upVotes}: RedditPos
       thumbnailHref={postHref}
       href={commentsHref}
       border
-      borderColor="darkGrey"
+      borderColor="lightPink"
       radius="small"
       padding="small"
-      style={{color: StyleConstants.Colors.greyText}}
+      style={{color: StyleConstants.Colors.pinkText}}
     >
       <p>{title}</p>
       <Box padding="none" border={false} style={{color: StyleConstants.Colors.greenText}}>

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import SimpleBar from 'simplebar-react';
 import { BlockColumnProps } from './BlockColumn';
 import { TwitchOptionState } from '../options/TwitchOptions';
 import Box from '../styled/Box';
@@ -58,12 +59,12 @@ const TwitchColumn = ({ block, isLoading, setLoading, isSuccess, setSuccess }: B
   }
 
   return (
-    <Box padding="none" border={false} style={{height: '100%', overflow: 'auto'}}>
+    <SimpleBar autoHide={true} style={{height: '100%'}}>
       <h3 style={{maxWidth: '16vw', textOverflow: 'ellipsis', overflow: 'hidden', color: StyleConstants.Colors.purpleText}}>TWITCH</h3>
       {streamers.map((streamer: TwitchStreamer, index: number) => {
         return <StreamerItem key={index} {...streamer}/>
       })}
-    </Box>
+    </SimpleBar>
   );
 }
 

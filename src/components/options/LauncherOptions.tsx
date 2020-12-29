@@ -95,7 +95,7 @@ export default class LauncherOption extends React.Component<LauncherOptionsProps
   }
   render(): JSX.Element {
     return (
-      <div>
+      <div style={{maxHeight: '500px', overflow: 'auto'}}>
         {this.state.icons.map((value, index) =>
           <LauncherIcon
             listUpdated={this.state.listUpdated}

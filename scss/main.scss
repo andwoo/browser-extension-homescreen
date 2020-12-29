@@ -32,3 +32,7 @@ body, html {
       transform:rotate(360deg);
   }
 }
+
+.simplebar-scrollbar::before {
+  background-color: #c9d1d9 !important;
+}

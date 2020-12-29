@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import SimpleBar from 'simplebar-react';
 import $ from 'jquery';
 import { BlockColumnProps } from './BlockColumn';
 import Box from '../styled/Box';
@@ -59,12 +60,12 @@ const ValorantColumn = ({ block, isLoading, setLoading, isSuccess, setSuccess }:
   }
 
   return (
-    <Box padding="none" border={false} style={{height: '100%', overflow: 'auto'}}>
+    <SimpleBar autoHide={true} style={{height: '100%'}}>
       <h3 style={{maxWidth: '16vw', textOverflow: 'ellipsis', overflow: 'hidden', color: StyleConstants.Colors.greyText}}>VALORANT</h3>
       {matches.map((match: Match, index: number) => {
         return <MatchItem key={index} {...match}/>
       })}
-    </Box>
+    </SimpleBar>
   );
 }
 

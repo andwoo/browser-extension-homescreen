@@ -12,6 +12,9 @@ import BlockTypes from './constants/BlockTypes';
 import WarningDialog from './components/main/WarningDialog';
 import BlockColumn from './components/main/BlockColumn';
 
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+
 const sizes = new Map();
 sizes.set(BlockTypes.LAUNCHER, '');
 
