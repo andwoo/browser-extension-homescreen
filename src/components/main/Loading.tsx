@@ -16,7 +16,7 @@ const Loading = ({loading, success}: LoadingProps): JSX.Element => {
     return null;
   }
   return (
-    <div className={`loadingIcon ${loading ? 'loadingIconProgress' : ''}`}>
+    <div className={`loadingIcon ${loading ? 'loadingIconProgress' : ''}`} style={{display: 'inline-flex'}}>
       <i className={icon}/>
     </div>
   );
