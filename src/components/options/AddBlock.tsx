@@ -5,7 +5,7 @@ import { Layout, LayoutItem } from '@andwoo/scss-grid';
 import { Block } from '../../redux/interfaces/StoreModel';
 import * as BlockActions from '../../redux/actions/BlockActions';
 import BlockTypes from '../../constants/BlockTypes';
-import Box from '../styled/Box';
+import { GreyBox } from '../styled/Box';
 import { SuccessButton } from '../styled/Button';
 import * as StyleConstants from '../styled/StyleConstants'
 import { dataToString as redditDataToString } from './RedditOptions';
@@ -48,7 +48,7 @@ const AddBlock = ({addBlock}: {addBlock: (block: Block, dataToString: () => stri
   }
 
   return (
-    <Box radius="extraSmall" border borderColor="lightGrey" padding="small">
+    <GreyBox border={false}>
       <Layout>
         <LayoutItem size="full" stretch>
           <select
@@ -64,7 +64,7 @@ const AddBlock = ({addBlock}: {addBlock: (block: Block, dataToString: () => stri
           <SuccessButton icon="fas fa-plus" label="Add" onClick={handleOnAddBlock} style={{color: StyleConstants.darkenedTextColor}}/>
         </LayoutItem>
       </Layout>
-    </Box>
+    </GreyBox>
   );
 }
 export default connect(MapStateToProps, MapDispatchToProps)(AddBlock);

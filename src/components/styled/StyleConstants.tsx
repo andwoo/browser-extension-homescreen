@@ -8,34 +8,30 @@ export type RadiiKeys = keyof typeof Radii;
 
 export const Colors = {
   none: 'transparent',
+  button: '#182C34',
+  background: '#122733',
 
-  greyText: '#c9d1d9',
-  grey: '#161b22',
-  lightGrey: '#c9d1d9',
+  greyText: '#849496',
+  grey: '#1A3441',
+  lightGrey: '#849496',
 
-  yellowText: '#bb8009',
-  yellow: '#4b2900',
-  lightYellow: '#bb8009',
+  yellowText: '#677217',
+  lightYellow: 'rgba(103, 114, 23, 0.35)',
 
-  redText: '#f85149',
-  red: '#67060c',
-  lightRed: '#f85149',
+  redText: '#BD3B33',
+  lightRed: 'rgba(189, 59, 51, 0.35)',
 
-  greenText: '#2ea043',
-  green: '#033a16',
-  lightGreen: '#2ea043',
+  greenText: '#8A9B00',
+  lightGreen: 'rgba(138, 155, 0, 0.35)',
 
-  blueText: '#388bfd',
-  blue: '#0c2d6b',
-  lightBlue: '#388bfd',
+  blueText: '#5787D2',
+  lightBlue: 'rgba(87, 135, 210, 0.35)',
 
-  purpleText: '#a371f7',
-  purple: '#3c1e70',
-  lightPurple: '#a371f7',
+  purpleText: '#6E6AC7',
+  lightPurple: 'rgba(110, 106, 199, 0.35)',
 
-  pinkText: '#db61a2',
-  pink: '#5e103e',
-  lightPink: '#db61a2'
+  pinkText: '#B63A83',
+  lightPink: 'rgba(182, 58, 131, 0.35)'
 }
 export type ColorKeys = keyof typeof Colors;
 

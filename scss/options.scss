@@ -1,13 +1,13 @@
 @charset "utf-8";
 
 @font-face {
-  font-family: 'Lato'; /*a name to be used later*/
-  src: url('/resources/fonts/lato/Lato-Regular.ttf'); /*URL to font*/
+  font-family: 'VT323', monospace;
+  @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 }
 
 body, html {
-  background-color: #0d1117;
-  color: #c9d1d9;
+  background-color: #122733;
+  color: #849496;
   font-size: 20px;
-  font-family: 'Lato';
+  font-family: 'VT323';
 }

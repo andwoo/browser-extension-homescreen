@@ -78,19 +78,17 @@ const MatchItem = ({teamOne, teamTwo, isLive, time, thumbnail, href}: Match): JS
       thumbnailFallbackIcon="fas fa-headset"
       thumbnailHref={href}
       href={href}
-      border
-      borderColor="lightYellow"
+      border={false}
       radius="small"
       padding="small"
-      style={{color: StyleConstants.Colors.yellowText}}
     >
       <p>
         <strong>{teamOne}</strong>
         {' vs '}
         <strong>{teamTwo}</strong>
       </p>
-      <Box padding="none" border={false} style={{color: isLive ? StyleConstants.Colors.redText : StyleConstants.Colors.blueText}}>
-        <i className={isLive ? 'fas fa-user-crown' : 'far fa-stopwatch'} style={{marginRight: StyleConstants.Paddings.small}}/>
+      <Box padding="none" border={false} style={{color: isLive ? StyleConstants.Colors.redText : StyleConstants.Colors.blueText, display: 'flex', alignItems: 'center'}}>
+        <i className={isLive ? 'fas fa-circle' : 'far fa-stopwatch'} style={{marginRight: StyleConstants.Paddings.small, fontSize: isLive ? '0.5rem' : '1rem'}}/>
         <strong>{isLive ? 'LIVE' : time}</strong>
       </Box>
     </MediaTile>

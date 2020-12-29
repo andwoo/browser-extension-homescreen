@@ -60,7 +60,7 @@ const TwitchColumn = ({ block, isLoading, setLoading, isSuccess, setSuccess }: B
 
   return (
     <SimpleBar autoHide={true} style={{height: '100%'}}>
-      <h3 style={{maxWidth: '16vw', textOverflow: 'ellipsis', overflow: 'hidden', color: StyleConstants.Colors.purpleText}}>TWITCH</h3>
+      <h3 style={{maxWidth: '16vw', textOverflow: 'ellipsis', overflow: 'hidden'}}>TWITCH</h3>
       {streamers.map((streamer: TwitchStreamer, index: number) => {
         return <StreamerItem key={index} {...streamer}/>
       })}
@@ -77,16 +77,14 @@ const StreamerItem = ({name, viewers, game, href, thumbnail}: TwitchStreamer): J
       thumbnailFallbackIcon="fab fa-twitch"
       thumbnailHref={href}
       href={href}
-      border
-      borderColor="lightPurple"
+      border={false}
       radius="small"
       padding="small"
-      style={{color: StyleConstants.Colors.purpleText}}
     >
       <strong>{name}</strong>
       <p>{game}</p>
-      <Box padding="none" border={false} style={{color: StyleConstants.Colors.redText}}>
-        <i className="fas fa-user-crown" style={{marginRight: StyleConstants.Paddings.small, fontSize: '0.75rem'}}/>
+      <Box padding="none" border={false} style={{color: StyleConstants.Colors.redText, display: 'flex', alignItems: 'center'}}>
+        <i className="fas fa-circle" style={{marginRight: StyleConstants.Paddings.small, fontSize: '0.5rem'}}/>
         <strong>{'' + viewers}</strong>
       </Box>
     </MediaTile>

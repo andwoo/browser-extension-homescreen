@@ -10,7 +10,7 @@ import TwitchOptions from './TwitchOptions';
 import LauncherOption from './LauncherOptions';
 import ValorantOptions from './ValorantOptions';
 import { InfoButton } from '../styled/Button';
-import { TransparentBox } from '../styled/Box';
+import { GreyBox } from '../styled/Box';
 import * as StyleConstants from '../styled/StyleConstants';
 
 function MapStateToProps() {
@@ -85,7 +85,7 @@ const BlockContainer = (props: BlockContainerProps): JSX.Element => {
     props.updateBlock(block, optionB?.dataToString);
   }
   return (
-    <TransparentBox style={{marginTop: StyleConstants.Paddings.small}}>
+    <GreyBox border={false} style={{marginTop: StyleConstants.Paddings.small}}>
       <SortContainer
         icon={getBlockIcon(block)}
         removeBlock={(): void => props.removeBlock(block)}
@@ -95,7 +95,7 @@ const BlockContainer = (props: BlockContainerProps): JSX.Element => {
         {getBlockOptionComponent(option, block, saveChanges)}
         <InfoButton icon="fas fa-save" label="Save" style={{marginTop: StyleConstants.Paddings.small}} onClick={saveChanges}/>
       </SortContainer>
-    </TransparentBox>
+    </GreyBox>
   );
 }
 

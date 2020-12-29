@@ -40,7 +40,7 @@ export const TransparentBox = (props: ExtendedBoxProps): JSX.Element => {
   return (
     <Box
       radius="extraSmall"
-      border
+      border={false}
       borderColor="lightGrey"
       padding="small"
       {...props}
@@ -68,7 +68,7 @@ export const SuccessBox = (props: ExtendedBoxProps): JSX.Element => {
       border
       borderColor="lightGreen"
       padding="small"
-      color="green"
+      color="grey"
       {...props}
       style={{color: StyleConstants.Colors.greenText, ...props.style}}
     />
@@ -82,7 +82,7 @@ export const ErrorBox = (props: ExtendedBoxProps): JSX.Element => {
       border
       borderColor="lightRed"
       padding="small"
-      color="red"
+      color="grey"
       {...props}
       style={{color: StyleConstants.Colors.redText, ...props.style}}
     />
@@ -96,7 +96,7 @@ export const WarningBox = (props: ExtendedBoxProps): JSX.Element => {
       border
       borderColor="lightYellow"
       padding="small"
-      color="yellow"
+      color="grey"
       {...props}
       style={{color: StyleConstants.Colors.yellowText, ...props.style}}
     />
@@ -110,7 +110,7 @@ export const InfoBox = (props: ExtendedBoxProps): JSX.Element => {
       border
       borderColor="lightBlue"
       padding="small"
-      color="blue"
+      color="grey"
       {...props}
       style={{color: StyleConstants.Colors.blueText, ...props.style}}
     />
@@ -124,7 +124,7 @@ export const PurpleBox = (props: ExtendedBoxProps): JSX.Element => {
       border
       borderColor="lightPurple"
       padding="small"
-      color="purple"
+      color="grey"
       {...props}
       style={{color: StyleConstants.Colors.purpleText, ...props.style}}
     />
@@ -138,7 +138,7 @@ export const PinkBox = (props: ExtendedBoxProps): JSX.Element => {
       border
       borderColor="lightPink"
       padding="small"
-      color="pink"
+      color="grey"
       {...props}
       style={{color: StyleConstants.Colors.pinkText, ...props.style}}
     />

@@ -68,7 +68,7 @@ export const TransparentButton = (props: ExtendedButtonProps): JSX.Element => {
 
 export const GreyButton = (props: ExtendedButtonProps): JSX.Element => {
   return <Button
-    color="grey"
+    color="button"
     border
     borderColor="lightGrey"
     padding="small"
@@ -82,7 +82,7 @@ export const GreyButton = (props: ExtendedButtonProps): JSX.Element => {
 
 export const SuccessButton = (props: ExtendedButtonProps): JSX.Element => {
   return <Button
-    color="green"
+    color="button"
     border
     borderColor="lightGreen"
     padding="small"
@@ -97,7 +97,7 @@ export const SuccessButton = (props: ExtendedButtonProps): JSX.Element => {
 
 export const ErrorButton = (props: ExtendedButtonProps): JSX.Element => {
   return <Button
-    color="red"
+    color="button"
     border
     borderColor="lightRed"
     padding="small"
@@ -112,7 +112,7 @@ export const ErrorButton = (props: ExtendedButtonProps): JSX.Element => {
 
 export const WarningButton = (props: ExtendedButtonProps): JSX.Element => {
   return <Button
-    color="yellow"
+    color="button"
     border
     borderColor="lightYellow"
     padding="small"
@@ -126,7 +126,7 @@ export const WarningButton = (props: ExtendedButtonProps): JSX.Element => {
 
 export const InfoButton = (props: ExtendedButtonProps): JSX.Element => {
   return <Button
-    color="blue"
+    color="button"
     border
     borderColor="lightBlue"
     padding="small"
@@ -140,7 +140,7 @@ export const InfoButton = (props: ExtendedButtonProps): JSX.Element => {
 
 export const PurpleButton = (props: ExtendedButtonProps): JSX.Element => {
   return <Button
-    color="purple"
+    color="button"
     border
     borderColor="lightPurple"
     padding="small"
@@ -154,7 +154,7 @@ export const PurpleButton = (props: ExtendedButtonProps): JSX.Element => {
 
 export const PinkButton = (props: ExtendedButtonProps): JSX.Element => {
   return <Button
-    color="pink"
+    color="button"
     border
     borderColor="lightPink"
     padding="small"

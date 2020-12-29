@@ -131,7 +131,7 @@ const marginTopStyle: React.CSSProperties = {
 const LauncherIcon = (props: LauncherIconProps): JSX.Element => {
   const index = props.index;
   return (
-    <TransparentBox key={props.listUpdated} style={marginTopStyle}>
+    <TransparentBox color="background" key={props.listUpdated} style={marginTopStyle}>
       <SortContainer
         removeBlock={(): void => props.removeBlock(index)}
         moveBlockUp={(): void => props.moveBlockUp(index)}

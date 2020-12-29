@@ -73,14 +73,12 @@ const PostItem = ({title, thumbnail, postHref, commentsHref, upVotes}: RedditPos
       thumbnailFallbackIcon="fab fa-reddit-alien"
       thumbnailHref={postHref}
       href={commentsHref}
-      border
-      borderColor="lightPink"
+      border={false}
       radius="small"
       padding="small"
-      style={{color: StyleConstants.Colors.pinkText}}
     >
       <p>{title}</p>
-      <Box padding="none" border={false} style={{color: StyleConstants.Colors.greenText}}>
+      <Box padding="none" border={false} style={{color: StyleConstants.Colors.greenText, display: 'flex', alignItems: 'center'}}>
         <i className="fas fa-angle-up" style={{marginRight: StyleConstants.Paddings.small}}/>
         <strong>{'' + upVotes}</strong>
       </Box>

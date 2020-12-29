@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Layout, LayoutItem } from '@andwoo/scss-grid';
-import Box from '../styled/Box';
+import Box, { GreyBox } from '../styled/Box';
 import * as StyleConstants from '../styled/StyleConstants';
 
 interface MediaTileProps {
@@ -44,14 +44,14 @@ const MediaTile = (props: MediaTileProps): JSX.Element => {
   `;
 
   return (
-    <Box
+    <GreyBox
       {...props}
       style={{marginBottom: StyleConstants.Paddings.small, ...props.style}}
     >
       <Layout>
         <LayoutItem>
           <Href href={props.thumbnailHref}>
-            <Box radius="small" border borderColor={props.borderColor} padding="none" color="grey" style={{display: 'flex', width: '3rem', height: '3rem', justifyContent: 'center', alignItems: 'center'}}>
+            <Box radius="small" border borderColor={props.borderColor} padding="none" color="background" style={{display: 'flex', width: '3rem', height: '3rem', justifyContent: 'center', alignItems: 'center'}}>
               {props.thumbnail && <Image/>}
               {!props.thumbnail && <i className={props.thumbnailFallbackIcon} style={{fontSize: '2rem'}}/>}
             </Box>
@@ -65,7 +65,7 @@ const MediaTile = (props: MediaTileProps): JSX.Element => {
           </Href>
         </LayoutItem>
       </Layout>
-    </Box>
+    </GreyBox>
   );
 }
 
