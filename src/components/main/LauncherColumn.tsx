@@ -38,9 +38,13 @@ const Href = styled.a`
   transition: filter 0.15s;
   &:hover {
     filter: brightness(160%);
+    -webkit-filter: brightness(160%);
+    -moz-filter: brightness(160%);
   }
   &:active {
     filter: brightness(160%);
+    -webkit-filter: brightness(160%);
+    -moz-filter: brightness(160%);
   }
 `;
 const Icon = (icon: LauncherOptionItem): JSX.Element => {

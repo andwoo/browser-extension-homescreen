@@ -1,7 +1,7 @@
 import React from 'react';
 import { Block } from '../../redux/interfaces/StoreModel';
 import OptionInput from './OptionInput';
-import Box from '../styled/Box';
+import { WarningBox } from '../styled/Box';
 import { PurpleButton } from '../styled/Button';
 import * as StyleConstants from '../styled/StyleConstants';
 
@@ -50,9 +50,9 @@ export default class TwitchOption extends React.Component<TwitchOptionProps, Twi
     return (
       <form>
         <OptionInput initialValue={initialValue} placeholder="token" label="Token" onChange={this.onChange} />
-        <Box color="yellow" border borderColor="lightYellow" radius="small" padding="small" style={InfoStyle}>
+        <WarningBox style={InfoStyle}>
           <p style={{color: StyleConstants.Colors.yellowText}}><i className="fas fa-exclamation" style={IconStyle}/> Generate a token with the scope permission <strong>user_read</strong></p>
-        </Box>
+        </WarningBox>
         <PurpleButton icon="fab fa-twitch" label="Generate" onClick={this.handleOnGenerate} style={{marginTop: StyleConstants.Paddings.small}}/>
       </form>
     )

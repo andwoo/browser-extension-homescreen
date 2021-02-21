@@ -19,9 +19,13 @@ const ButtonHover = styled.div`
   transition: filter 0.15s;
   &:hover {
     filter: brightness(160%);
+    -webkit-filter: brightness(160%);
+    -moz-filter: brightness(160%);
   }
   &:active {
     filter: brightness(160%);
+    -webkit-filter: brightness(160%);
+    -moz-filter: brightness(160%);
   }
 `;
 

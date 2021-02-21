@@ -18,9 +18,13 @@ const Input = styled.input`
   }
   &[type=text]:focus {
     filter: brightness(120%);
+    -webkit-filter: brightness(120%);
+    -moz-filter: brightness(120%);
   }
   &:hover {
     filter: brightness(160%);
+    -webkit-filter: brightness(160%);
+    -moz-filter: brightness(160%);
   }
 `;
 
