@@ -1,29 +1,43 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking'
 
-enum Theme {
+export enum Theme {
   Light = 'Light',
   Dark = 'Dark'
 }
-const THEMENAME_KEY = 'themeName'
+const themeKey = 'themeName'
+
+const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
+  '--bg-color': {
+    Light: '#EFE6DD',
+    Dark: '#fc92e3'
+  }
+}
 
 export default class ThemeService extends Service {
   @tracked name: Theme = Theme.Light
 
+  get isLightTheme(): boolean {
+    return this.name === Theme.Light
+  }
+
   async initialize(): Promise<void> {
-    const value = window.localStorage.getItem(THEMENAME_KEY)
+    const value = window.localStorage.getItem(themeKey)
     //@ts-ignore
     this.setTheme(Theme[value] ?? Theme.Light)
   }
 
   setTheme(name: Theme): void {
     this.name = name
-    window.localStorage.setItem(THEMENAME_KEY, this.name)
+    window.localStorage.setItem(themeKey, this.name)
     this.setThemeValues()
   }
 
   setThemeValues(): void {
-    console.log(`setThemeValues() name[${this.name}]`)
+    const element = document.documentElement
+    if(element) {
+      Object.keys(cssVariables).forEach(key => element.style.setProperty(key, cssVariables[key][this.isLightTheme ? Theme.Light : Theme.Dark]))
+    }
   }
 }
 
@@ -33,3 +47,4 @@ declare module '@ember/service' {
     'theme': Theme;
   }
 }
+
