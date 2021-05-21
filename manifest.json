@@ -1,18 +1,15 @@
 {
   "manifest_version": 2,
   "name": "Hub",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "New tab hub containing a list of your favourite subreddits, Twitch live streamers and upcoming esports matches.",
   "icons": {
-    "16": "build/resources/icons/icon16.png",
-    "48": "build/resources/icons/icon48.png",
-    "128": "build/resources/icons/icon128.png"
-  },
-  "options_ui": {
-    "page": "build/options.html"
+    "16": "dist/icons/icon16.png",
+    "48": "dist/icons/icon48.png",
+    "128": "dist/icons/icon128.png"
   },
   "chrome_url_overrides": {
-    "newtab": "build/main.html"
+    "newtab": "dist/index.html"
   },
   "permissions": [
     "https://reddit.com/",
