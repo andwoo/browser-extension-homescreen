@@ -1,56 +1,30 @@
-# ember-quickstart
+# Information Used When Submitting
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+## Description
 
-## Prerequisites
+View your list of Live Twitch streamers, upcoming e-sports matches and a list of your favourite subreddits all in one place, the Hub.
 
-You will need the following things properly installed on your computer.
+## Permission Justifications
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+**storage**
 
-## Installation
+```
+The storage permission is used to save the user's extension options and sync it across their browsers. Option items are list of subreddits and Twitch user access token.
+```
 
-* `git clone <repository-url>` this repository
-* `cd ember-quickstart`
-* `npm install`
+**host**
 
-## Running / Development
+```
+The hosts specified in the manifest.json are to fetch data. https://reddit.com/ is required to fetch subreddit JSON data from reddit.com. https://api.twitch.tv/ is used with an access token set in the options to retrieve the user's list of followed twitch streamers. https://www.vlr.gg/ is used to retrieve a list of live and upcoming esports matches. https://fonts.googleapis.com/ is used to fetch custom css fonts.
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+List of hosts used:
+- https://reddit.com/
+- https://api.twitch.tv/
+- https://www.vlr.gg/
+- https://fonts.googleapis.com/
+```
 
-### Code Generators
+## Install Steps For Reviewer
 
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Linting
-
-* `npm run lint`
-* `npm run lint:fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+- Install dependencies by running the terminal command "yarn" from the project root.
+- Build the app by running the terminal command "yarn buildprod" from the project root.

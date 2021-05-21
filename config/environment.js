@@ -44,7 +44,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = '/dist';
+    ENV.rootURL = '/dist/';
   }
 
   // Requied for browser extensions
