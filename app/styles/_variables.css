@@ -1,13 +1,19 @@
 :root {
-  --bg-color: cyan;
+  --h-background: #02475e;
+  --h-foreground: #687980;
+
+  --h-text: #fefecc;
 
   /* Toggle */
-  --toggle-bg-checked: rgb(75, 85, 99);
-  --toggle-bg-unchecked: rgb(75, 85, 99);
-  --toggle-dot-checked: #ffffff;
-  --toggle-dot-unchecked: #000000;
+  --h-toggle-bg-checked: rgb(75, 85, 99);
+  --h-toggle-bg-unchecked: rgb(75, 85, 99);
+  --h-toggle-dot-checked: #ffffff;
+  --h-toggle-dot-unchecked: #000000;
 }
 
 body {
-  background-color: var(--bg-color);
+  background-color: var(--h-background);
+  color: var(--h-text);
+  width: 100vw;
+  height: 100vh;
 }

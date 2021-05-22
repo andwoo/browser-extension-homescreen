@@ -8,9 +8,17 @@ export enum Theme {
 const themeKey = 'themeName'
 
 const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
-  '--bg-color': {
-    Light: '#EFE6DD',
-    Dark: '#fc92e3'
+  '--h-background': {
+    Light: '#faf2da',
+    Dark: '#02475e'
+  },
+  '--h-foreground': {
+    Light: '#8e9775',
+    Dark: '#687980'
+  },
+  '--h-text': {
+    Light: '#4a503d',
+    Dark: '#fefecc'
   }
 }
 

@@ -1,16 +1,16 @@
 input ~ .toggle-bg {
-  background-color: var(--toggle-bg-unchecked);
+  background-color: var(--h-toggle-bg-unchecked);
 }
 
 input:checked ~ .toggle-bg {
-  background-color: var(--toggle-bg-checked);
+  background-color: var(--h-toggle-bg-checked);
 }
 
 input ~ .toggle-dot {
-  background-color: var(--toggle-dot-unchecked);
+  background-color: var(--h-toggle-dot-unchecked);
 }
 
 input:checked ~ .toggle-dot {
   transform: translateX(100%);
-  background-color: var(--toggle-dot-checked);
+  background-color: var(--h-toggle-dot-checked);
 }
