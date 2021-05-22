@@ -2,9 +2,9 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import ThemeService, { Theme } from '../../../services/theme';
+import ThemeService, { Theme } from '../../services/theme';
 
-export default class ToggleComponent extends Component<{}> {
+export default class ThemeToggleComponent extends Component<{}> {
   @service('theme') declare theme: ThemeService;
 
   @tracked isLightTheme: boolean = false;

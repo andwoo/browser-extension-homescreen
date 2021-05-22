@@ -5,4 +5,4 @@
 @import 'tailwindcss/utilities';
 
 @import '_variables';
-@import '_toggle';
+@import '_theme-toggle';

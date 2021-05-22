@@ -1,0 +1,15 @@
+<div
+  ...attributes
+  {{did-insert this.initialize}}
+  {{did-update this.onUpdateTheme this.isLightTheme}}
+>
+  <label class="flex items-center cursor-pointer">
+    <div class="relative">
+      <Input class="sr-only" @type="checkbox" @checked={{this.isLightTheme}} />
+      <div class="toggle-bg block w-14 h-8 rounded-full"/>
+      <div class="toggle-dot absolute left-1 top-1 w-6 h-6 rounded-full transition flex justify-center items-center">
+        <i class="toggle-dot--svg {{if this.isLightTheme 'far fa-sun' 'far fa-moon'}}"/>
+      </div>
+    </div>
+  </label>
+</div>

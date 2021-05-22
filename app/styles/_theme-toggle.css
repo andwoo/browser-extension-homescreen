@@ -1,0 +1,15 @@
+.toggle-bg {
+  background-color: var(--h-foreground);
+}
+
+.toggle-dot {
+  background-color: var(--h-background);
+}
+
+.toggle-dot--svg {
+  color: var(--h-foreground);
+}
+
+input:checked ~ .toggle-dot {
+  transform: translateX(100%);
+}

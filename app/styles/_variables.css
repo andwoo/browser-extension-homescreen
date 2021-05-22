@@ -1,14 +1,7 @@
 :root {
   --h-background: #02475e;
   --h-foreground: #687980;
-
   --h-text: #fefecc;
-
-  /* Toggle */
-  --h-toggle-bg-checked: rgb(75, 85, 99);
-  --h-toggle-bg-unchecked: rgb(75, 85, 99);
-  --h-toggle-dot-checked: #ffffff;
-  --h-toggle-dot-unchecked: #000000;
 }
 
 body {

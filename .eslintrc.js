@@ -6,6 +6,7 @@ module.exports = {
   globals: {
     chrome: true,
     window: true,
+    browser: true,
   },
   parserOptions: {
     ecmaVersion: 2018,
