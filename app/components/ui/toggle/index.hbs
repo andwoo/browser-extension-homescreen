@@ -1,9 +1,9 @@
 <div ...attributes>
-  <label class="toggle">
-    <Input
-      @type="checkbox"
-      @checked={{@value}}
-    />
-    <span class="toggle--slider"/>
+  <label class="flex items-center cursor-pointer">
+    <div class="relative">
+      <Input class="sr-only" @type="checkbox" @checked={{@value}} />
+      <div class="toggle-bg block w-14 h-8 rounded-full"></div>
+      <div class="toggle-dot absolute left-1 top-1 w-6 h-6 rounded-full transition"></div>
+    </div>
   </label>
 </div>

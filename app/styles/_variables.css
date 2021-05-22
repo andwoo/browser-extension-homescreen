@@ -1,0 +1,13 @@
+:root {
+  --bg-color: cyan;
+
+  /* Toggle */
+  --toggle-bg-checked: rgb(75, 85, 99);
+  --toggle-bg-unchecked: rgb(75, 85, 99);
+  --toggle-dot-checked: #ffffff;
+  --toggle-dot-unchecked: #000000;
+}
+
+body {
+  background-color: var(--bg-color);
+}

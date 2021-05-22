@@ -1,0 +1,16 @@
+input ~ .toggle-bg {
+  background-color: var(--toggle-bg-unchecked);
+}
+
+input:checked ~ .toggle-bg {
+  background-color: var(--toggle-bg-checked);
+}
+
+input ~ .toggle-dot {
+  background-color: var(--toggle-dot-unchecked);
+}
+
+input:checked ~ .toggle-dot {
+  transform: translateX(100%);
+  background-color: var(--toggle-dot-checked);
+}
