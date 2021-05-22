@@ -3,32 +3,46 @@
 >
   <BasicDropdown as |dropdown|>
     <dropdown.Trigger>
-      <i class="fas fa-plus-circle"></i>
+      <Button
+        @icon="fas fa-plus-circle"
+        @label="Add"
+      />
     </dropdown.Trigger>
     <dropdown.Content>
-      {{#each this.blockTypes as |type|}}
-        <div
-          style='color: black'
-          {{on 'click' (pipe-action dropdown.actions.close (fn this.addBlock type))}}
-        >
-          {{type}}
-        </div>
-      {{/each}}
+      <div class="flex flex-col">
+        {{#each this.blockTypes as |type|}}
+          <Button
+            @icon="fas fa-angle-right"
+            @label={{type}}
+            {{on 'click' (pipe-action dropdown.actions.close (fn this.addBlock type))}}
+          />
+        {{/each}}
+      </div>
     </dropdown.Content>
   </BasicDropdown>
-  {{#each this.blocks as |block|}}
-    <div>
-      <div>--start--</div>
-      <div>{{block.id}}</div>
-      <div>{{block.order}}</div>
-      <div>{{block.type}}</div>
-      <div>{{block.payload}}</div>
-      <div
-        {{on 'click' (fn this.removeBlock block)}}
-      >
-        <i class="fas fa-times-circle"/>
+  <div class='flex flex-row'>
+    {{#each this.blocks as |block|}}
+      <div style="order:{{block.order}}">
+        <div>{{block.id}}</div>
+        <div>{{block.order}}</div>
+        <div>{{block.type}}</div>
+        <div>{{block.payload}}</div>
+        <Button
+          @icon="fas fa-arrow-left"
+          @label='Move Left'
+          {{on 'click' (fn this.moveBlockLeft block)}}
+        />
+        <Button
+          @icon="fas fa-arrow-right"
+          @label='Move Right'
+          {{on 'click' (fn this.moveBlockRight block)}}
+        />
+        <Button
+          @icon="fas fa-times-circle"
+          @label='Remove'
+          {{on 'click' (fn this.removeBlock block)}}
+        />
       </div>
-      <div>--end--</div>
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
 </div>

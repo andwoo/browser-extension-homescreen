@@ -1,0 +1,16 @@
+<button
+  class='py-2 px-3 bg-gray-600 hover:bg-gray-500 rounded-full'
+  type="button"
+  ...attributes
+>
+  <div class='flex items-center'>
+    {{#if (has-block)}}
+      {{yield}}
+    {{else}}
+      {{#if @icon}}
+        <i class="{{@icon}}"></i>
+      {{/if}}
+        <span class="font-bold {{if @icon 'ml-2'}}">{{@label}}</span>
+    {{/if}}
+  </div>
+</button>
