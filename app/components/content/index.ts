@@ -9,7 +9,6 @@ export type EditBlockActions = {
   moveLeft: (block: Block) => void;
   moveRight: (block: Block) => void;
   remove: (block: Block) => void;
-  save: () => void;
 };
 export interface EditBlockArgs {
   item: Block;
@@ -39,12 +38,7 @@ export default class ContentComponent extends Component<{}> {
       moveLeft: this.moveLeft,
       moveRight: this.moveRight,
       remove: this.remove,
-      save: this.save,
     };
-  }
-
-  @action reloadBlocks(): void {
-    this.blockService.initialize(getOwner(this));
   }
 
   @action addBlock(type: BlockType): void {
@@ -84,9 +78,5 @@ export default class ContentComponent extends Component<{}> {
 
   @action remove(block: Block): void {
     this.blockService.removeBlock(block);
-  }
-
-  @action save(): void {
-    this.blockService.save(getOwner(this));
   }
 }

@@ -1,6 +1,5 @@
 <div
   ...attributes
-  {{did-update this.reloadBlocks this.blockService.editing}}
 >
   {{#if this.blockService.editing}}
     <div class="flex flex-row">
@@ -22,10 +21,6 @@
           </div>
         </dropdown.Content>
       </BasicDropdown>
-      <Button
-        @icon="far fa-save"
-        {{on 'click' this.save}}
-      />
     </div>
     {{#if (gt this.blocks.length 0)}}
       <div class='flex flex-row'>
@@ -43,8 +38,13 @@
         {{/each}}
       </div>
     {{else}}
-      <div class='flex'>
-        CLick the plus icon to add a new block. Hit save to apply changes. Hit the check to return to the main view.
+      <div class='flex justify-center mt-4'>
+        <Box class='max-w-md flex flex-row items-center' @type='info'>
+          <i class="fas fa-exclamation mx-4"/>
+          <div class='flex-1'>
+            Click the plus icon to add a new block. Hit the check to apply changes. Hit the x to return to the main view.
+          </div>
+        </Box>
       </div>
     {{/if}}
   {{else}}
@@ -57,8 +57,13 @@
       {{/each}}
     </div>
     {{else}}
-      <div class='flex'>
-        This looks empty, click the edit button at the top right to add blocks to your hub.
+      <div class='flex justify-center mt-4'>
+        <Box class='max-w-md flex flex-row items-center' @type='info'>
+          <i class="fas fa-exclamation mx-4"/>
+          <div class='flex-1'>
+            This looks empty, click the edit button at the top right to add blocks to your hub.
+          </div>
+        </Box>
       </div>
     {{/if}}
   {{/if}}

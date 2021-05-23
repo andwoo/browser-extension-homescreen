@@ -4,10 +4,21 @@
   <div class='h-full p-2 flex flex-row items-center'>
     <img src='/dist/hub-logo.svg' class='h-full w-auto' alt='hub icon'/>
     <div class='flex-1'/>
-    <Button
-      @icon='{{if this.blockService.editing 'fas fa-check' 'fas fa-edit'}}'
-      {{on 'click' (fn (mut this.blockService.editing) (not this.blockService.editing))}}
-    />
+    {{#if this.blockService.editing}}
+      <Button
+        @icon="fas fa-check"
+        {{on 'click' this.save}}
+      />
+      <Button
+        @icon="fas fa-times-circle"
+        {{on 'click' this.cancel}}
+      />
+    {{else}}
+      <Button
+        @icon="fas fa-edit"
+        {{on 'click' this.edit}}
+      />
+    {{/if}}
     <ThemeToggle />
   </div>
 </div>

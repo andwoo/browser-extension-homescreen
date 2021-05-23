@@ -19,6 +19,10 @@ const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   '--h-text': {
     Light: '#4a503d',
     Dark: '#fefecc'
+  },
+  '--h-info': {
+    Light: '#faf2da',
+    Dark: '#02475e'
   }
 }
 
