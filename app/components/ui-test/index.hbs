@@ -1,0 +1,110 @@
+<div class='flex flex-row'>
+  <div class='flex flex-col mr-4'>
+    <h4>Default</h4>
+    <Button
+      class='mb-4 self-start'
+      @icon='fas fa-plus'
+    />
+    <Button
+      class='mb-4 self-start'
+      @icon='fas fa-plus'
+      @label='Add'
+    />
+    <Button
+      class='mb-4 self-start'
+      @label='Add'
+    />
+  </div>
+
+  <div class='flex flex-col mr-4'>
+    <h4>Ghost</h4>
+    <Button
+      class='mb-4 self-start'
+      @icon='fas fa-plus'
+      @type='ghost'
+    />
+    <Button
+      class='mb-4 self-start'
+      @icon='fas fa-plus'
+      @label='Add'
+      @type='ghost'
+    />
+    <Button
+      class='mb-4 self-start'
+      @label='Add'
+      @type='ghost'
+    />
+  </div>
+
+  <div class='flex flex-col mr-4'>
+    <h4>Transparent</h4>
+    <Button
+      class='mb-4 self-start'
+      @icon='fas fa-plus'
+      @type='transparent'
+    />
+    <Button
+      class='mb-4 self-start'
+      @icon='fas fa-plus'
+      @label='Add'
+      @type='transparent'
+    />
+    <Button
+      class='mb-4 self-start'
+      @label='Add'
+      @type='transparent'
+    />
+  </div>
+
+  <div class='flex flex-col mr-4'>
+    <h4>Danger</h4>
+    <Button
+      class='mb-4 self-start'
+      @icon='fas fa-plus'
+      @type='danger'
+    />
+    <Button
+      class='mb-4 self-start'
+      @icon='fas fa-plus'
+      @label='Add'
+      @type='danger'
+    />
+    <Button
+      class='mb-4 self-start'
+      @label='Add'
+      @type='danger'
+    />
+  </div>
+  <div class='flex w-64 flex-col mr-4'>
+    <div>Input</div>
+    <Innput />
+    <div>Text</div>
+    <Innput @value='value text'/>
+    <div>Placeholder</div>
+    <Innput @placeholder='placeholder text' @value=""/>
+  </div>
+
+  <div class='flex w-64 flex-col mr-4'>
+    <div>Default</div>
+    <Box
+      class='w-full'
+      @type='default'
+    >
+      Content Goes Here
+    </Box>
+    <div>Info</div>
+    <Box
+      class='w-full'
+      @type='info'
+    >
+      Content Goes Here
+    </Box>
+    <div>Purple</div>
+    <Box
+      class='w-full'
+      @type='purple'
+    >
+      Content Goes Here
+    </Box>
+  </div>
+</div>

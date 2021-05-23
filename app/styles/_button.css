@@ -1,10 +1,43 @@
 .buttonn {
-  background-color: greenyellow;
-  border-color: green;
-  color: black;
+  background-color: var(--h-btn-bg-default);
+  color: var(--h-btn-txt-default);
 }
 
 .buttonn:hover {
-  background-color: green;
-  border-color: greenyellow;
+  background-color: var(--h-btn-bg-hover-default);
+  color: var(--h-btn-txt-hover-default);
+}
+
+.buttonn-ghost {
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--h-btn-bg-ghost);
+  background-color: transparent;
+  color: var(--h-btn-txt-ghost);
+}
+
+.buttonn-ghost:hover {
+  border-color: var(--h-btn-bg-hover-ghost);
+  color: var(--h-btn-txt-hover-ghost);
+}
+
+.buttonn-transparent {
+  background-color: var(--h-btn-bg-transparent);
+  color: var(--h-btn-txt-transparent);
+}
+
+.buttonn-transparent:hover {
+  background-color: var(--h-btn-bg-hover-transparent);
+  color: var(--h-btn-txt-hover-transparent);
+}
+
+.buttonn-danger {
+  background-color: var(--h-btn-bg-danger);
+  color: var(--h-btn-txt-danger);
+}
+
+.buttonn-danger:hover {
+  background-color: var(--h-btn-bg-hover-danger);
+  color: var(--h-btn-txt-hover-danger);
 }

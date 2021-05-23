@@ -2,7 +2,39 @@
   --h-background: #02475e;
   --h-foreground: #687980;
   --h-text: #fefecc;
-  --h-info: #02475e;
+
+  /* Buttons */
+  --h-btn-bg-default: rgba(0, 0, 0, 1);
+  --h-btn-bg-hover-default: rgba(0, 0, 0, 0.5);
+  --h-btn-txt-default: rgba(255, 255, 255, 1);
+  --h-btn-txt-hover-default: rgba(255, 255, 255, 0.75);
+
+  --h-btn-bg-ghost: rgba(0, 0, 0, 1);
+  --h-btn-bg-hover-ghost: rgba(0, 0, 0, 0.5);
+  --h-btn-txt-ghost: rgba(255, 255, 255, 1);
+  --h-btn-txt-hover-ghost: rgba(255, 255, 255, 0.75);
+
+  --h-btn-bg-transparent: transparent;
+  --h-btn-bg-hover-transparent: rgba(0, 0, 0, 0.5);
+  --h-btn-txt-transparent: rgba(0, 0, 0, 1);
+  --h-btn-txt-hover-transparent: rgba(0, 0, 0, 0.75);
+
+  --h-btn-bg-danger: rgb(219, 89, 89);
+  --h-btn-bg-hover-danger: rgba(114, 0, 0, 0.5);
+  --h-btn-txt-danger: rgb(105, 0, 0);
+  --h-btn-txt-hover-danger: rgba(0, 0, 0, 0.75);
+
+  /* Input */
+  --h-input-bg: white;
+  --h-input-txt: grey;
+
+  /* Boxes */
+  --h-box-bg-default: #cecece;
+  --h-box-txt-default: #7a7a7a;
+  --h-box-bg-info: #86aaf7;
+  --h-box-txt-info: #3262ff;
+  --h-box-bg-purple: #da53d3;
+  --h-box-txt-purple: #6d0083;
 }
 
 body {

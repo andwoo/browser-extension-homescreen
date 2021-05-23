@@ -3,7 +3,6 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import BlockService from '../../services/block';
 import Block, { BlockType } from '../../models/block';
-import { getOwner } from '@ember/application';
 
 export type EditBlockActions = {
   moveLeft: (block: Block) => void;
@@ -38,6 +37,22 @@ export default class ContentComponent extends Component<{}> {
       moveLeft: this.moveLeft,
       moveRight: this.moveRight,
       remove: this.remove,
+    };
+  }
+
+  @action calculateSelectionPosition(
+    trigger: Element,
+    content: Element
+  ): { style: { top: number; left: number } } {
+    let triggerRect = trigger.getBoundingClientRect();
+    let contentRect = content.getBoundingClientRect();
+    return {
+      style: {
+        top:
+          triggerRect.top + (triggerRect.height / 2 - contentRect.height / 2),
+        left:
+          triggerRect.left + (triggerRect.width / 2 - contentRect.width / 2),
+      },
     };
   }
 

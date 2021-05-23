@@ -1,12 +1,4 @@
 .innput {
-  background-color: white;
-  color: grey;
-}
-
-.innput::placeholder {
-  color: grey;
-}
-
-.innput:focus {
-  border-color: cyan;
+  background-color: var(--h-input-bg);
+  color: var(--h-input-txt);
 }

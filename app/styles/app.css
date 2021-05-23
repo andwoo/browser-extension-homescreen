@@ -1,11 +1,12 @@
-@import '_reset';
+/*! purgecss start ignore */
+@import '_reset.css';
+@import '_variables.css';
+@import '_box.css';
+@import '_button.css';
+@import '_input.css';
+@import '_theme-toggle.css';
+/*! purgecss end ignore */
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-@import '_variables';
-@import '_box';
-@import '_button';
-@import '_input';
-@import '_theme-toggle';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

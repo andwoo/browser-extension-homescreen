@@ -1,19 +1,23 @@
 <div
   ...attributes
 >
-  {{#if this.blockService.editing}}
-    <div class="flex flex-row">
-      <BasicDropdown as |dropdown|>
-        <dropdown.Trigger>
-          <Button
-            @icon="fas fa-plus"
-          />
+  <div class='h-full flex flex-row px-4 py-4'>
+    {{#if this.blockService.editing}}
+      <BasicDropdown
+        @calculatePosition={{this.calculateSelectionPosition}}
+        as |dropdown|
+      >
+        <dropdown.Trigger class='flex flex-1' style='order:9999'>
+          <div class='w-full h-full py-2 px-2 border-dashed border-black border-4 rounded-lg flex flex-col justify-center items-center'>
+            <div>
+              <i class="fas fa-plus"/>
+            </div>
+          </div>
         </dropdown.Trigger>
         <dropdown.Content>
-          <div class="flex flex-col">
+          <div class='flex flex-col'>
             {{#each this.blockTypes as |type|}}
               <Button
-                @icon="fas fa-angle-right"
                 @label={{type}}
                 {{on 'click' (pipe-action dropdown.actions.close (fn this.addBlock type))}}
               />
@@ -21,9 +25,7 @@
           </div>
         </dropdown.Content>
       </BasicDropdown>
-    </div>
-    {{#if (gt this.blocks.length 0)}}
-      <div class='flex flex-row'>
+      {{#if (gt this.blocks.length 0)}}
         {{#each this.blocks as |item|}}
           {{#let (component item.component) as |EditBlock|}}
             {{!-- template-lint-disable no-inline-styles --}}
@@ -36,35 +38,25 @@
             />
           {{/let}}
         {{/each}}
-      </div>
+      {{/if}}
     {{else}}
-      <div class='flex justify-center mt-4'>
-        <Box class='max-w-md flex flex-row items-center' @type='info'>
-          <i class="fas fa-exclamation mx-4"/>
-          <div class='flex-1'>
-            Click the plus icon to add a new block. Hit the check to apply changes. Hit the x to return to the main view.
+      {{#if (gt this.blocks.length 0)}}
+        {{#each this.blocks as |item|}}
+          <div style="order:{{item.block.order}}">
+            <h4>{{item.block.type}} - {{item.block.id}}</h4>
           </div>
-        </Box>
-      </div>
+        {{/each}}
+      {{else}}
+        {{!-- <div class='flex-1'/>
+          <Box class='max-w-md flex flex-row self-start items-center' @type='info'>
+            <i class="fas fa-exclamation mx-4"/>
+            <div class='flex-1'>
+              Click the edit button at the top right to add blocks to your hub.
+            </div>
+          </Box>
+        <div class='flex-1'/> --}}
+        <UiTest />
+      {{/if}}
     {{/if}}
-  {{else}}
-    {{#if (gt this.blocks.length 0)}}
-    <div class='flex flex-row'>
-      {{#each this.blocks as |item|}}
-        <div style="order:{{item.block.order}}">
-          <h4>{{item.block.type}} - {{item.block.id}}</h4>
-        </div>
-      {{/each}}
-    </div>
-    {{else}}
-      <div class='flex justify-center mt-4'>
-        <Box class='max-w-md flex flex-row items-center' @type='info'>
-          <i class="fas fa-exclamation mx-4"/>
-          <div class='flex-1'>
-            This looks empty, click the edit button at the top right to add blocks to your hub.
-          </div>
-        </Box>
-      </div>
-    {{/if}}
-  {{/if}}
+  </div>
 </div>
