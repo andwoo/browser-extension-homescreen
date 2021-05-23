@@ -8,18 +8,18 @@ export enum Theme {
 const themeKey = 'themeName'
 
 const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
-  '--h-background': {
-    Light: '#faf2da',
-    Dark: '#02475e'
-  },
-  '--h-foreground': {
-    Light: '#8e9775',
-    Dark: '#687980'
-  },
-  '--h-text': {
-    Light: '#4a503d',
-    Dark: '#fefecc'
-  },
+  // '--h-header-bg': {
+  //   Light: '#faf2da',
+  //   Dark: '#02475e'
+  // },
+  // '--h-content-bg': {
+  //   Light: '#8e9775',
+  //   Dark: '#687980'
+  // },
+  // '--h-text': {
+  //   Light: '#4a503d',
+  //   Dark: '#fefecc'
+  // },
 }
 
 export default class ThemeService extends Service {
