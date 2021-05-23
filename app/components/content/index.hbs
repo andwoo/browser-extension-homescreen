@@ -1,42 +1,65 @@
 <div
   ...attributes
+  {{did-update this.reloadBlocks this.blockService.editing}}
 >
-  <div class="flex flex-row">
-    <BasicDropdown as |dropdown|>
-      <dropdown.Trigger>
-        <Button
-          @icon="fas fa-plus"
-        />
-      </dropdown.Trigger>
-      <dropdown.Content>
-        <div class="flex flex-col">
-          {{#each this.blockTypes as |type|}}
-            <Button
-              @icon="fas fa-angle-right"
-              @label={{type}}
-              {{on 'click' (pipe-action dropdown.actions.close (fn this.addBlock type))}}
+  {{#if this.blockService.editing}}
+    <div class="flex flex-row">
+      <BasicDropdown as |dropdown|>
+        <dropdown.Trigger>
+          <Button
+            @icon="fas fa-plus"
+          />
+        </dropdown.Trigger>
+        <dropdown.Content>
+          <div class="flex flex-col">
+            {{#each this.blockTypes as |type|}}
+              <Button
+                @icon="fas fa-angle-right"
+                @label={{type}}
+                {{on 'click' (pipe-action dropdown.actions.close (fn this.addBlock type))}}
+              />
+            {{/each}}
+          </div>
+        </dropdown.Content>
+      </BasicDropdown>
+      <Button
+        @icon="far fa-save"
+        {{on 'click' this.save}}
+      />
+    </div>
+    {{#if (gt this.blocks.length 0)}}
+      <div class='flex flex-row'>
+        {{#each this.blocks as |item|}}
+          {{#let (component item.component) as |EditBlock|}}
+            {{!-- template-lint-disable no-inline-styles --}}
+            {{!-- template-lint-disable style-concatenation --}}
+            <EditBlock
+              style="order:{{item.block.order}}"
+              class="flex-1"
+              @item={{item.block}}
+              @actions={{this.editActions}}
             />
-          {{/each}}
+          {{/let}}
+        {{/each}}
+      </div>
+    {{else}}
+      <div class='flex'>
+        CLick the plus icon to add a new block. Hit save to apply changes. Hit the check to return to the main view.
+      </div>
+    {{/if}}
+  {{else}}
+    {{#if (gt this.blocks.length 0)}}
+    <div class='flex flex-row'>
+      {{#each this.blocks as |item|}}
+        <div style="order:{{item.block.order}}">
+          <h4>{{item.block.type}} - {{item.block.id}}</h4>
         </div>
-      </dropdown.Content>
-    </BasicDropdown>
-    <Button
-      @icon="far fa-save"
-      {{on 'click' this.save}}
-    />
-  </div>
-  <div class='flex flex-row'>
-    {{#each this.blocks as |item|}}
-      {{#let (component item.component) as |EditBlock|}}
-        {{!-- template-lint-disable no-inline-styles --}}
-        {{!-- template-lint-disable style-concatenation --}}
-        <EditBlock
-          style="order:{{item.block.order}}"
-          class="flex-1"
-          @item={{item.block}}
-          @actions={{this.editActions}}
-        />
-      {{/let}}
-    {{/each}}
-  </div>
+      {{/each}}
+    </div>
+    {{else}}
+      <div class='flex'>
+        This looks empty, click the edit button at the top right to add blocks to your hub.
+      </div>
+    {{/if}}
+  {{/if}}
 </div>

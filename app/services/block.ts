@@ -6,6 +6,7 @@ import { tracked } from '@glimmer/tracking'
 const storageKey = 'blocks'
 
 export default class BlockService extends Service {
+  @tracked editing: boolean = false
   @tracked blocks: Block[] = []
 
   async initialize(owner: unknown): Promise<void> {
@@ -13,24 +14,32 @@ export default class BlockService extends Service {
     const storage: StorageService = owner.lookup('service:storage');
     const result = await storage.load(storageKey);
     const parsedBlocks = JSON.parse(result.data)
+    this.blocks = []
     parsedBlocks.forEach((json: string) => {
       this.blocks.addObject(Block.create(json))
     });
   }
 
   async save(owner: unknown): Promise<void> {
-    const serializedBlocks = this.blocks.map((block) => Block.serialize(block));
-    //@ts-ignore
-    const storage: StorageService = owner.lookup('service:storage');
-    storage.save(storageKey, JSON.stringify(serializedBlocks))
+    if(this.editing) {
+      const serializedBlocks = this.blocks.map((block) => Block.serialize(block));
+      //@ts-ignore
+      const storage: StorageService = owner.lookup('service:storage');
+      storage.save(storageKey, JSON.stringify(serializedBlocks))
+    }
+
   }
 
   addBlock(block: Block): void {
-    this.blocks.addObject(block)
+    if(this.editing) {
+      this.blocks.addObject(block)
+    }
   }
 
   removeBlock(block: Block): void {
-    this.blocks.removeObject(block)
+    if(this.editing) {
+      this.blocks.removeObject(block)
+    }
   }
 }
 

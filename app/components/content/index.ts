@@ -4,7 +4,6 @@ import { inject as service } from '@ember/service';
 import BlockService from '../../services/block';
 import Block, { BlockType } from '../../models/block';
 import { getOwner } from '@ember/application';
-import { tracked } from '@glimmer/tracking';
 
 export type EditBlockActions = {
   moveLeft: (block: Block) => void;
@@ -19,7 +18,6 @@ export interface EditBlockArgs {
 
 export default class ContentComponent extends Component<{}> {
   @service('block') declare blockService: BlockService;
-  @tracked ting: string = '';
 
   get blockTypes(): BlockType[] {
     //@ts-ignore
@@ -43,6 +41,10 @@ export default class ContentComponent extends Component<{}> {
       remove: this.remove,
       save: this.save,
     };
+  }
+
+  @action reloadBlocks(): void {
+    this.blockService.initialize(getOwner(this));
   }
 
   @action addBlock(type: BlockType): void {
