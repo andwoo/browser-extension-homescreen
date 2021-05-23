@@ -1,0 +1,12 @@
+.innput {
+  background-color: white;
+  color: grey;
+}
+
+.innput::placeholder {
+  color: grey;
+}
+
+.innput:focus {
+  border-color: cyan;
+}

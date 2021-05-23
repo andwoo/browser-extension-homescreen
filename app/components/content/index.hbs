@@ -1,48 +1,42 @@
 <div
   ...attributes
 >
-  <BasicDropdown as |dropdown|>
-    <dropdown.Trigger>
-      <Button
-        @icon="fas fa-plus-circle"
-        @label="Add"
-      />
-    </dropdown.Trigger>
-    <dropdown.Content>
-      <div class="flex flex-col">
-        {{#each this.blockTypes as |type|}}
-          <Button
-            @icon="fas fa-angle-right"
-            @label={{type}}
-            {{on 'click' (pipe-action dropdown.actions.close (fn this.addBlock type))}}
-          />
-        {{/each}}
-      </div>
-    </dropdown.Content>
-  </BasicDropdown>
+  <div class="flex flex-row">
+    <BasicDropdown as |dropdown|>
+      <dropdown.Trigger>
+        <Button
+          @icon="fas fa-plus"
+        />
+      </dropdown.Trigger>
+      <dropdown.Content>
+        <div class="flex flex-col">
+          {{#each this.blockTypes as |type|}}
+            <Button
+              @icon="fas fa-angle-right"
+              @label={{type}}
+              {{on 'click' (pipe-action dropdown.actions.close (fn this.addBlock type))}}
+            />
+          {{/each}}
+        </div>
+      </dropdown.Content>
+    </BasicDropdown>
+    <Button
+      @icon="far fa-save"
+      {{on 'click' this.save}}
+    />
+  </div>
   <div class='flex flex-row'>
-    {{#each this.blocks as |block|}}
-      <div style="order:{{block.order}}">
-        <div>{{block.id}}</div>
-        <div>{{block.order}}</div>
-        <div>{{block.type}}</div>
-        <div>{{block.payload}}</div>
-        <Button
-          @icon="fas fa-arrow-left"
-          @label='Move Left'
-          {{on 'click' (fn this.moveBlockLeft block)}}
+    {{#each this.blocks as |item|}}
+      {{#let (component item.component) as |EditBlock|}}
+        {{!-- template-lint-disable no-inline-styles --}}
+        {{!-- template-lint-disable style-concatenation --}}
+        <EditBlock
+          style="order:{{item.block.order}}"
+          class="flex-1"
+          @item={{item.block}}
+          @actions={{this.editActions}}
         />
-        <Button
-          @icon="fas fa-arrow-right"
-          @label='Move Right'
-          {{on 'click' (fn this.moveBlockRight block)}}
-        />
-        <Button
-          @icon="fas fa-times-circle"
-          @label='Remove'
-          {{on 'click' (fn this.removeBlock block)}}
-        />
-      </div>
+      {{/let}}
     {{/each}}
   </div>
 </div>

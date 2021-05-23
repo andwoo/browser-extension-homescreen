@@ -1,0 +1,21 @@
+<div
+  ...attributes
+>
+  <h4>Edit: Valorant</h4>
+  <div>{{@item.id}}</div>
+  <div>{{@item.order}}</div>
+  <div>{{@item.type}}</div>
+  <div>{{@item.payload}}</div>
+  <Button
+    @icon="fas fa-arrow-left"
+    {{on 'click' (fn @actions.moveLeft @item)}}
+  />
+  <Button
+    @icon="fas fa-arrow-right"
+    {{on 'click' (fn @actions.moveRight @item)}}
+  />
+  <Button
+    @icon="fas fa-times-circle"
+    {{on 'click' (fn @actions.remove @item)}}
+  />
+</div>
