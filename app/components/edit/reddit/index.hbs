@@ -9,28 +9,28 @@
   <div class='flex flex-row items-center'>
     <div class='font-bold'>Reddit</div>
     <div class='flex-1'/>
-    <Button
-      @icon="fas fa-arrow-left"
-      @type='transparent'
-      @noShadow={{true}}
-      @size='small'
-      {{on 'click' (fn @actions.moveLeft @item)}}
-    />
-    <Button
-      @icon="fas fa-arrow-right"
-      @type='transparent'
-      @noShadow={{true}}
-      @size='small'
-      {{on 'click' (fn @actions.moveRight @item)}}
-    />
-    <Button
-      @icon="fas fa-times-circle"
-      @type="danger"
-      @noShadow={{true}}
-      @size='small'
-      {{on 'click' (fn @actions.remove @item)}}
-    />
-  </div>
+      <Button
+        @icon="fas fa-arrow-left"
+        @type='transparent'
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.moveLeft @item)}}
+      />
+      <Button
+        @icon="fas fa-arrow-right"
+        @type='transparent'
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.moveRight @item)}}
+      />
+      <Button
+        @icon="fas fa-times-circle"
+        @type="danger"
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.remove @item)}}
+      />
+    </div>
     <Innput
       class='mt-2'
       @placeholder='videos'

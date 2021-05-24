@@ -8,18 +8,28 @@
         @calculatePosition={{this.calculateSelectionPosition}}
         as |dropdown|
       >
-        <dropdown.Trigger class='flex flex-1' style='order:9999'>
-          <div class='w-full h-full border-dashed border-black border-4 rounded-lg flex flex-col justify-center items-center mr-4'>
-            <div>
-              <i class="fas fa-plus"/>
-            </div>
-          </div>
+        {{!-- template-lint-disable no-inline-styles --}}
+        {{!-- template-lint-disable style-concatenation --}}
+        <dropdown.Trigger
+          class='flex flex-1'
+          style='order:9999'
+        >
+          <Button
+            class='flex flex-col w-full h-full items-center justify-center mr-4 border-dashed'
+            @icon='fas fa-plus'
+            @type='ghost'
+            @noShadow={{true}}
+          />
         </dropdown.Trigger>
-        <dropdown.Content>
+        <dropdown.Content
+          style='background-color:var(--h-content-bg)'
+        >
           <div class='flex flex-col'>
             {{#each this.blockTypes as |type|}}
               <Button
+                class='flex justify-center items-center mb-2'
                 @label={{type}}
+                @noShadow={{true}}
                 {{on 'click' (pipe-action dropdown.actions.close (fn this.addBlock type))}}
               />
             {{/each}}
@@ -48,15 +58,15 @@
           </div>
         {{/each}}
       {{else}}
-        {{!-- <div class='flex-1'/>
+        <div class='flex-1'/>
           <Box class='max-w-md flex flex-row self-start items-center' @type='info'>
             <i class="fas fa-exclamation mx-4"/>
             <div class='flex-1'>
               Click the edit button at the top right to add blocks to your hub.
             </div>
           </Box>
-        <div class='flex-1'/> --}}
-        <UiTest />
+        <div class='flex-1'/>
+        {{!-- <UiTest /> --}}
       {{/if}}
     {{/if}}
   </div>
