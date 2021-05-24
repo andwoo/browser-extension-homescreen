@@ -1,6 +1,6 @@
 <button
   ...attributes
-  class="buttonn{{if @type (concat '-' @type)}} transition text-base font-semibold px-4 rounded-lg {{unless @noShadow 'shadow-md'}} focus:outline-none focus:ring-2 h-10"
+  class="buttonn{{if @type (concat '-' @type)}} transition text-base font-semibold rounded-lg {{unless @noShadow 'shadow-md'}} focus:outline-none focus:ring-2 {{if (eq @size "small") 'h-7 px-2' 'h-10 px-4'}}"
   type="button"
 >
   <div class='flex items-center h-6'>

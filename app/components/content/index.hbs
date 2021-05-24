@@ -2,14 +2,14 @@
   ...attributes
   class='content'
 >
-  <div class='h-full flex flex-row px-4 py-4'>
+  <div class='h-full flex flex-row pl-4 py-4'>
     {{#if this.blockService.editing}}
       <BasicDropdown
         @calculatePosition={{this.calculateSelectionPosition}}
         as |dropdown|
       >
         <dropdown.Trigger class='flex flex-1' style='order:9999'>
-          <div class='w-full h-full py-2 px-2 border-dashed border-black border-4 rounded-lg flex flex-col justify-center items-center'>
+          <div class='w-full h-full border-dashed border-black border-4 rounded-lg flex flex-col justify-center items-center mr-4'>
             <div>
               <i class="fas fa-plus"/>
             </div>
@@ -33,7 +33,7 @@
             {{!-- template-lint-disable style-concatenation --}}
             <EditBlock
               style="order:{{item.block.order}}"
-              class="flex-1"
+              class="flex-1 mr-4"
               @item={{item.block}}
               @actions={{this.editActions}}
             />

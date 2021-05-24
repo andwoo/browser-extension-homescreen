@@ -8,17 +8,20 @@
       <Button
         @icon="fas fa-check"
         @noShadow={{true}}
+        @size='small'
         {{on 'click' this.save}}
       />
       <Button
         @icon="fas fa-times-circle"
         @noShadow={{true}}
+        @size='small'
         {{on 'click' this.cancel}}
       />
     {{else}}
       <Button
         @icon="fas fa-edit"
         @noShadow={{true}}
+        @size='small'
         {{on 'click' this.edit}}
       />
     {{/if}}

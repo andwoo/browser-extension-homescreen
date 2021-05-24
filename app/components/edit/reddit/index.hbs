@@ -3,22 +3,38 @@
   {{did-insert this.initialize}}
   {{did-update this.onWriteToPayload this.reddit}}
 >
-  <h4>Edit: Reddit</h4>
-  <div>{{@item.id}}</div>
-  <div>{{@item.order}}</div>
-  <div>{{@item.type}}</div>
-  <div>{{@item.payload}}</div>
-  <Innput @value={{this.reddit}} />
-  <Button
-    @icon="fas fa-arrow-left"
-    {{on 'click' (fn @actions.moveLeft @item)}}
-  />
-  <Button
-    @icon="fas fa-arrow-right"
-    {{on 'click' (fn @actions.moveRight @item)}}
-  />
-  <Button
-    @icon="fas fa-times-circle"
-    {{on 'click' (fn @actions.remove @item)}}
-  />
+  <Box
+    @type='default'
+  >
+  <div class='flex flex-row items-center'>
+    <div class='font-bold'>Reddit</div>
+    <div class='flex-1'/>
+    <Button
+      @icon="fas fa-arrow-left"
+      @type='transparent'
+      @noShadow={{true}}
+      @size='small'
+      {{on 'click' (fn @actions.moveLeft @item)}}
+    />
+    <Button
+      @icon="fas fa-arrow-right"
+      @type='transparent'
+      @noShadow={{true}}
+      @size='small'
+      {{on 'click' (fn @actions.moveRight @item)}}
+    />
+    <Button
+      @icon="fas fa-times-circle"
+      @type="danger"
+      @noShadow={{true}}
+      @size='small'
+      {{on 'click' (fn @actions.remove @item)}}
+    />
+  </div>
+    <Innput
+      class='mt-2'
+      @placeholder='videos'
+      @value={{this.reddit}}
+    />
+  </Box>
 </div>
