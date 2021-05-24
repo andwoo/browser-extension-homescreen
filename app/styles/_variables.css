@@ -1,40 +1,38 @@
 :root {
-  --h-header-bg: #797d62;
-  --h-content-bg: #9b9b7a;
-  --h-text: #f1dca7;
+  --h-header-bg: #6d597a;
+  --h-content-bg: #fdf6e8;
+  --h-text: #6d597a;
 
   /* Buttons */
-  --h-btn-bg-default: #997b66;
-  --h-btn-bg-hover-default: rgba(166, 214, 214, 0.75);
-  --h-btn-txt-default: #f1dca7;
-  --h-btn-txt-hover-default: rgba(237, 237, 208, 1);
+  --h-btn-bg-default: #6d597a;
+  --h-btn-bg-hover-default: #355070;
+  --h-btn-txt-default: #fdf6e8;
+  --h-btn-txt-hover-default: #fdf6e8;
 
-  --h-btn-bg-ghost: #997b66;
-  --h-btn-bg-hover-ghost: rgba(0, 0, 0, 0.5);
-  --h-btn-txt-ghost: #f1dca7;
-  --h-btn-txt-hover-ghost: rgba(255, 255, 255, 0.75);
+  --h-btn-bg-ghost: #6d597a;
+  --h-btn-bg-hover-ghost: #355070;
+  --h-btn-txt-ghost: #6d597a;
+  --h-btn-txt-hover-ghost: #355070;
 
   --h-btn-bg-transparent: transparent;
-  --h-btn-bg-hover-transparent: rgba(0, 0, 0, 0.5);
-  --h-btn-txt-transparent: #f1dca7;
-  --h-btn-txt-hover-transparent: rgba(0, 0, 0, 0.75);
+  --h-btn-bg-hover-transparent: #355070;
+  --h-btn-txt-transparent: #6d597a;
+  --h-btn-txt-hover-transparent: #fdf6e8;
 
-  --h-btn-bg-danger: #d08c60;
-  --h-btn-bg-hover-danger: rgba(114, 0, 0, 0.5);
-  --h-btn-txt-danger: #f1dca7;
-  --h-btn-txt-hover-danger: rgba(0, 0, 0, 0.75);
+  --h-btn-bg-danger: #e56b6f;
+  --h-btn-bg-hover-danger: #355070;
+  --h-btn-txt-danger: #fffffc;
+  --h-btn-txt-hover-danger: #fdf6e8;
 
   /* Input */
-  --h-input-bg: white;
-  --h-input-txt: grey;
+  --h-input-bg: #fffffc;
+  --h-input-txt: #6d597a;
 
   /* Boxes */
-  --h-box-bg-default: #ad9585;
-  --h-box-txt-default: #cabbb1;
-  --h-box-bg-info: #d9ae94;
-  --h-box-txt-info: #f1dca7;
-  --h-box-bg-purple: #dcb0ff;
-  --h-box-txt-purple: #845ec2;
+  --h-box-bg-default: #fffcf7;
+  --h-box-txt-default: #6d597a;
+  --h-box-bg-info: #eaac8b;
+  --h-box-txt-info: #6d597a;
 }
 
 body {

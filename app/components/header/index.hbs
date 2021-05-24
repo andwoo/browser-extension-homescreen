@@ -7,18 +7,18 @@
     {{#if this.blockService.editing}}
       <Button
         @icon="fas fa-check"
-        @type="transparent"
+        @noShadow={{true}}
         {{on 'click' this.save}}
       />
       <Button
         @icon="fas fa-times-circle"
-        @type="transparent"
+        @noShadow={{true}}
         {{on 'click' this.cancel}}
       />
     {{else}}
       <Button
         @icon="fas fa-edit"
-        @type="transparent"
+        @noShadow={{true}}
         {{on 'click' this.edit}}
       />
     {{/if}}

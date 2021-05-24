@@ -7,8 +7,3 @@
   background-color: var(--h-box-bg-info);
   color: var(--h-box-txt-info);
 }
-
-.box-purple {
-  background-color: var(--h-box-bg-purple);
-  color: var(--h-box-txt-purple);
-}
