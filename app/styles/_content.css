@@ -1,3 +1,4 @@
 .content {
   background-color: var(--h-content-bg);
+  height: calc(100vh - 3rem);
 }

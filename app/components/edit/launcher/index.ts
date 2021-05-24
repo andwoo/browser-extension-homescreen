@@ -24,7 +24,30 @@ export default class EditLauncherComponent extends Component<EditBlockArgs> {
     this.launchers.addObject(new Launcher({}));
   }
 
+  @action onMoveLauncherUp(launcher: Launcher): void {
+    const index = this.launchers.indexOf(launcher);
+    if (index >= 1) {
+      this.launchers.removeAt(index);
+      this.launchers.insertAt(index - 1, launcher);
+    }
+  }
+
+  @action onMoveLauncherDown(launcher: Launcher): void {
+    const index = this.launchers.indexOf(launcher);
+    if (index < this.launchers.length - 1) {
+      this.launchers.removeAt(index);
+      this.launchers.insertAt(index + 1, launcher);
+    }
+  }
+
   @action onRemoveLauncher(launcher: Launcher): void {
     this.launchers.removeObject(launcher);
+  }
+
+  @action onLaunchIconSelection(): void {
+    window.open(
+      'https://fontawesome.com/icons?d=gallery&p=2&q=question',
+      '_blank'
+    );
   }
 }

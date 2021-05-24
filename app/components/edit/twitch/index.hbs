@@ -3,27 +3,52 @@
   {{did-insert this.initialize}}
   {{did-update this.onWriteToPayload this.accessToken}}
 >
-  <h4>Edit: Twitch</h4>
-  <div>{{@item.id}}</div>
-  <div>{{@item.order}}</div>
-  <div>{{@item.type}}</div>
-  <div>{{@item.payload}}</div>
-  <Innput @value={{this.accessToken}} />
-  <p>Generate a token with the scope permission <strong>user_read</strong></p>
-  <Button
-    @icon="fab fa-twitch"
-    {{on 'click' this.onLaunchTwitchTokenUrl}}
-  />
-  <Button
-    @icon="fas fa-arrow-left"
-    {{on 'click' (fn @actions.moveLeft @item)}}
-  />
-  <Button
-    @icon="fas fa-arrow-right"
-    {{on 'click' (fn @actions.moveRight @item)}}
-  />
-  <Button
-    @icon="fas fa-times-circle"
-    {{on 'click' (fn @actions.remove @item)}}
-  />
+  <Box
+    @type='default'
+  >
+  <div class='flex flex-row items-center'>
+    <div class='font-bold'>Twitch</div>
+    <div class='flex-1'/>
+      <Button
+        @icon="fas fa-arrow-left"
+        @type='transparent'
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.moveLeft @item)}}
+      />
+      <Button
+        @icon="fas fa-arrow-right"
+        @type='transparent'
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.moveRight @item)}}
+      />
+      <Button
+        @icon="fas fa-times"
+        @type="danger"
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.remove @item)}}
+      />
+    </div>
+    <Innput
+      class='mt-2'
+      @placeholder='access-token'
+      @value={{this.accessToken}}
+    />
+    <Box
+      class='mt-2'
+      @type='info'
+    >
+      <div class='flex flex-row items-center flex-wrap'>
+        <div class='flex-1'>Generate a token with the scope permission <strong>user_read</strong></div>
+        <Button
+          @icon="fab fa-twitch"
+          @label='Generate Token'
+          {{on 'click' this.onLaunchTwitchTokenUrl}}
+        />
+      </div>
+
+    </Box>
+  </Box>
 </div>

@@ -3,48 +3,88 @@
   {{did-insert this.initialize}}
   {{did-update this.onWriteToPayload this.launchers}}
 >
-  <h4>Edit: Launcher</h4>
-  <div>{{@item.id}}</div>
-  <div>{{@item.order}}</div>
-  <div>{{@item.type}}</div>
-  <div>{{@item.payload}}</div>
-
-
-  {{#each this.launchers as |launcher|}}
-    <div
-      class='flex flex-col'
-      {{did-update this.onWriteToPayload launcher.icon launcher.url}}
-    >
-      <div class='flex flex-row'>
-        <div>Icon</div>
-        <Innput @value={{launcher.icon}} />
-      </div>
-      <div class='flex flex-row'>
-        <div>Url</div>
-        <Innput @value={{launcher.url}} />
-      </div>
+  <Box
+    @type='default'
+  >
+    <div class='flex flex-row items-center'>
+      <div class='font-bold'>Launcher</div>
+      <div class='flex-1'/>
       <Button
-        @icon="fas fa-times-circle"
-        {{on 'click' (fn this.onRemoveLauncher launcher)}}
+        @icon="fas fa-arrow-left"
+        @type='transparent'
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.moveLeft @item)}}
+      />
+      <Button
+        @icon="fas fa-arrow-right"
+        @type='transparent'
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.moveRight @item)}}
+      />
+      <Button
+        @icon="fas fa-times"
+        @type="danger"
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.remove @item)}}
       />
     </div>
-  {{/each}}
+    <div class='mt-2'>
 
-  <Button
-    @icon="fas fa-plus"
-    {{on 'click' this.onAddLauncher}}
-  />
+      {{#each this.launchers as |launcher|}}
+        <Box
+          class='flex flex-row mb-2'
+          @type='info'
+        >
+          <div class='flex-1 mr-2'>
+            <div>Icon "<i class="{{launcher.icon}}"/>"</div>
+            <Innput @value={{launcher.icon}} />
+            <div>Url</div>
+            <Innput @value={{launcher.url}} />
+          </div>
+          <div class='flex flex-col'>
+            <Button
+              class='mb-2 self-start'
+              @icon="fas fa-times"
+              @type="danger"
+              @noShadow={{true}}
+              @size='small'
+              {{on 'click' (fn this.onRemoveLauncher launcher)}}
+            />
+            <Button
+              class='mb-2 self-start'
+              @icon="fas fa-arrow-up"
+              @noShadow={{true}}
+              @size='small'
+              {{on 'click' (fn this.onMoveLauncherUp launcher)}}
+            />
+            <Button
+              class='self-start'
+              @icon="fas fa-arrow-down"
+              @noShadow={{true}}
+              @size='small'
+              {{on 'click' (fn this.onMoveLauncherDown launcher)}}
+            />
+          </div>
 
-  <Button
-    @icon="fas fa-arrow-left"
-    {{on 'click' (fn @actions.moveLeft @item)}}
-  />
-  <Button
-    @icon="fas fa-arrow-right"
-    {{on 'click' (fn @actions.moveRight @item)}}
-  />
-  <Button
-    @icon="fas fa-times-circle"
-    {{on 'click' (fn @actions.remove @item)}}
-  />
+        </Box>
+      {{/each}}
+
+      <div class='flex flex-row'>
+        <Button
+          @icon="fas fa-plus"
+          @label="Add Icon"
+          {{on 'click' this.onAddLauncher}}
+        />
+        <Button
+          class='ml-2'
+          @icon="fas fa-external-link-alt"
+          @label="Get Icon"
+          {{on 'click' this.onLaunchIconSelection}}
+        />
+      </div>
+    </div>
+  </Box>
 </div>

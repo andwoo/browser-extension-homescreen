@@ -43,7 +43,7 @@
             {{!-- template-lint-disable style-concatenation --}}
             <EditBlock
               style="order:{{item.block.order}}"
-              class="flex-1 mr-4"
+              class="flex-1 mr-4 max-h-full overflow-y-auto"
               @item={{item.block}}
               @actions={{this.editActions}}
             />
@@ -58,15 +58,15 @@
           </div>
         {{/each}}
       {{else}}
-        <div class='flex-1'/>
+        {{!-- <div class='flex-1'/>
           <Box class='max-w-md flex flex-row self-start items-center' @type='info'>
             <i class="fas fa-exclamation mx-4"/>
             <div class='flex-1'>
               Click the edit button at the top right to add blocks to your hub.
             </div>
           </Box>
-        <div class='flex-1'/>
-        {{!-- <UiTest /> --}}
+        <div class='flex-1'/> --}}
+        <UiTest />
       {{/if}}
     {{/if}}
   </div>

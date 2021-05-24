@@ -6,14 +6,14 @@
     <div class='flex-1'/>
     {{#if this.blockService.editing}}
       <Button
-        @icon="fas fa-check"
+        @icon="far fa-save"
         @noShadow={{true}}
         @size='small'
         {{on 'click' this.save}}
       />
       <Button
         class='mr-2'
-        @icon="fas fa-times-circle"
+        @icon="fas fa-times"
         @noShadow={{true}}
         @size='small'
         {{on 'click' this.cancel}}

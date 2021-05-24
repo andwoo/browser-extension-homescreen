@@ -1,4 +1,8 @@
 .innput {
   background-color: var(--h-input-bg);
   color: var(--h-input-txt);
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--h-input-bd);
 }

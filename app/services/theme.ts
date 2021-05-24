@@ -30,6 +30,7 @@ const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   '--h-btn-txt-hover-danger': {Light: '#fdf6e8', Dark: '#fdf6e8'},
   /* Input */
   '--h-input-bg': {Light: '#fffffc', Dark: '#cad2c5'},
+  '--h-input-bd': {Light: '#6d597a', Dark: '#52796f'},
   '--h-input-txt': {Light: '#6d597a', Dark: '#52796f'},
   /* Boxes */
   '--h-box-bg-default': {Light: '#fffcf7', Dark: '#84a98c'},
