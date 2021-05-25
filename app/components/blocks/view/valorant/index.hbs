@@ -1,10 +1,35 @@
+{{!-- template-lint-disable no-invalid-interactive --}}
 <div
   ...attributes
   {{did-insert this.initialize}}
 >
-  <Box
-    @type='default'
-  >
-    Valorant
-  </Box>
+  {{#if this.isLoading}}
+    <div>Loading</div>
+  {{else if this.isFailure}}
+    <Box @type='info'>
+      <i class="fas fa-exclamation px-4"/>
+      <span>Failed to retrieve matches.</span>
+    </Box>
+  {{else}}
+    <div class='flex flex-1 flex-col'>
+      {{#each this.matches as |match|}}
+        <MediaBox
+          class='mb-2'
+          @imageSrc={{match.thumbnail}}
+          @imageAlt={{match.teamOne}}
+          @url={{match.url}}
+        >
+          <div class='break-all text-left ml-2'>
+            <strong>{{match.teamOne}}</strong>
+            {{' vs '}}
+            <strong>{{match.teamTwo}}</strong>
+          </div>
+          <div class='break-all text-left ml-2'>
+            <i class='{{if match.isLive 'fas fa-circle' 'far fa-stopwatch'}}'/>
+            <span>{{if match.isLive 'LIVE' match.time}}</span>
+          </div>
+        </MediaBox>
+      {{/each}}
+    </div>
+  {{/if}}
 </div>
