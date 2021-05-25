@@ -1,10 +1,36 @@
+{{!-- template-lint-disable no-invalid-interactive --}}
 <div
   ...attributes
   {{did-insert this.initialize}}
 >
-  <Box
-    @type='default'
-  >
-    r/{{this.reddit}}
-  </Box>
+  {{#if this.isLoading}}
+    <div>Loading</div>
+  {{else if this.isFailure}}
+    <Box @type='info'>
+      <i class="fas fa-exclamation px-4"/>
+      <span>Please enter a valid subreddit.</span>
+    </Box>
+  {{else}}
+    <div class='flex flex-1 flex-col'>
+      {{#each this.posts as |post|}}
+        <MediaBox
+          class='mb-2'
+          @imageSrc={{post.thumbnail}}
+          @imageAlt={{post.title}}
+          @url={{post.postUrl}}
+        >
+          <div
+            class='break-all text-left ml-2'
+            {{on 'click' (fn this.onLaunchCommentsUrl post)}}
+          >
+            {{post.title}}
+          </div>
+          <div class='break-all text-left ml-2'>
+            <i class="fas fa-chevron-up"/>
+            <span>{{post.upVotes}}</span>
+          </div>
+        </MediaBox>
+      {{/each}}
+    </div>
+  {{/if}}
 </div>
