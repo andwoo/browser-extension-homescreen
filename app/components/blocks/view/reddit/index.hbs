@@ -17,15 +17,19 @@
           class='mb-2'
           @imageSrc={{post.thumbnail}}
           @imageAlt={{post.title}}
-          @url={{post.postUrl}}
+          @imageUrl={{post.postUrl}}
+          @url={{post.commentsUrl}}
         >
-          <div
-            class='break-all text-left ml-2'
-            {{on 'click' (fn this.onLaunchCommentsUrl post)}}
-          >
+          <div class='break-words text-left ml-2'>
             {{post.title}}
           </div>
-          <div class='break-all text-left ml-2'>
+          {{#if (eq post.type 'nsfw')}}
+            <div class='text-left ml-2'>NSFW</div>
+          {{else if (eq post.type 'spoiler')}}
+            <div class='text-left ml-2'>Spoiler</div>
+          {{/if}}
+          <div></div>
+          <div class='break-words text-left ml-2 h-text-green'>
             <i class="fas fa-chevron-up"/>
             <span>{{post.upVotes}}</span>
           </div>

@@ -5,7 +5,7 @@
   ...attributes
   class='content'
 >
-  <div class='h-full flex flex-row pl-4 py-4'>
+  <div class='h-full flex flex-row pl-2 py-2'>
     {{#if this.blockService.editing}}
       <BasicDropdown
         @calculatePosition={{this.calculateSelectionPosition}}
@@ -16,7 +16,7 @@
           style='order:9999'
         >
           <Button
-            class='flex flex-col w-full h-full items-center justify-center mr-4 border-dashed'
+            class='flex flex-col w-full h-full items-center justify-center mr-2 border-dashed'
             @icon='fas fa-plus'
             @type='ghost'
             @noShadow={{true}}
@@ -42,7 +42,7 @@
           {{#let (component item.editComponent) as |EditBlock|}}
             <EditBlock
               style="order:{{item.block.order}}"
-              class="flex-1 mr-4 max-h-full overflow-y-auto"
+              class="flex-1 mr-2 max-h-full overflow-y-auto"
               @item={{item.block}}
               @actions={{this.editActions}}
             />
@@ -56,7 +56,7 @@
           {{#let (component item.viewComponent) as |ViewBlock|}}
             <ViewBlock
               style="order:{{item.block.order}}"
-              class="{{concat 'content--' item.block.type}} mr-4 max-h-full overflow-y-auto"
+              class="{{concat 'content--' item.block.type}} mr-2 max-h-full overflow-y-auto"
               @item={{item.block}}
             />
           {{/let}}

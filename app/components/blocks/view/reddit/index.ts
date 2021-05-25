@@ -5,7 +5,6 @@ import { action } from '@ember/object';
 import axios from 'axios';
 import { taskFor, perform } from 'ember-concurrency-ts';
 import { restartableTask, TaskGenerator } from 'ember-concurrency';
-import { isEmpty } from '@ember/utils';
 
 interface RedditPostResponse {
   data: {
@@ -22,6 +21,7 @@ interface RedditPost {
   postUrl: string;
   commentsUrl: string;
   upVotes: number;
+  type: 'default' | 'nsfw' | 'spoiler';
 }
 
 const parser: DOMParser = new DOMParser();
@@ -54,6 +54,7 @@ export default class ViewRedditComponent extends Component<ViewBlockArgs> {
     const response = yield axios.get(`https://reddit.com/r/${reddit}.json`);
     return response.data.data.children.map((post: RedditPostResponse) => {
       let thumbnail: string = post.data.thumbnail;
+
       if (
         !thumbnail ||
         thumbnail === 'self' ||
@@ -68,13 +69,8 @@ export default class ViewRedditComponent extends Component<ViewBlockArgs> {
         postUrl: post.data.url,
         commentsUrl: `https://reddit.com${post.data.permalink}`,
         upVotes: post.data.score,
+        type: post.data.thumbnail,
       };
     });
-  }
-
-  @action onLaunchCommentsUrl(post: RedditPost): void {
-    if (!isEmpty(post.commentsUrl)) {
-      window.open(post.commentsUrl, '_blank');
-    }
   }
 }

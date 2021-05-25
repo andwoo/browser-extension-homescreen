@@ -40,6 +40,20 @@
   --h-box-bg-media-image: #355070;
   --h-box-txt-media: #fdf6e8;
   --h-box-txt-hover-media: #fdf6e8;
+
+  --h-text-red: red;
+  --h-text-blue: blue;
+  --h-text-green: green;
+}
+
+.h-text-red {
+  color: var(--h-text-red);
+}
+.h-text-blue {
+  color: var(--h-text-blue);
+}
+.h-text-green {
+  color: var(--h-text-green);
 }
 
 body {

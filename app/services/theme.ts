@@ -33,16 +33,20 @@ const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   '--h-input-bd': {Light: '#6d597a', Dark: '#52796f'},
   '--h-input-txt': {Light: '#6d597a', Dark: '#52796f'},
   /* Boxes */
-  '--h-box-bg-default': {Light: '#fffcf7', Dark: '#84a98c'},
+  '--h-box-bg-default': {Light: '#ece2dc', Dark: '#84a98c'},
   '--h-box-txt-default': {Light: '#6d597a', Dark: '#2f3e46'},
   '--h-box-bg-info': {Light: '#eaac8b', Dark: '#cad2c5'},
   '--h-box-txt-info': {Light: '#6d597a', Dark: '#52796f'},
-
-  '--h-box-bg-media': {Light: '#6d597a', Dark: '#52796f'},
+  /* Media Box */
+  '--h-box-bg-media': {Light: '#ece2dc', Dark: '#52796f'},
   '--h-box-bg-hover-media': {Light: '#355070', Dark: '#354f52'},
-  '--h-box-bg-media-image' : {Light: '#fdf6e8', Dark: '#2f3e46'},
-  '--h-box-txt-media': {Light: '#fdf6e8', Dark: '#cad2c5'},
+  '--h-box-bg-media-image' : {Light: '#6d597a', Dark: '#2f3e46'},
+  '--h-box-txt-media': {Light: '#6d597a', Dark: '#cad2c5'},
   '--h-box-txt-hover-media': {Light: '#fdf6e8', Dark: '#cad2c5'},
+  /* Media Box Colours */
+  '--h-text-red' : {Light: '#e56b6f', Dark: '#e56b6f'},
+  '--h-text-blue': {Light: '#5390d9', Dark: '#5390d9'},
+  '--h-text-green': {Light: '#40916c', Dark: '#40916c'},
 }
 
 export default class ThemeService extends Service {

@@ -17,14 +17,15 @@
           class='mb-2'
           @imageSrc={{match.thumbnail}}
           @imageAlt={{match.teamOne}}
+          @imageUrl={{match.url}}
           @url={{match.url}}
         >
-          <div class='break-all text-left ml-2'>
+          <div class='break-words text-left ml-2'>
             <strong>{{match.teamOne}}</strong>
             {{' vs '}}
             <strong>{{match.teamTwo}}</strong>
           </div>
-          <div class='break-all text-left ml-2'>
+          <div class='break-words text-left ml-2 {{if match.isLive 'h-text-red' 'h-text-blue'}}'>
             <i class='{{if match.isLive 'fas fa-circle' 'far fa-stopwatch'}}'/>
             <span>{{if match.isLive 'LIVE' match.time}}</span>
           </div>
