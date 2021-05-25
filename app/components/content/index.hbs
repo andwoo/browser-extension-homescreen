@@ -56,7 +56,7 @@
           {{#let (component item.viewComponent) as |ViewBlock|}}
             <ViewBlock
               style="order:{{item.block.order}}"
-              class="flex-1 mr-4 max-h-full overflow-y-auto"
+              class="{{concat 'content--' item.block.type}} mr-4 max-h-full overflow-y-auto"
               @item={{item.block}}
             />
           {{/let}}

@@ -2,9 +2,15 @@
   ...attributes
   {{did-insert this.initialize}}
 >
-  <Box
-    @type='default'
-  >
-    Launcher
-  </Box>
+  <div class='flex flex-col justify-center'>
+  {{#each this.launchers as |launcher|}}
+    <Button
+      class='self-center text-2xl mb-2'
+      @icon={{launcher.icon}}
+      @type='transparent'
+      @noShadow={{true}}
+      {{on 'click' (fn this.onLaunchUrl launcher)}}
+    />
+  {{/each}}
+  </div>
 </div>

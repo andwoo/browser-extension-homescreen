@@ -2,3 +2,19 @@
   background-color: var(--h-content-bg);
   height: calc(100vh - 3rem);
 }
+
+.content--Twitch {
+  flex: 1;
+}
+
+.content--Valorant {
+  flex: 1;
+}
+
+.content--Reddit {
+  flex: 1;
+}
+
+.content--Launcher {
+  /* flex: 0; */
+}
