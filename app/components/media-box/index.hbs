@@ -1,0 +1,15 @@
+<button
+  ...attributes
+  class='box-media py-2 px-2 shadow-md rounded-lg'
+  type="button"
+  {{on 'click' this.onLaunchUrl}}
+>
+  <div class='flex w-full flex-row'>
+    <div class='box-media--image rounded-lg flex flex-col justify-center items-center'>
+      <img class='rounded-lg' src={{@imageSrc}} alt={{@imageAlt}} />
+    </div>
+    <div class='flex-1 flex flex-col'>
+      {{yield}}
+    </div>
+  </div>
+</button>

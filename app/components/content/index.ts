@@ -13,6 +13,9 @@ export interface EditBlockArgs {
   item: Block;
   actions: EditBlockActions;
 }
+export interface ViewBlockArgs {
+  item: Block;
+}
 
 export default class ContentComponent extends Component<{}> {
   @service('block') declare blockService: BlockService;
@@ -22,11 +25,16 @@ export default class ContentComponent extends Component<{}> {
     return Object.keys(BlockType).map((type: string) => BlockType[type]);
   }
 
-  get blocks(): { block: Block; component: string }[] {
+  get blocks(): {
+    block: Block;
+    editComponent: string;
+    viewComponent: string;
+  }[] {
     if (this.blockService.blocks) {
       return this.blockService.blocks.map((block) => ({
         block,
-        component: `edit/${block.type.toLowerCase()}`,
+        editComponent: `blocks/edit/${block.type.toLowerCase()}`,
+        viewComponent: `blocks/view/${block.type.toLowerCase()}`,
       }));
     }
     return [];

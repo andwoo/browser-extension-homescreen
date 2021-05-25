@@ -1,3 +1,6 @@
+
+{{!-- template-lint-disable no-inline-styles --}}
+{{!-- template-lint-disable style-concatenation --}}
 <div
   ...attributes
   class='content'
@@ -8,8 +11,6 @@
         @calculatePosition={{this.calculateSelectionPosition}}
         as |dropdown|
       >
-        {{!-- template-lint-disable no-inline-styles --}}
-        {{!-- template-lint-disable style-concatenation --}}
         <dropdown.Trigger
           class='flex flex-1'
           style='order:9999'
@@ -38,9 +39,7 @@
       </BasicDropdown>
       {{#if (gt this.blocks.length 0)}}
         {{#each this.blocks as |item|}}
-          {{#let (component item.component) as |EditBlock|}}
-            {{!-- template-lint-disable no-inline-styles --}}
-            {{!-- template-lint-disable style-concatenation --}}
+          {{#let (component item.editComponent) as |EditBlock|}}
             <EditBlock
               style="order:{{item.block.order}}"
               class="flex-1 mr-4 max-h-full overflow-y-auto"
@@ -52,22 +51,27 @@
       {{/if}}
     {{else}}
       {{#if (gt this.blocks.length 0)}}
+        {{!-- <UiTest /> --}}
         {{#each this.blocks as |item|}}
-          <div style="order:{{item.block.order}}">
-            <h4>{{item.block.type}} - {{item.block.id}}</h4>
-          </div>
+          {{#let (component item.viewComponent) as |ViewBlock|}}
+            <ViewBlock
+              style="order:{{item.block.order}}"
+              class="flex-1 mr-4 max-h-full overflow-y-auto"
+              @item={{item.block}}
+            />
+          {{/let}}
         {{/each}}
       {{else}}
-        {{!-- <div class='flex-1'/>
+        <div class='flex-1'/>
           <Box class='max-w-md flex flex-row self-start items-center' @type='info'>
             <i class="fas fa-exclamation mx-4"/>
             <div class='flex-1'>
               Click the edit button at the top right to add blocks to your hub.
             </div>
           </Box>
-        <div class='flex-1'/> --}}
-        <UiTest />
+        <div class='flex-1'/>
       {{/if}}
     {{/if}}
+
   </div>
 </div>

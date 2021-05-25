@@ -1,0 +1,31 @@
+<div
+  ...attributes
+  {{did-insert this.initialize}}
+>
+  {{#if this.isLoading}}
+    <div>Loading</div>
+  {{else if this.isFailure}}
+    <Box @type='info'>
+      <i class="fas fa-exclamation px-4"/>
+      <span>Please enter a valid Twitch access token.</span>
+    </Box>
+  {{else}}
+    <div class='flex flex-1 flex-col'>
+      {{#each this.streamers as |streamer|}}
+        <MediaBox
+          class='mb-2'
+          @imageSrc={{streamer.thumbnail}}
+          @imageAlt={{streamer.name}}
+          @url={{streamer.url}}
+        >
+          <div class='break-all text-left ml-2'>{{streamer.name}}</div>
+          <div class='break-all text-left ml-2'>{{streamer.game}}</div>
+          <div class='break-all text-left ml-2'>
+            <i class="fas fa-circle"/>
+            <span>{{streamer.viewers}}</span>
+          </div>
+        </MediaBox>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>

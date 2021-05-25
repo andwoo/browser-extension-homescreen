@@ -7,3 +7,24 @@
   background-color: var(--h-box-bg-info);
   color: var(--h-box-txt-info);
 }
+
+.box-media {
+  background-color: var(--h-box-bg-media);
+  color: var(--h-box-txt-media);
+}
+
+.box-media:hover {
+  background-color: var(--h-box-bg-hover-media);
+  color: var(--h-box-txt-hover-media);
+}
+
+.box-media--image {
+  background-color: var(--h-box-bg-media-image);
+  width: 75px;
+  height: 75px;
+}
+
+.box-media--image img {
+  max-width: 100%;
+  max-height: 100%;
+}

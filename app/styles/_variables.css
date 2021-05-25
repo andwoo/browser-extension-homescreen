@@ -34,6 +34,12 @@
   --h-box-txt-default: #6d597a;
   --h-box-bg-info: #eaac8b;
   --h-box-txt-info: #6d597a;
+
+  --h-box-bg-media: #6d597a;
+  --h-box-bg-hover-media: #355070;
+  --h-box-bg-media-image: #355070;
+  --h-box-txt-media: #fdf6e8;
+  --h-box-txt-hover-media: #fdf6e8;
 }
 
 body {

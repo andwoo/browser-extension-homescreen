@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { EditBlockArgs } from '../../content';
+import { EditBlockArgs } from '../../../content';
 import { action } from '@ember/object';
 
 export default class EditTwitchComponent extends Component<EditBlockArgs> {

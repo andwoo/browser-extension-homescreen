@@ -1,8 +1,8 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { EditBlockArgs } from '../../content';
+import { EditBlockArgs } from '../../../content';
 import { action } from '@ember/object';
-import Launcher from '../../../models/launcher';
+import Launcher from '../../../../models/launcher';
 
 export default class EditLauncherComponent extends Component<EditBlockArgs> {
   @tracked launchers: Launcher[] = [];

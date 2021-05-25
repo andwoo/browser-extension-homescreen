@@ -37,6 +37,12 @@ const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   '--h-box-txt-default': {Light: '#6d597a', Dark: '#2f3e46'},
   '--h-box-bg-info': {Light: '#eaac8b', Dark: '#cad2c5'},
   '--h-box-txt-info': {Light: '#6d597a', Dark: '#52796f'},
+
+  '--h-box-bg-media': {Light: '#6d597a', Dark: '#52796f'},
+  '--h-box-bg-hover-media': {Light: '#355070', Dark: '#354f52'},
+  '--h-box-bg-media-image' : {Light: '#fdf6e8', Dark: '#2f3e46'},
+  '--h-box-txt-media': {Light: '#fdf6e8', Dark: '#cad2c5'},
+  '--h-box-txt-hover-media': {Light: '#fdf6e8', Dark: '#cad2c5'},
 }
 
 export default class ThemeService extends Service {
