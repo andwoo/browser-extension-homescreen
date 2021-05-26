@@ -2,8 +2,15 @@
   ...attributes
   {{did-insert this.initialize}}
 >
+  <Box @type='default mb-2'>
+    <div class='truncate uppercase'>
+      <strong>twitch</strong>
+    </div>
+  </Box>
   {{#if this.isLoading}}
-    <div>Loading</div>
+    <div class='flex flex-1 flex-col items-center'>
+      <ActivityIndicator />
+    </div>
   {{else if this.isFailure}}
     <Box @type='info'>
       <i class="fas fa-exclamation px-4"/>

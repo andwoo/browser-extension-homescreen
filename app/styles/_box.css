@@ -28,8 +28,8 @@
 
 .box-media--image {
   background-color: var(--h-box-bg-media-image);
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
 }
 
 .box-media--image img {

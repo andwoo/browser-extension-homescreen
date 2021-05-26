@@ -5,6 +5,8 @@ import { action } from '@ember/object';
 import axios from 'axios';
 import { taskFor, perform } from 'ember-concurrency-ts';
 import { restartableTask, TaskGenerator } from 'ember-concurrency';
+import ThemeService from '../../../../services/theme';
+import { inject as service } from '@ember/service';
 
 interface RedditPostResponse {
   data: {
@@ -30,6 +32,7 @@ const decodeString = (value: string) =>
     .textContent;
 
 export default class ViewRedditComponent extends Component<ViewBlockArgs> {
+  @service('theme') declare theme: ThemeService;
   @tracked reddit: string = '';
 
   get posts(): RedditPost[] {
@@ -61,7 +64,7 @@ export default class ViewRedditComponent extends Component<ViewBlockArgs> {
         thumbnail === 'spoiler' ||
         thumbnail === 'nsfw'
       ) {
-        thumbnail = '/dist/anchor.svg';
+        thumbnail = `/dist/unknown-${this.theme.name.toLowerCase()}.svg`;
       }
       return {
         title: decodeString(post.data.title),
