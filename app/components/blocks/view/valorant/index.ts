@@ -5,7 +5,6 @@ import { action } from '@ember/object';
 import axios from 'axios';
 import { taskFor, perform } from 'ember-concurrency-ts';
 import { restartableTask, TaskGenerator } from 'ember-concurrency';
-import { isEmpty } from '@ember/utils';
 import jQuery from 'jquery';
 
 interface Match {
@@ -78,11 +77,5 @@ export default class ViewValorantComponent extends Component<ViewBlockArgs> {
         };
       }
     );
-  }
-
-  @action onLaunchMatchUrl(match: Match): void {
-    if (!isEmpty(match.url)) {
-      window.open(match.url, '_blank');
-    }
   }
 }

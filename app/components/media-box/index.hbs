@@ -1,18 +1,17 @@
-{{!-- template-lint-disable no-invalid-interactive --}}
-<button
+<div
   ...attributes
   class='box-media py-2 px-2 shadow-md rounded-lg'
-  type="button"
-  {{on 'click' this.onLaunchUrl}}
 >
   <div class='flex w-full flex-row'>
-    <div class='box-media--image rounded-lg flex flex-col justify-center items-center'
-      {{on 'click' this.onLaunchImageUrl}}
-    >
-      <img class='rounded-lg' src={{@imageSrc}} alt={{@imageAlt}} />
-    </div>
-    <div class='flex-1 flex flex-col'>
-      {{yield}}
+    <a class='no-underline' href={{@imageUrl}}>
+      <div class='box-media--image rounded-lg overflow-hidden flex flex-col justify-center items-center cursor-pointer'>
+        <img src={{@imageSrc}} alt={{@imageAlt}} />
+      </div>
+    </a>
+    <div class='box-media--content flex-1 flex flex-col cursor-pointer'>
+      <a class='no-underline' href={{@url}}>
+        {{yield}}
+      </a>
     </div>
   </div>
-</button>
+</div>

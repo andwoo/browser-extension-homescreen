@@ -1,9 +1,8 @@
-<button
+<div
   ...attributes
-  class="buttonn{{if @type (concat '-' @type)}} transition text-base font-semibold rounded-lg {{unless @noShadow 'shadow-md'}} focus:outline-none focus:ring-2 {{if (eq @size "small") 'h-7 px-2' 'h-10 px-4'}}"
-  type="button"
+  class="buttonn{{if @type (concat '-' @type)}} flex transition text-base font-semibold rounded-lg {{unless @noShadow 'shadow-md'}} focus:outline-none focus:ring-2 cursor-pointer {{if (eq @size "small") 'h-7 px-2' 'h-10 px-4'}}"
 >
-  <div class='flex items-center h-6'>
+  <div class='flex items-center self-center h-6'>
     {{#if (has-block)}}
       {{yield}}
     {{else}}
@@ -15,4 +14,4 @@
       {{/if}}
     {{/if}}
   </div>
-</button>
+</div>
