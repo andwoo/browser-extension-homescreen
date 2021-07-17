@@ -1,13 +1,9 @@
 .toggle-bg {
-  background-color: var(--h-content-bg);
+  background-color: var(--h-content-background);
 }
 
-.toggle-dot {
-  background-color: var(--h-header-bg);
-}
-
-.toggle-dot--svg {
-  color: var(--h-content-bg);
+.toggle-dot, .toggle-dot--svg {
+  background-color: var(--h-header-background);
 }
 
 input:checked ~ .toggle-dot {

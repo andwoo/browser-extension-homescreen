@@ -8,26 +8,34 @@ export enum Theme {
 const themeKey = 'themeName'
 
 const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
-  '--h-header-bg': {Light: '#6d597a', Dark: '#52796f'},
-  '--h-content-bg': {Light: '#fdf6e8', Dark: '#2f3e46'},
-  '--h-text': {Light: '#6d597a', Dark: '#cad2c5'},
-  /* Buttons */
-  '--h-btn-bg-default': {Light: '#6d597a', Dark: '#52796f'},
-  '--h-btn-bg-hover-default': {Light: '#355070', Dark: '#84a98c'},
-  '--h-btn-txt-default': {Light: '#fdf6e8', Dark: '#cad2c5'},
-  '--h-btn-txt-hover-default': {Light: '#fdf6e8', Dark: '#cad2c5'},
-  '--h-btn-bg-ghost': {Light: '#6d597a', Dark: '#cad2c5'},
-  '--h-btn-bg-hover-ghost': {Light: '#355070', Dark: '#84a98c'},
-  '--h-btn-txt-ghost': {Light: '#6d597a', Dark: '#cad2c5'},
-  '--h-btn-txt-hover-ghost': {Light: '#355070', Dark: '#84a98c'},
+  /* Header */
+  '--h-font-family': {Light: "'Courier New', Courier, monospace", Dark: 'VT323, monospace'},
+  /* Header */
+  '--h-header-background': {Light: '#6d597a', Dark: '#0d1d26'},
+  '--h-header-text': {Light: '#00ff00', Dark: '#839395'},
+  /* Content */
+  '--h-content-background': {Light: '#fdf6e8', Dark: '#122733'},
+  '--h-content-text': {Light: '#00ff00', Dark: '#839395'},
+  /* Button Default */
+  '--h-btn-bg-default': {Light: '#6d597a', Dark: 'rgba(110, 106, 199, 0.35)'},
+  '--h-btn-txt-default': {Light: '#fdf6e8', Dark: '#6E6AC7'},
+  '--h-btn-bg-hover-default': {Light: '#355070', Dark: '#6E6AC7'},
+  '--h-btn-txt-hover-default': {Light: '#fdf6e8', Dark: '#122733'},
+  /* Button Ghost */
+  '--h-btn-bg-ghost': {Light: '#6d597a', Dark: '#839395'},
+  '--h-btn-txt-ghost': {Light: '#6d597a', Dark: '#839395'},
+  '--h-btn-bg-hover-ghost': {Light: '#355070', Dark: '#c8cfd0'},
+  '--h-btn-txt-hover-ghost': {Light: '#355070', Dark: '#c8cfd0'},
+  /* Button Transparent */
   '--h-btn-bg-transparent': {Light: 'transparent', Dark: 'transparent'},
-  '--h-btn-bg-hover-transparent': {Light: '#355070', Dark: '#84a98c'},
-  '--h-btn-txt-transparent': {Light: '#6d597a', Dark: '#cad2c5'},
-  '--h-btn-txt-hover-transparent': {Light: '#fdf6e8', Dark: '#2f3e46'},
-  '--h-btn-bg-danger': {Light: '#e56b6f', Dark: '#e56b6f'},
-  '--h-btn-bg-hover-danger': {Light: '#355070', Dark: '#84a98c'},
-  '--h-btn-txt-danger': {Light: '#fffffc', Dark: '#fffffc'},
-  '--h-btn-txt-hover-danger': {Light: '#fdf6e8', Dark: '#fdf6e8'},
+  '--h-btn-txt-transparent': {Light: '#6d597a', Dark: '#839395'},
+  '--h-btn-bg-hover-transparent': {Light: '#355070', Dark: '#8A9B00'},
+  '--h-btn-txt-hover-transparent': {Light: '#fdf6e8', Dark: '#122733'},
+  /* Button Danger */
+  '--h-btn-bg-danger': {Light: '#e56b6f', Dark: 'rgba(189, 59, 51, 0.35)'},
+  '--h-btn-txt-danger': {Light: '#fffffc', Dark: '#BD3B33'},
+  '--h-btn-bg-hover-danger': {Light: '#355070', Dark: '#BD3B33'},
+  '--h-btn-txt-hover-danger': {Light: '#fdf6e8', Dark: '#122733'},
   /* Input */
   '--h-input-bg': {Light: '#fffffc', Dark: '#cad2c5'},
   '--h-input-bd': {Light: '#6d597a', Dark: '#52796f'},
@@ -39,14 +47,14 @@ const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   '--h-box-txt-info': {Light: '#6d597a', Dark: '#52796f'},
   /* Media Box */
   '--h-box-bg-media': {Light: '#ece2dc', Dark: '#52796f'},
-  '--h-box-bg-hover-media': {Light: '#ece2dc', Dark: '#354f52'},
-  '--h-box-bg-media-image' : {Light: '#6d597a', Dark: '#2f3e46'},
   '--h-box-txt-media': {Light: '#6d597a', Dark: '#cad2c5'},
+  '--h-box-bg-hover-media': {Light: '#ece2dc', Dark: '#354f52'},
   '--h-box-txt-hover-media': {Light: '#eaac8b', Dark: '#cad2c5'},
+  '--h-box-bg-media-image' : {Light: '#6d597a', Dark: '#2f3e46'},
   /* Media Box Colours */
-  '--h-text-red' : {Light: '#e56b6f', Dark: '#e56b6f'},
-  '--h-text-blue': {Light: '#5390d9', Dark: '#5390d9'},
-  '--h-text-green': {Light: '#40916c', Dark: '#40916c'},
+  '--h-text-red' : {Light: '#e56b6f', Dark: '#BD3B33'},
+  '--h-text-green': {Light: '#40916c', Dark: '#8A9B00'},
+  '--h-text-blue': {Light: '#5390d9', Dark: '#5787D2'},
 }
 
 export default class ThemeService extends Service {

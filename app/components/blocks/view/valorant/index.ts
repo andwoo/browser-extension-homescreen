@@ -61,8 +61,10 @@ export default class ViewValorantComponent extends Component<ViewBlockArgs> {
           element
             .getElementsByClassName('match-item-vs')[0]
             .getElementsByClassName('match-item-vs-team')
-        ).map((element: Element) =>
-          element.getElementsByClassName('text-of')[0].textContent.trim()
+        ).map(
+          (element: Element) =>
+            element.getElementsByClassName('text-of')[0].textContent?.trim() ??
+            ''
         );
 
         return {

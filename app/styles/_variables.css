@@ -1,27 +1,34 @@
 :root {
-  --h-header-bg: #6d597a;
-  --h-content-bg: #fdf6e8;
-  --h-text: #6d597a;
+  /* Font */
+  --h-font-family: "'Courier New', Courier, monospace";
 
-  /* Buttons */
+  /* Header */
+  --h-header-background: #000000;
+  --h-header-text: #000000;
+
+  /* Content */
+  --h-content-background: #000000;
+  --h-content-text: #000000;
+
+  /* Button Default */
   --h-btn-bg-default: #6d597a;
-  --h-btn-bg-hover-default: #355070;
   --h-btn-txt-default: #fdf6e8;
+  --h-btn-bg-hover-default: #355070;
   --h-btn-txt-hover-default: #fdf6e8;
-
+  /* Button Ghost */
   --h-btn-bg-ghost: #6d597a;
-  --h-btn-bg-hover-ghost: #355070;
   --h-btn-txt-ghost: #6d597a;
+  --h-btn-bg-hover-ghost: #355070;
   --h-btn-txt-hover-ghost: #355070;
-
+  /* Button Transparent */
   --h-btn-bg-transparent: transparent;
-  --h-btn-bg-hover-transparent: #355070;
   --h-btn-txt-transparent: #6d597a;
+  --h-btn-bg-hover-transparent: #355070;
   --h-btn-txt-hover-transparent: #fdf6e8;
-
+  /* Button Danger */
   --h-btn-bg-danger: #e56b6f;
-  --h-btn-bg-hover-danger: #355070;
   --h-btn-txt-danger: #fffffc;
+  --h-btn-bg-hover-danger: #355070;
   --h-btn-txt-hover-danger: #fdf6e8;
 
   /* Input */
@@ -36,28 +43,32 @@
   --h-box-txt-info: #6d597a;
 
   --h-box-bg-media: #6d597a;
-  --h-box-bg-hover-media: #355070;
-  --h-box-bg-media-image: #355070;
   --h-box-txt-media: #fdf6e8;
+  --h-box-bg-hover-media: #355070;
   --h-box-txt-hover-media: #fdf6e8;
+  --h-box-bg-media-image: #355070;
 
   --h-text-red: red;
-  --h-text-blue: blue;
   --h-text-green: green;
+  --h-text-blue: blue;
 }
 
 .h-text-red {
   color: var(--h-text-red);
 }
-.h-text-blue {
-  color: var(--h-text-blue);
-}
 .h-text-green {
   color: var(--h-text-green);
 }
+.h-text-blue {
+  color: var(--h-text-blue);
+}
 
 body {
-  color: var(--h-text);
   width: 100vw;
   height: 100vh;
+  background-color: var(--h-content-background);
+}
+
+* {
+  font-family: var(--h-font-family);
 }

@@ -14,6 +14,7 @@ interface RedditPostResponse {
     url: string;
     score: string;
     thumbnail: string;
+    permalink: string;
   };
 }
 
