@@ -17,9 +17,9 @@ const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   '--h-content-background': {Light: '#fdf6e8', Dark: '#122733'},
   '--h-content-text': {Light: '#00ff00', Dark: '#839395'},
   /* Button Default */
-  '--h-btn-bg-default': {Light: '#6d597a', Dark: 'rgba(110, 106, 199, 0.35)'},
-  '--h-btn-txt-default': {Light: '#fdf6e8', Dark: '#6E6AC7'},
-  '--h-btn-bg-hover-default': {Light: '#355070', Dark: '#6E6AC7'},
+  '--h-btn-bg-default': {Light: '#6d597a', Dark: 'rgba(138, 155, 0, 0.35)'},
+  '--h-btn-txt-default': {Light: '#fdf6e8', Dark: '#8A9B00'},
+  '--h-btn-bg-hover-default': {Light: '#355070', Dark: '#8A9B00'},
   '--h-btn-txt-hover-default': {Light: '#fdf6e8', Dark: '#122733'},
   /* Button Ghost */
   '--h-btn-bg-ghost': {Light: '#6d597a', Dark: '#839395'},
@@ -41,15 +41,15 @@ const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   '--h-input-bd': {Light: '#6d597a', Dark: '#52796f'},
   '--h-input-txt': {Light: '#6d597a', Dark: '#52796f'},
   /* Boxes */
-  '--h-box-bg-default': {Light: '#ece2dc', Dark: '#84a98c'},
-  '--h-box-txt-default': {Light: '#6d597a', Dark: '#2f3e46'},
-  '--h-box-bg-info': {Light: '#eaac8b', Dark: '#cad2c5'},
-  '--h-box-txt-info': {Light: '#6d597a', Dark: '#52796f'},
+  '--h-box-bg-default': {Light: '#ece2dc', Dark: 'rgb(26, 52, 65)'},
+  '--h-box-txt-default': {Light: '#6d597a', Dark: '#839395'},
+  '--h-box-bg-info': {Light: '#eaac8b', Dark: 'rgba(103, 114, 23, 0.35)'},
+  '--h-box-txt-info': {Light: '#6d597a', Dark: '#8A9B00'},
   /* Media Box */
-  '--h-box-bg-media': {Light: '#ece2dc', Dark: '#52796f'},
-  '--h-box-txt-media': {Light: '#6d597a', Dark: '#cad2c5'},
-  '--h-box-bg-hover-media': {Light: '#ece2dc', Dark: '#354f52'},
-  '--h-box-txt-hover-media': {Light: '#eaac8b', Dark: '#cad2c5'},
+  '--h-box-bg-media': {Light: '#ece2dc', Dark: 'rgb(26, 52, 65)'},
+  '--h-box-txt-media': {Light: '#6d597a', Dark: '#839395'},
+  '--h-box-bg-hover-media': {Light: '#ece2dc', Dark: 'rgb(26, 52, 65)'},
+  '--h-box-txt-hover-media': {Light: '#eaac8b', Dark: '#c8cfd0'},
   '--h-box-bg-media-image' : {Light: '#6d597a', Dark: '#2f3e46'},
   /* Media Box Colours */
   '--h-text-red' : {Light: '#e56b6f', Dark: '#BD3B33'},
