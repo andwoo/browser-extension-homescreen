@@ -3,11 +3,9 @@
   ...attributes
   {{did-insert this.initialize}}
 >
-  <Box @type='default mb-2'>
-    <div class='truncate'>
-      <strong><span class='lowercase'>r/</span><span class='uppercase'>{{this.reddit}}</span></strong>
-    </div>
-  </Box>
+  <div class='truncate mb-2 text-xl'>
+    <strong><span class='lowercase'>r/</span><span class='uppercase'>{{this.reddit}}</span></strong>
+  </div>
   {{#if this.isLoading}}
     <div class='flex flex-1 flex-col items-center'>
       <ActivityIndicator />

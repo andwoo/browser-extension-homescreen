@@ -11,7 +11,7 @@ const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   /* Header */
   '--h-font-family': {Light: "'Courier New', Courier, monospace", Dark: 'VT323, monospace'},
   /* Header */
-  '--h-header-background': {Light: '#6d597a', Dark: '#0d1d26'},
+  '--h-header-background': {Light: '#6d597a', Dark: '#09141b'},
   '--h-header-text': {Light: '#00ff00', Dark: '#839395'},
   /* Content */
   '--h-content-background': {Light: '#fdf6e8', Dark: '#122733'},
@@ -37,9 +37,9 @@ const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   '--h-btn-bg-hover-danger': {Light: '#355070', Dark: '#BD3B33'},
   '--h-btn-txt-hover-danger': {Light: '#fdf6e8', Dark: '#122733'},
   /* Input */
-  '--h-input-bg': {Light: '#fffffc', Dark: '#cad2c5'},
-  '--h-input-bd': {Light: '#6d597a', Dark: '#52796f'},
-  '--h-input-txt': {Light: '#6d597a', Dark: '#52796f'},
+  '--h-input-bg': {Light: '#fffffc', Dark: '#09141b'},
+  '--h-input-bd': {Light: '#6d597a', Dark: '#112836'},
+  '--h-input-txt': {Light: '#6d597a', Dark: '#c8cfd0'},
   /* Boxes */
   '--h-box-bg-default': {Light: '#ece2dc', Dark: 'rgb(26, 52, 65)'},
   '--h-box-txt-default': {Light: '#6d597a', Dark: '#839395'},

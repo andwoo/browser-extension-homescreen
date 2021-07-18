@@ -2,11 +2,9 @@
   ...attributes
   {{did-insert this.initialize}}
 >
-  <Box @type='default mb-2'>
-    <div class='truncate uppercase'>
-      <strong>twitch</strong>
-    </div>
-  </Box>
+  <div class='truncate uppercase mb-2  text-xl'>
+    <strong>twitch</strong>
+  </div>
   {{#if this.isLoading}}
     <div class='flex flex-1 flex-col items-center'>
       <ActivityIndicator />

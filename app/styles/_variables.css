@@ -1,6 +1,6 @@
 :root {
   /* Font */
-  --h-font-family: "'Courier New', Courier, monospace";
+  --h-font-family: '';
 
   /* Header */
   --h-header-background: #000000;
@@ -11,46 +11,46 @@
   --h-content-text: #000000;
 
   /* Button Default */
-  --h-btn-bg-default: #6d597a;
-  --h-btn-txt-default: #fdf6e8;
-  --h-btn-bg-hover-default: #355070;
-  --h-btn-txt-hover-default: #fdf6e8;
+  --h-btn-bg-default: #000000;
+  --h-btn-txt-default: #000000;
+  --h-btn-bg-hover-default: #000000;
+  --h-btn-txt-hover-default: #000000;
   /* Button Ghost */
-  --h-btn-bg-ghost: #6d597a;
-  --h-btn-txt-ghost: #6d597a;
-  --h-btn-bg-hover-ghost: #355070;
-  --h-btn-txt-hover-ghost: #355070;
+  --h-btn-bg-ghost: #000000;
+  --h-btn-txt-ghost: #000000;
+  --h-btn-bg-hover-ghost: #000000;
+  --h-btn-txt-hover-ghost: #000000;
   /* Button Transparent */
-  --h-btn-bg-transparent: transparent;
-  --h-btn-txt-transparent: #6d597a;
-  --h-btn-bg-hover-transparent: #355070;
-  --h-btn-txt-hover-transparent: #fdf6e8;
+  --h-btn-bg-transparent: #000000;
+  --h-btn-txt-transparent: #000000;
+  --h-btn-bg-hover-transparent: #000000;
+  --h-btn-txt-hover-transparent: #000000;
   /* Button Danger */
-  --h-btn-bg-danger: #e56b6f;
-  --h-btn-txt-danger: #fffffc;
-  --h-btn-bg-hover-danger: #355070;
-  --h-btn-txt-hover-danger: #fdf6e8;
+  --h-btn-bg-danger: #000000;
+  --h-btn-txt-danger: #000000;
+  --h-btn-bg-hover-danger: #000000;
+  --h-btn-txt-hover-danger: #000000;
 
   /* Input */
-  --h-input-bg: #fffffc;
-  --h-input-bd: #6d597a;
-  --h-input-txt: #6d597a;
+  --h-input-bg: #000000;
+  --h-input-bd: #000000;
+  --h-input-txt: #000000;
 
   /* Boxes */
-  --h-box-bg-default: #fffcf7;
-  --h-box-txt-default: #6d597a;
-  --h-box-bg-info: #eaac8b;
-  --h-box-txt-info: #6d597a;
+  --h-box-bg-default: #000000;
+  --h-box-txt-default: #000000;
+  --h-box-bg-info: #000000;
+  --h-box-txt-info: #000000;
 
-  --h-box-bg-media: #6d597a;
-  --h-box-txt-media: #fdf6e8;
-  --h-box-bg-hover-media: #355070;
-  --h-box-txt-hover-media: #fdf6e8;
-  --h-box-bg-media-image: #355070;
+  --h-box-bg-media: #000000;
+  --h-box-txt-media: #000000;
+  --h-box-bg-hover-media: #000000;
+  --h-box-txt-hover-media: #000000;
+  --h-box-bg-media-image: #000000;
 
-  --h-text-red: red;
-  --h-text-green: green;
-  --h-text-blue: blue;
+  --h-text-red: #000000;
+  --h-text-green: #000000;
+  --h-text-blue: #000000;
 }
 
 .h-text-red {
