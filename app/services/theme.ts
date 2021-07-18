@@ -9,7 +9,7 @@ const themeKey = 'themeName'
 
 const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   /* Header */
-  '--h-font-family': {Light: "'Courier New', Courier, monospace", Dark: 'VT323, monospace'},
+  '--h-font-family': {Light: "'Open Sans', sans-serif", Dark: 'VT323, monospace'},
   /* Header */
   '--h-header-background': {Light: '#f1dcd1', Dark: '#09141b'},
   '--h-header-text': {Light: '#242537', Dark: '#839395'},
@@ -48,9 +48,9 @@ const cssVariables: {[key: string]: {Light: string, Dark: string}} = {
   /* Media Box */
   '--h-box-bg-media': {Light: '#f1dcd1', Dark: 'rgb(26, 52, 65)'},
   '--h-box-txt-media': {Light: '#242537', Dark: '#839395'},
-  '--h-box-bg-hover-media': {Light: '#f7eae4', Dark: 'rgb(26, 52, 65)'},
+  '--h-box-bg-hover-media': {Light: '#ecd0c0', Dark: 'rgb(26, 52, 65)'},
   '--h-box-txt-hover-media': {Light: '#242537', Dark: '#c8cfd0'},
-  '--h-box-bg-media-image' : {Light: '#f7eae4', Dark: 'rgb(26, 52, 65)'},
+  '--h-box-bg-media-image' : {Light: '#f1dcd1', Dark: 'rgb(26, 52, 65)'},
   /* Media Box Colours */
   '--h-text-red' : {Light: '#fc6454', Dark: '#BD3B33'},
   '--h-text-green': {Light: '#df7ec8', Dark: '#8A9B00'},
