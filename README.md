@@ -26,5 +26,5 @@ List of hosts used:
 
 ## Install Steps For Reviewer
 
-- Install dependencies by running the terminal command "yarn" from the project root.
-- Build the app by running the terminal command "yarn buildprod" from the project root.
+- Install dependencies by running the terminal command "npm install" from the project root.
+- Build the app by running the terminal command "npm run build" from the project root.
