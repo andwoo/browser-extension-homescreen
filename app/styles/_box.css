@@ -42,3 +42,8 @@
   opacity: 0.5;
   transition: 0.1s ease-in-out;
 }
+
+.box-media--nsfw {
+  background-color: var(--h-btn-bg-danger);
+  color: var(--h-btn-txt-danger);
+}

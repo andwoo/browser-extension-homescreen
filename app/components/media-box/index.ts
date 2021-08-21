@@ -6,4 +6,5 @@ export default templateOnly();
 //   imageAlt: string;
 //   imageUrl: string;
 //   url: string;
+//   nsfw: boolean
 // }

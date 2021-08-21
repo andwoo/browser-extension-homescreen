@@ -7,6 +7,7 @@ import { taskFor, perform } from 'ember-concurrency-ts';
 import { restartableTask, TaskGenerator } from 'ember-concurrency';
 import ThemeService from '../../../../services/theme';
 import { inject as service } from '@ember/service';
+import { isEmpty } from '@ember/utils';
 
 interface RedditPostResponse {
   data: {
@@ -14,6 +15,7 @@ interface RedditPostResponse {
     url: string;
     score: string;
     thumbnail: string;
+    url_overridden_by_dest: string;
     permalink: string;
   };
 }
@@ -21,6 +23,7 @@ interface RedditPostResponse {
 interface RedditPost {
   title: string;
   thumbnail: string;
+  hasThumbnail: boolean;
   postUrl: string;
   commentsUrl: string;
   upVotes: number;
@@ -48,6 +51,10 @@ export default class ViewRedditComponent extends Component<ViewBlockArgs> {
     return !!taskFor(this.fetchPosts).lastErrored;
   }
 
+  get fallbackThumbnail(): string {
+    return `/dist/unknown-${this.theme.name.toLowerCase()}.svg`;
+  }
+
   @action initialize(): void {
     const parsed = JSON.parse(this.args.item.payload ?? '{}');
     this.reddit = parsed.reddit ?? '';
@@ -57,19 +64,22 @@ export default class ViewRedditComponent extends Component<ViewBlockArgs> {
   @restartableTask *fetchPosts(reddit: string): TaskGenerator<RedditPost[]> {
     const response = yield axios.get(`https://reddit.com/r/${reddit}.json`);
     return response.data.data.children.map((post: RedditPostResponse) => {
-      let thumbnail: string = post.data.thumbnail;
+      let thumbnail: string = isEmpty(post.data.thumbnail)
+        ? post.data.url_overridden_by_dest
+        : post.data.thumbnail;
 
-      if (
-        !thumbnail ||
+      const hasThumbnail: boolean = !(
+        isEmpty(thumbnail) ||
         thumbnail === 'self' ||
         thumbnail === 'spoiler' ||
-        thumbnail === 'nsfw'
-      ) {
-        thumbnail = `/dist/unknown-${this.theme.name.toLowerCase()}.svg`;
-      }
+        thumbnail === 'nsfw' ||
+        !urlHasExtension(thumbnail)
+      );
+
       return {
         title: decodeString(post.data.title),
-        thumbnail: thumbnail,
+        thumbnail,
+        hasThumbnail,
         postUrl: post.data.url,
         commentsUrl: `https://reddit.com${post.data.permalink}`,
         upVotes: post.data.score,
@@ -78,3 +88,12 @@ export default class ViewRedditComponent extends Component<ViewBlockArgs> {
     });
   }
 }
+
+const urlHasExtension = (url: string): boolean => {
+  if (!isEmpty(url)) {
+    let parts = url.split('/');
+    let lastPart = parts.lastObject;
+    return parts.length > 3 && lastPart?.indexOf('.') != -1;
+  }
+  return false;
+};

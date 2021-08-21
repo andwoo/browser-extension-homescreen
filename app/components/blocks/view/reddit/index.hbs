@@ -20,10 +20,11 @@
       {{#each this.posts as |post|}}
         <MediaBox
           class='mb-2'
-          @imageSrc={{post.thumbnail}}
+          @imageSrc={{if post.hasThumbnail post.thumbnail this.fallbackThumbnail}}
           @imageAlt={{post.title}}
           @imageUrl={{post.postUrl}}
           @url={{post.commentsUrl}}
+          @nsfw={{eq post.thumbnail 'nsfw'}}
         >
           <div class='break-words text-left ml-2'>
             {{post.title}}
