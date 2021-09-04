@@ -43,7 +43,20 @@
   transition: 0.1s ease-in-out;
 }
 
-.box-media--nsfw {
+.box-media__tag {
+  margin-bottom: 0.5rem;
+}
+
+.box-media__tag:last-child {
+  margin-bottom: 0px;
+}
+
+.box-media__tag--warning {
+  background-color: var(--h-btn-bg-danger);
+  color: var(--h-btn-txt-danger);
+}
+
+.box-media__tag--info {
   background-color: var(--h-btn-bg-danger);
   color: var(--h-btn-txt-danger);
 }

@@ -24,17 +24,11 @@
           @imageAlt={{post.title}}
           @imageUrl={{post.postUrl}}
           @url={{post.commentsUrl}}
-          @nsfw={{eq post.thumbnail 'nsfw'}}
+          @tags={{post.tags}}
         >
           <div class='break-words text-left ml-2'>
             {{post.title}}
           </div>
-          {{#if (eq post.type 'nsfw')}}
-            <div class='text-left ml-2'>NSFW</div>
-          {{else if (eq post.type 'spoiler')}}
-            <div class='text-left ml-2'>Spoiler</div>
-          {{/if}}
-          <div></div>
           <div class='break-words text-left ml-2 h-text-green'>
             <i class="fas fa-chevron-up"/>
             <span>{{post.upVotes}}</span>

@@ -6,5 +6,11 @@ export default templateOnly();
 //   imageAlt: string;
 //   imageUrl: string;
 //   url: string;
-//   nsfw: boolean
+//   tags?: Tags[];
 // }
+
+export interface Tags {
+  label: string;
+  icon: string;
+  type: 'warning' | 'info';
+}

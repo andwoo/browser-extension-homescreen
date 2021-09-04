@@ -8,6 +8,7 @@ import { restartableTask, TaskGenerator } from 'ember-concurrency';
 import ThemeService from '../../../../services/theme';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
+import { Tags } from '../../../media-box';
 
 interface RedditPostResponse {
   data: {
@@ -27,7 +28,7 @@ interface RedditPost {
   postUrl: string;
   commentsUrl: string;
   upVotes: number;
-  type: 'default' | 'nsfw' | 'spoiler';
+  tags: Tags[];
 }
 
 const parser: DOMParser = new DOMParser();
@@ -76,6 +77,21 @@ export default class ViewRedditComponent extends Component<ViewBlockArgs> {
         !urlHasExtension(thumbnail)
       );
 
+      const tags: Tags[] = [];
+      if (thumbnail === 'nsfw') {
+        tags.push({
+          label: 'NSFW',
+          icon: 'fas fa-exclamation-circle',
+          type: 'warning',
+        });
+      } else if (thumbnail === 'spoiler') {
+        tags.push({
+          label: 'Spoiler',
+          icon: 'fas fa-eye-slash',
+          type: 'info',
+        });
+      }
+
       return {
         title: decodeString(post.data.title),
         thumbnail,
@@ -83,7 +99,7 @@ export default class ViewRedditComponent extends Component<ViewBlockArgs> {
         postUrl: post.data.url,
         commentsUrl: `https://reddit.com${post.data.permalink}`,
         upVotes: post.data.score,
-        type: post.data.thumbnail,
+        tags,
       };
     });
   }
