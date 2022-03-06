@@ -5,27 +5,32 @@ import axios from 'axios';
 import { taskFor, perform } from 'ember-concurrency-ts';
 import { restartableTask, TaskGenerator } from 'ember-concurrency';
 
-interface TwitchStreamerResponse {
-  channel: {
-    display_name: string;
-    game: string;
-    logo: string;
-    url: string;
-    profile_banner: string;
-    profile_banner_background_color: string;
-  };
-  viewers: string;
+interface TwitchUserResponse {
+  id: string;
+  profile_image_url: string;
+}
+
+interface TwitchStreamResponse {
+  type: string;
+  user_login: string;
+  user_name: string;
+  game_name: string;
+  title: string;
+  thumbnail_url: string;
+  viewer_count: number;
 }
 
 interface TwitchStreamer {
   name: string;
-  viewers: string;
+  viewers: number;
   game: string;
+  title: string;
   url: string;
   thumbnail: string;
-  background: string;
-  backgroundColour: string;
 }
+
+const ICON_WIDTH = `${1280 / 4}`;
+const ICON_HEIGHT = `${800 / 4}`;
 
 export default class ViewTwitchComponent extends Component<ViewBlockArgs> {
   get streamers(): TwitchStreamer[] {
@@ -42,33 +47,53 @@ export default class ViewTwitchComponent extends Component<ViewBlockArgs> {
 
   @action initialize(): void {
     const parsed = JSON.parse(this.args.item.payload ?? '{}');
-    const accessToken: string = parsed.accessToken ?? '';
-    perform(this.fetchStreamers, accessToken);
+    perform(this.fetchStreamers, {
+      clientId: parsed.clientId ?? '',
+      accessToken: parsed.accessToken ?? '',
+    });
   }
 
-  @restartableTask *fetchStreamers(
-    accessToken: string
-  ): TaskGenerator<TwitchStreamer[]> {
+  @restartableTask *fetchStreamers({
+    clientId,
+    accessToken,
+  }: {
+    clientId: string;
+    accessToken: string;
+  }): TaskGenerator<TwitchStreamer[]> {
+    const userResponse = yield axios.get(`https://api.twitch.tv/helix/users`, {
+      headers: {
+        Accept: 'application/vnd.twitchtv.v5+json',
+        Authorization: `Bearer ${accessToken}`,
+        'Client-Id': clientId,
+      },
+    });
+
+    const user: TwitchUserResponse = userResponse.data.data[0];
+
     const response = yield axios.get(
-      'https://api.twitch.tv/kraken/streams/followed?stream_type=live',
+      `https://api.twitch.tv/helix/streams/followed?user_id=${user.id}`,
       {
         headers: {
           Accept: 'application/vnd.twitchtv.v5+json',
-          Authorization: `OAuth ${accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
+          'Client-Id': clientId,
         },
       }
     );
 
-    return response.data.streams.map((stream: TwitchStreamerResponse) => {
-      return {
-        name: stream['channel'].display_name,
-        viewers: stream.viewers,
-        game: stream['channel'].game,
-        url: stream['channel'].url,
-        thumbnail: stream['channel'].logo,
-        background: stream['channel'].profile_banner,
-        backgroundColour: stream['channel'].profile_banner_background_color,
-      };
-    });
+    return response.data.data
+      .filter((stream: TwitchStreamResponse) => stream.type === 'live')
+      .map((stream: TwitchStreamResponse) => {
+        return {
+          name: stream.user_name,
+          viewers: stream.viewer_count,
+          game: stream.game_name,
+          title: stream.title,
+          url: `https://www.twitch.tv/${stream.user_login}`,
+          thumbnail: stream.thumbnail_url
+            .replace('{width}', ICON_WIDTH)
+            .replace('{height}', ICON_HEIGHT),
+        };
+      });
   }
 }

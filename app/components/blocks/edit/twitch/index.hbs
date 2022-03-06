@@ -1,7 +1,7 @@
 <div
   ...attributes
   {{did-insert this.initialize}}
-  {{did-update this.onWriteToPayload this.accessToken}}
+  {{did-update this.onWriteToPayload this.accessToken this.clientId}}
 >
   <Box
     @type='default'
@@ -33,6 +33,11 @@
     </div>
     <Innput
       class='mt-2'
+      @placeholder='client-id'
+      @value={{this.clientId}}
+    />
+    <Innput
+      class='mt-2'
       @placeholder='access-token'
       @value={{this.accessToken}}
     />
@@ -41,7 +46,7 @@
       @type='info'
     >
       <div class='flex flex-row items-center flex-wrap'>
-        <div class='flex-1'>Generate a token with the scope permission <strong>user_read</strong></div>
+        <div class='flex-1'>Generate a token with the scope permission <strong>user:read:follows</strong></div>
         <Button
           @icon="fab fa-twitch"
           @label='Generate Token'
