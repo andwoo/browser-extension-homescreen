@@ -23,6 +23,10 @@ jobs:
           version-type: 'minor'
           target-branch: 'main'
           commit-message: 'CI: Bumping package.json version to {{version}} [skip ci]'
+      - name: Pulling latest repository changes
+        run: git pull origin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 'Bumping manifest.json version'
         uses: michmich112/version-bumper@master
         with:
