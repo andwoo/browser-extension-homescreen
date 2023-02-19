@@ -2,7 +2,8 @@ name: Build and release
 run-name: ${{ github.actor }} is building and releasing a new version
 on:
   push:
-    - main
+    branches:
+      - main
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
