@@ -1,0 +1,37 @@
+name: Build and release
+run-name: ${{ github.actor }} is building and releasing a new version
+on:
+  push:
+    - main
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'yarn'
+      - name: 'Automated Version Bump'
+        uses: 'phips28/gh-action-bump-version@master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          version-type: 'minor'
+          target-branch: 'main'
+          commit-message: 'CI: Bumping version to {{version}} [skip ci]'
+      - name: Installing dependencies
+        run: yarn install
+      - name: Building
+        run: yarn build
+      - name: Creating release
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r build.zip dir manifest.json
+      - name: Pushing release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build.zip
