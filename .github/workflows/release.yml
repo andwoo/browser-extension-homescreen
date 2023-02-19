@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 16
           cache: 'yarn'
-      - name: 'Automated Version Bump'
+      - name: 'Bumping package.json version'
         uses: 'phips28/gh-action-bump-version@master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -23,7 +23,20 @@ jobs:
         with:
           version-type: 'minor'
           target-branch: 'main'
-          commit-message: 'CI: Bumping version to {{version}} [skip ci]'
+          commit-message: 'CI: Bumping package.json version to {{version}} [skip ci]'
+      - name: 'Bumping manifest.json version'
+        uses: michmich112/version-bumper@master
+        with:
+          version-file: './package.json'
+          scheme: semantic
+          skip: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          files: >
+            [
+              './manifest.json'
+            ]
+          rules: >
+            []
       - name: Installing dependencies
         run: yarn install
       - name: Building
