@@ -32,7 +32,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           files: >
             [
-              './manifest.json'
+              "./package-lock.json"
             ]
           rules: >
             []
