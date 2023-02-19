@@ -22,4 +22,4 @@ jobs:
         with:
           version-type: 'minor'
           target-branch: 'main'
-          commit-message: 'CI: Bumping package.json version to {{version}} [skip ci]'
+          commit-message: 'CI: Bumping package.json version to {{version}}'
