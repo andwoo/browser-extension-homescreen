@@ -25,6 +25,8 @@ jobs:
           commit-message: 'CI: Bumping package.json version to {{version}}'
       - name: Set env
         run: echo "RELEASE_VERSION=${version}" >> $GITHUB_ENV
+      - name: Echo env
+        run: echo ${{ env.RELEASE_VERSION }}
       - name: Set manifest.json version
         uses: jacobtomlinson/gha-find-replace@v3
         with:
