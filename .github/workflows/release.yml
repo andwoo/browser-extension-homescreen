@@ -19,6 +19,7 @@ jobs:
         uses: 'phips28/gh-action-bump-version@master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: manifest.json
         with:
           version-type: 'minor'
           target-branch: 'main'
@@ -33,6 +34,5 @@ jobs:
           args: zip -qq -r build.zip dir manifest.json
       - name: Pushing release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: build.zip
