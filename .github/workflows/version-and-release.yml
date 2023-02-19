@@ -23,10 +23,8 @@ jobs:
           version-type: 'minor'
           target-branch: 'main'
           commit-message: 'CI: Bumping package.json version to {{version}}'
-      - name: Set env
+      - name: Setting release version
         run: echo "RELEASE_VERSION=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
-      - name: Echo env
-        run: echo ${{ env.RELEASE_VERSION }}
       - name: Set manifest.json version
         uses: jacobtomlinson/gha-find-replace@v3
         with:
