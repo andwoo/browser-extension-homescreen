@@ -1,9 +1,9 @@
-name: Build and release
-run-name: ${{ github.actor }} is building and releasing a new version
+name: Releasing
+run-name: ${{ github.actor }} is creating a new release
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "*.*.*"
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -15,31 +15,14 @@ jobs:
         with:
           node-version: 16
           cache: 'yarn'
-      - name: 'Bumping package.json version'
-        uses: 'phips28/gh-action-bump-version@master'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Set manifest.json version
+        uses: jacobtomlinson/gha-find-replace@v3
         with:
-          version-type: 'minor'
-          target-branch: 'main'
-          commit-message: 'CI: Bumping package.json version to {{version}} [skip ci]'
-      - name: Pulling latest repository changes
-        run: git pull origin
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: 'Bumping manifest.json version'
-        uses: michmich112/version-bumper@master
-        with:
-          version-file: './package.json'
-          scheme: semantic
-          skip: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          files: >
-            [
-              "./manifest.json"
-            ]
-          rules: >
-            []
+          find: '0.0.0'
+          replace: ${{ env.RELEASE_VERSION }}
+          include: "manifest.json"
       - name: Installing dependencies
         run: yarn install
       - name: Building
