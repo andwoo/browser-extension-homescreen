@@ -3,7 +3,7 @@ import { ViewBlockArgs } from '../../../content';
 import { action } from '@ember/object';
 import axios from 'axios';
 import { taskFor, perform } from 'ember-concurrency-ts';
-import { restartableTask, TaskGenerator } from 'ember-concurrency';
+import { restartableTask } from 'ember-concurrency';
 
 interface TwitchUserResponse {
   id: string;
@@ -53,14 +53,14 @@ export default class ViewTwitchComponent extends Component<ViewBlockArgs> {
     });
   }
 
-  @restartableTask *fetchStreamers({
+  @restartableTask async fetchStreamers({
     clientId,
     accessToken,
   }: {
     clientId: string;
     accessToken: string;
-  }): TaskGenerator<TwitchStreamer[]> {
-    const userResponse = yield axios.get(`https://api.twitch.tv/helix/users`, {
+  }): Promise<TwitchStreamer[]> {
+    const userResponse = await axios.get(`https://api.twitch.tv/helix/users`, {
       headers: {
         Accept: 'application/vnd.twitchtv.v5+json',
         Authorization: `Bearer ${accessToken}`,
@@ -70,7 +70,7 @@ export default class ViewTwitchComponent extends Component<ViewBlockArgs> {
 
     const user: TwitchUserResponse = userResponse.data.data[0];
 
-    const response = yield axios.get(
+    const response = await axios.get(
       `https://api.twitch.tv/helix/streams/followed?user_id=${user.id}`,
       {
         headers: {

@@ -4,11 +4,13 @@ import { ViewBlockArgs } from '../../../content';
 import { action } from '@ember/object';
 import axios from 'axios';
 import { taskFor, perform } from 'ember-concurrency-ts';
-import { restartableTask, TaskGenerator } from 'ember-concurrency';
+import { restartableTask, hash, task } from 'ember-concurrency';
 import ThemeService from '../../../../services/theme';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { Tags } from '../../../media-box';
+import { migrateRedditPayload } from '../../../../migrators/reddit-payload-migrator';
+import { RedditPayload } from '../../../../classes/reddit-payload';
 
 interface RedditPostResponse {
   data: {
@@ -31,6 +33,12 @@ interface RedditPost {
   tags: Tags[];
 }
 
+interface RedditData {
+  reddit: string;
+  posts: RedditPost[];
+  isFailure: boolean;
+}
+
 const parser: DOMParser = new DOMParser();
 const decodeString = (value: string) =>
   parser.parseFromString('<!doctype html><body>' + value, 'text/html').body
@@ -38,18 +46,10 @@ const decodeString = (value: string) =>
 
 export default class ViewRedditComponent extends Component<ViewBlockArgs> {
   @service('theme') declare theme: ThemeService;
-  @tracked reddit: string = '';
-
-  get posts(): RedditPost[] {
-    return taskFor(this.fetchPosts).lastSuccessful?.value ?? [];
-  }
+  @tracked reddits: string[] = [];
 
   get isLoading(): boolean {
-    return taskFor(this.fetchPosts).isRunning;
-  }
-
-  get isFailure(): boolean {
-    return !!taskFor(this.fetchPosts).lastErrored;
+    return taskFor(this.fetchSubreddits).isRunning;
   }
 
   get fallbackThumbnail(): string {
@@ -58,50 +58,79 @@ export default class ViewRedditComponent extends Component<ViewBlockArgs> {
 
   @action initialize(): void {
     const parsed = JSON.parse(this.args.item.payload ?? '{}');
-    this.reddit = parsed.reddit ?? '';
-    perform(this.fetchPosts, this.reddit);
+    const payload: RedditPayload = migrateRedditPayload(parsed);
+    this.reddits = payload.reddits;
+    perform(this.fetchSubreddits);
   }
 
-  @restartableTask *fetchPosts(reddit: string): TaskGenerator<RedditPost[]> {
-    const response = yield axios.get(`https://reddit.com/r/${reddit}.json`);
-    return response.data.data.children.map((post: RedditPostResponse) => {
-      let thumbnail: string = isEmpty(post.data.thumbnail)
-        ? post.data.url_overridden_by_dest
-        : post.data.thumbnail;
+  @restartableTask async fetchSubreddits(): Promise<RedditData[]> {
+    const results = await hash(
+      this.reddits.reduce(
+        (acc: { [key: string]: Promise<RedditData> }, reddit) => {
+          acc[reddit] = perform(this.fetchPosts, reddit);
+          return acc;
+        },
+        {}
+      )
+    );
+    return Object.values(results);
+  }
 
-      const hasThumbnail: boolean = !(
-        isEmpty(thumbnail) ||
-        thumbnail === 'self' ||
-        thumbnail === 'spoiler' ||
-        thumbnail === 'nsfw' ||
-        !urlHasExtension(thumbnail)
+  @task async fetchPosts(reddit: string): Promise<RedditData> {
+    try {
+      const response = await axios.get(`https://reddit.com/r/${reddit}.json`);
+      const posts = response.data.data.children.map(
+        (post: RedditPostResponse) => {
+          let thumbnail: string = isEmpty(post.data.thumbnail)
+            ? post.data.url_overridden_by_dest
+            : post.data.thumbnail;
+
+          const hasThumbnail: boolean = !(
+            isEmpty(thumbnail) ||
+            thumbnail === 'self' ||
+            thumbnail === 'spoiler' ||
+            thumbnail === 'nsfw' ||
+            !urlHasExtension(thumbnail)
+          );
+
+          const tags: Tags[] = [];
+          if (thumbnail === 'nsfw') {
+            tags.push({
+              label: 'NSFW',
+              icon: 'fas fa-exclamation-circle',
+              type: 'warning',
+            });
+          } else if (thumbnail === 'spoiler') {
+            tags.push({
+              label: 'Spoiler',
+              icon: 'fas fa-eye-slash',
+              type: 'info',
+            });
+          }
+
+          return {
+            title: decodeString(post.data.title),
+            thumbnail,
+            hasThumbnail,
+            postUrl: post.data.url,
+            commentsUrl: `https://reddit.com${post.data.permalink}`,
+            upVotes: post.data.score,
+            tags,
+          };
+        }
       );
-
-      const tags: Tags[] = [];
-      if (thumbnail === 'nsfw') {
-        tags.push({
-          label: 'NSFW',
-          icon: 'fas fa-exclamation-circle',
-          type: 'warning',
-        });
-      } else if (thumbnail === 'spoiler') {
-        tags.push({
-          label: 'Spoiler',
-          icon: 'fas fa-eye-slash',
-          type: 'info',
-        });
-      }
-
       return {
-        title: decodeString(post.data.title),
-        thumbnail,
-        hasThumbnail,
-        postUrl: post.data.url,
-        commentsUrl: `https://reddit.com${post.data.permalink}`,
-        upVotes: post.data.score,
-        tags,
+        reddit,
+        posts,
+        isFailure: false,
       };
-    });
+    } catch {
+      return {
+        reddit,
+        posts: [],
+        isFailure: true,
+      };
+    }
   }
 }
 

@@ -4,3 +4,6 @@ declare module 'ember-quickstart/templates/*' {
   const tmpl: TemplateFactory;
   export default tmpl;
 }
+
+import 'ember-concurrency-async';
+import 'ember-concurrency-ts/async';

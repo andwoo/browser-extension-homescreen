@@ -3,37 +3,43 @@
   ...attributes
   {{did-insert this.initialize}}
 >
-  <div class='truncate mb-2 text-xl'>
-    <strong><span class='lowercase'>r/</span><span class='uppercase'>{{this.reddit}}</span></strong>
-  </div>
   {{#if this.isLoading}}
     <div class='flex flex-1 flex-col items-center'>
       <ActivityIndicator />
     </div>
-  {{else if this.isFailure}}
-    <Box @type='info'>
-      <i class="fas fa-exclamation px-4"/>
-      <span>Please enter a valid subreddit.</span>
-    </Box>
   {{else}}
-    <div class='flex flex-1 flex-col'>
-      {{#each this.posts as |post|}}
-        <MediaBox
-          class='mb-2'
-          @imageSrc={{if post.hasThumbnail post.thumbnail this.fallbackThumbnail}}
-          @imageAlt={{post.title}}
-          @imageUrl={{post.postUrl}}
-          @url={{post.commentsUrl}}
-          @tags={{post.tags}}
-        >
-          <div class='break-words text-left ml-2'>
-            {{post.title}}
+    <div class='flex flex-1 flex-col h-full'>
+      {{#each this.fetchSubreddits.lastSuccessful.value as |entry index|}}
+        <div class='truncate mb-2 text-xl {{if (gt index 0) 'mt-2'}}'>
+          <strong><span class='lowercase'>r/</span><span class='uppercase'>{{entry.reddit}}</span></strong>
+        </div>
+        {{#if entry.isFailure}}
+          <Box @type='info'>
+            <i class="fas fa-exclamation px-4"/>
+            <span>Please enter a valid subreddit.</span>
+          </Box>
+        {{else}}
+          <div class='flex flex-1 flex-col overflow-y-auto'>
+            {{#each entry.posts as |post|}}
+              <MediaBox
+                class='mb-2'
+                @imageSrc={{if post.hasThumbnail post.thumbnail this.fallbackThumbnail}}
+                @imageAlt={{post.title}}
+                @imageUrl={{post.postUrl}}
+                @url={{post.commentsUrl}}
+                @tags={{post.tags}}
+              >
+                <div class='break-words text-left ml-2'>
+                  {{post.title}}
+                </div>
+                <div class='break-words text-left ml-2 h-text-green'>
+                  <i class="fas fa-chevron-up"/>
+                  <span>{{post.upVotes}}</span>
+                </div>
+              </MediaBox>
+            {{/each}}
           </div>
-          <div class='break-words text-left ml-2 h-text-green'>
-            <i class="fas fa-chevron-up"/>
-            <span>{{post.upVotes}}</span>
-          </div>
-        </MediaBox>
+        {{/if}}
       {{/each}}
     </div>
   {{/if}}

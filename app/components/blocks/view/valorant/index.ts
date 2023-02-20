@@ -4,7 +4,7 @@ import { ViewBlockArgs } from '../../../content';
 import { action } from '@ember/object';
 import axios from 'axios';
 import { taskFor, perform } from 'ember-concurrency-ts';
-import { restartableTask, TaskGenerator } from 'ember-concurrency';
+import { restartableTask } from 'ember-concurrency';
 import jQuery from 'jquery';
 
 interface Match {
@@ -35,14 +35,14 @@ export default class ViewValorantComponent extends Component<ViewBlockArgs> {
     perform(this.fetchMatches);
   }
 
-  @restartableTask *fetchMatches(): TaskGenerator<Match[]> {
-    const response = yield axios.get('https://www.vlr.gg/matches', {
+  @restartableTask async fetchMatches(): Promise<Match[]> {
+    const response = await axios.get('https://www.vlr.gg/matches', {
       responseType: 'text',
     });
     //@ts-ignore
     let html = jQuery('<div>').html(response.data);
     //@ts-ignore
-    html = yield html.ready();
+    html = await html.ready();
     return Array.from(html[0].getElementsByClassName('match-item')).map(
       (element: Element) => {
         const thumbnail = element
