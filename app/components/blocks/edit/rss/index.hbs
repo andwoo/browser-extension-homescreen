@@ -1,0 +1,59 @@
+<div
+  ...attributes
+  {{did-insert this.initialize}}
+  {{did-update this.onWriteToPayload this.rss}}
+>
+  <Box
+    @type='default'
+  >
+  <div class='flex flex-row'>
+    <div class='font-bold'>RSS</div>
+    <div class='flex-1'/>
+      <Button
+        @icon="fas fa-arrow-left"
+        @type='transparent'
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.moveLeft @item)}}
+      />
+      <Button
+        @icon="fas fa-arrow-right"
+        @type='transparent'
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.moveRight @item)}}
+      />
+      <Button
+        @icon="fas fa-times"
+        @type="danger"
+        @noShadow={{true}}
+        @size='small'
+        {{on 'click' (fn @actions.remove @item)}}
+      />
+    </div>
+    {{#each this.rss as |entry index|}}
+      <div class='flex flex-row mt-2 items-center'
+        {{did-update this.onWriteToPayload entry.url}}
+      >
+        <Innput
+          @placeholder='https://domain.com/feed.xml'
+          @value={{entry.url}}
+        />
+        <Button
+          class='ml-2'
+          @icon="fas fa-times"
+          @type="danger"
+          @noShadow={{true}}
+          @size='small'
+          {{on 'click' (fn this.removeFeed index)}}
+        />
+      </div>
+    {{/each}}
+    <Button
+      class='mt-4 self-start'
+      @icon='fas fa-plus'
+      @label='Add Feed'
+      {{on 'click' this.addFeed}}
+    />
+  </Box>
+</div>

@@ -6,6 +6,7 @@ export enum BlockType {
   Twitch = 'Twitch',
   Valorant = 'Valorant',
   Reddit = 'Reddit',
+  RSS = 'RSS',
 }
 
 export default class Block {

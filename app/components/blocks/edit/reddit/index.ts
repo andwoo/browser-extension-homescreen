@@ -5,29 +5,31 @@ import { action } from '@ember/object';
 import { migrateRedditPayload } from '../../../../migrators/reddit-payload-migrator';
 import { RedditPayload } from '../../../../classes/reddit-payload';
 
-class EditReddits {
+class EditReddit {
   @tracked reddit: string = '';
   constructor(reddit: string) {
     this.reddit = reddit;
   }
 }
 export default class EditRedditComponent extends Component<EditBlockArgs> {
-  @tracked reddits: EditReddits[] = [];
+  @tracked reddits: EditReddit[] = [];
+  payload: RedditPayload | undefined;
 
   @action initialize(): void {
     const parsed = JSON.parse(this.args.item.payload ?? '{}');
-    const payload: RedditPayload = migrateRedditPayload(parsed);
-    this.reddits = payload.reddits.map((reddit) => new EditReddits(reddit));
+    this.payload = migrateRedditPayload(parsed);
+    this.reddits = this.payload.reddits.map((reddit) => new EditReddit(reddit));
   }
 
   @action onWriteToPayload(): void {
     this.args.item.payload = JSON.stringify({
       reddits: this.reddits.map((entry) => entry.reddit) ?? [],
+      version: this.payload?.version,
     });
   }
 
   @action addSubreddit(): void {
-    this.reddits.push(new EditReddits(''));
+    this.reddits.push(new EditReddit(''));
     // eslint-disable-next-line no-self-assign
     this.reddits = this.reddits;
   }
