@@ -12,7 +12,7 @@
     "newtab": "dist/index.html"
   },
   "permissions": [
-    "https://reddit.com/",
+    "https://api.reddit.com/",
     "https://api.twitch.tv/",
     "https://www.vlr.gg/",
     "https://fonts.googleapis.com/",

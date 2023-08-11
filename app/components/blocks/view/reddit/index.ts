@@ -78,7 +78,7 @@ export default class ViewRedditComponent extends Component<ViewBlockArgs> {
 
   @task async fetchPosts(reddit: string): Promise<RedditData> {
     try {
-      const response = await axios.get(`https://reddit.com/r/${reddit}.json`);
+      const response = await axios.get(`https://api.reddit.com/r/${reddit}.json`);
       const posts = response.data.data.children.map(
         (post: RedditPostResponse) => {
           let thumbnail: string = isEmpty(post.data.thumbnail)
