@@ -9,12 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: Use Node.js 16
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 24
           cache: 'yarn'
+
       - name: 'Bumping package.json version'
         uses: 'phips28/gh-action-bump-version@master'
         env:
@@ -23,24 +25,30 @@ jobs:
           version-type: 'minor'
           target-branch: 'main'
           commit-message: 'CI: Bumping package.json version to {{version}}'
+
       - name: Setting release version
         run: echo "RELEASE_VERSION=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
+
       - name: Set manifest.json version
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: '0.0.0'
           replace: ${{ env.RELEASE_VERSION }}
           include: "manifest.json"
+
       - name: Installing dependencies
         run: yarn install
+
       - name: Building
-        run: yarn build
+        run: NODE_OPTIONS=--openssl-legacy-provider yarn build
+
       - name: Creating release
         uses: montudor/action-zip@v1
         with:
           args: zip -qq -r build.zip dist manifest.json
+
       - name: Pushing release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.RELEASE_VERSION }}
           files: build.zip

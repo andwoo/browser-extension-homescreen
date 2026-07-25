@@ -1,5 +1,11 @@
 'use strict';
 
+// 1. Add this polyfill for Node 24 compatibility
+const util = require('util');
+if (!util.isRegExp) {
+  util.isRegExp = util.types.isRegExp;
+}
+
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const { join } = require('path');
 
